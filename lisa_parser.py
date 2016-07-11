@@ -61,7 +61,8 @@ class ParseXML(object):
         for machine in self.root.iter('vm'):
             vm_list.append((
                 machine.find('vmName').text,
-                machine.find('hvServer').text
+                machine.find('hvServer').text,
+                machine.find('sshKey').text
             ))
 
         return vm_list
