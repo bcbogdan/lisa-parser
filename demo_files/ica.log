@@ -1,0 +1,1554 @@
+07/07/2016 14:27:49 : LIS Automation script - version 2.0.0
+07/07/2016 14:27:49 : Info : Created directory: TestResults\KvpTests-20160707-142749
+07/07/2016 14:27:49 : Info : Logfile =  TestResults\KvpTests-20160707-142749\ica.log
+07/07/2016 14:27:49 : Info : Using XML file:  .\xml\KvpTests.xml
+07/07/2016 14:27:49 : Info : Calling RunICTests
+07/07/2016 14:27:49 : Info : RunICTests()
+07/07/2016 14:27:49 : Info : RunICTests() processing VM ubuntu-server-16.04
+07/07/2016 14:27:49 : Info : Resetting vm ubuntu-server-16.04
+07/07/2016 14:27:49 : Info : ResetVM( ubuntu-server-16.04 )
+07/07/2016 14:27:49 : Info : ubuntu-server-16.04 Over-riding default snapshotName from global section to ICABase
+07/07/2016 14:27:49 : Warn : ubuntu-server-16.04 does not have a snapshot named ICABase.
+07/07/2016 14:27:49 : Info : ubuntu-server-16.04 transitioned from none to SystemDown
+07/07/2016 14:27:49 : Info : RunICTests() processing VM centos7
+07/07/2016 14:27:49 : Info : Resetting vm centos7
+07/07/2016 14:27:49 : Info : ResetVM( centos7 )
+07/07/2016 14:27:49 : Info : centos7 is not in a stopped state - stopping VM
+07/07/2016 14:27:51 : Info : centos7 Over-riding default snapshotName from global section to ICABase
+07/07/2016 14:27:52 : Info : centos7 is being reset to snapshot ICABase
+07/07/2016 14:27:52 : Info : centos7 transitioned from none to SystemDown
+07/07/2016 14:27:52 : Info : Entering DoStateMachine()
+07/07/2016 14:27:52 : Info : Entering DoSystemDown( ubuntu-server-16.04 )
+07/07/2016 14:27:52 : Info :    GetTestData(none)
+07/07/2016 14:27:52 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:27:52 : Debug:      vm.currentTest = none
+07/07/2016 14:27:52 : Debug:      vm.suite = KVP
+07/07/2016 14:27:52 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:27:52 : Info : ubuntu-server-16.04 currentTest updated to SQM_Basic
+07/07/2016 14:27:52 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:27:52 : Info : ubuntu-server-16.04 transitioned from SystemDown to StartSystem
+07/07/2016 14:27:52 : Info : Entering DoSystemDown( centos7 )
+07/07/2016 14:27:52 : Info :    GetTestData(none)
+07/07/2016 14:27:52 : Info :    GetNextText(centos7)
+07/07/2016 14:27:52 : Debug:      vm.currentTest = none
+07/07/2016 14:27:52 : Debug:      vm.suite = KVP
+07/07/2016 14:27:52 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:27:52 : Info : centos7 currentTest updated to SQM_Basic
+07/07/2016 14:27:52 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:27:52 : Info : centos7 transitioned from SystemDown to StartSystem
+07/07/2016 14:27:52 : Info : DoStartSystem( ubuntu-server-16.04 )
+07/07/2016 14:27:52 : Info : ubuntu-server-16.04 is being started
+07/07/2016 14:27:53 : Info : ubuntu-server-16.04 transitioned from StartSystem to SystemStarting
+07/07/2016 14:27:53 : Info : DoStartSystem( centos7 )
+07/07/2016 14:27:53 : Info : centos7 is being started
+07/07/2016 14:27:55 : Info : centos7 transitioned from StartSystem to SystemStarting
+07/07/2016 14:27:55 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:27:55 : Debug: vm.ipv4 =
+07/07/2016 14:27:55 : Debug: vm.ipv4 is NULL
+07/07/2016 14:27:55 : Info : Entering DoSystemStarting( centos7 )
+07/07/2016 14:27:55 : Debug: vm.ipv4 =
+07/07/2016 14:27:55 : Debug: vm.ipv4 is NULL
+07/07/2016 14:27:56 : Debug: Setting VMs IP address to 192.168.133.217
+07/07/2016 14:27:56 : Debug: vm.ipv4 = 192.168.133.217 and ipv4 = 192.168.133.217
+07/07/2016 14:27:56 : Info : centos7 transitioned from SystemStarting to SystemUp
+07/07/2016 14:27:56 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:27:56 : Debug: vm.ipv4 =
+07/07/2016 14:27:56 : Debug: vm.ipv4 is NULL
+07/07/2016 14:27:56 : Info : DoSystemUp(centos7)
+07/07/2016 14:27:56 : INFO : Call: echo y | bin\plink -i ssh\id_rsa.ppk root@192.168.133.217 exit
+07/07/2016 14:27:57 : INFO : The OS type is Linux
+07/07/2016 14:27:57 : Info : centos7 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:27:57 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:27:57 : Debug: vm.ipv4 =
+07/07/2016 14:27:57 : Debug: vm.ipv4 is NULL
+07/07/2016 14:27:57 : Info : DoWaitForDependencyVM(centos7)
+07/07/2016 14:27:57 : Info : centos7 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:27:57 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:27:57 : Debug: vm.ipv4 =
+07/07/2016 14:27:57 : Debug: vm.ipv4 is NULL
+07/07/2016 14:27:58 : Info : DoPushTestFiles(centos7)
+07/07/2016 14:27:58 : Info : centos7 Getting test data for current test SQM_Basic
+07/07/2016 14:27:58 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:27:58 : Info : centos7 Adding testparmas for test SQM_Basic
+07/07/2016 14:27:58 : Info : centos7 Adding ipv4=192.168.133.217
+07/07/2016 14:27:58 : Info : centos7 Pushing constants file constants.sh to VM
+07/07/2016 14:27:59 : Info : centos7 converting EOL for file constants.sh
+07/07/2016 14:27:59 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:28:00 : Success: centos7 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:28:00 : Info : centos7 Pushing files and directories to VM
+07/07/2016 14:28:00 : Info : centos7 transitioned from PushTestFiles to StartTest
+07/07/2016 14:28:00 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:00 : Debug: vm.ipv4 =
+07/07/2016 14:28:00 : Debug: vm.ipv4 is NULL
+07/07/2016 14:28:00 : Info : DoStartTest(centos7)
+07/07/2016 14:28:00 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:00 : Info : centos7 transitioned from StartTest to StartPS1Test
+07/07/2016 14:28:00 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:00 : Debug: vm.ipv4 =
+07/07/2016 14:28:00 : Debug: vm.ipv4 is NULL
+07/07/2016 14:28:00 : Info : DoStartPS1Test(centos7)
+07/07/2016 14:28:00 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:00 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:00 : Info : centos7 Adding testparmas for test SQM_Basic
+07/07/2016 14:28:00 : Info : centos7 Run PowerShell test case script SetupScripts\SQM_Basic.ps1
+07/07/2016 14:28:00 : Info : vmName: centos7
+07/07/2016 14:28:00 : Info : hvServer: localhost
+07/07/2016 14:28:00 : Info : params: TC_COVERED=SQM-01;rootDir=C:\Users\bogda\Work\lis-test\WS2012R2\lisa;TestLogDir=TestResults\KvpTests-20160707-142749;TestName=SQM_Basic;scriptMode=TestCase;ipv4=192.168.133.217;sshKey=id_rsa.ppk;
+07/07/2016 14:28:00 : Info : centos7 transitioned from StartPS1Test to PS1TestRunning
+07/07/2016 14:28:00 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:00 : Debug: vm.ipv4 =
+07/07/2016 14:28:00 : Debug: vm.ipv4 is NULL
+07/07/2016 14:28:01 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:01 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:01 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:01 : Debug: vm.ipv4 =
+07/07/2016 14:28:01 : Debug: vm.ipv4 is NULL
+07/07/2016 14:28:01 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:01 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:01 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:01 : Debug: vm.ipv4 =
+07/07/2016 14:28:01 : Debug: vm.ipv4 is NULL
+07/07/2016 14:28:01 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:01 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:01 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:01 : Debug: vm.ipv4 =
+07/07/2016 14:28:01 : Debug: vm.ipv4 is NULL
+07/07/2016 14:28:02 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:02 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:02 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:02 : Debug: vm.ipv4 =
+07/07/2016 14:28:02 : Debug: vm.ipv4 is NULL
+07/07/2016 14:28:02 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:02 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:02 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:02 : Debug: vm.ipv4 =
+07/07/2016 14:28:02 : Debug: vm.ipv4 is NULL
+07/07/2016 14:28:02 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:02 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:02 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:02 : Debug: vm.ipv4 =
+07/07/2016 14:28:02 : Debug: vm.ipv4 is NULL
+07/07/2016 14:28:02 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:02 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:02 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:02 : Debug: vm.ipv4 =
+07/07/2016 14:28:02 : Debug: vm.ipv4 is NULL
+07/07/2016 14:28:03 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:03 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:03 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:03 : Debug: vm.ipv4 =
+07/07/2016 14:28:03 : Debug: vm.ipv4 is NULL
+07/07/2016 14:28:03 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:03 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:03 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:03 : Debug: vm.ipv4 =
+07/07/2016 14:28:03 : Debug: vm.ipv4 is NULL
+07/07/2016 14:28:03 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:03 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:03 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:03 : Debug: vm.ipv4 =
+07/07/2016 14:28:03 : Debug: vm.ipv4 is NULL
+07/07/2016 14:28:04 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:04 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:04 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:04 : Debug: vm.ipv4 =
+07/07/2016 14:28:04 : Debug: vm.ipv4 is NULL
+07/07/2016 14:28:04 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:04 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:04 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:04 : Debug: vm.ipv4 =
+07/07/2016 14:28:04 : Debug: vm.ipv4 is NULL
+07/07/2016 14:28:04 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:04 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:04 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:04 : Debug: vm.ipv4 =
+07/07/2016 14:28:04 : Debug: vm.ipv4 is NULL
+07/07/2016 14:28:04 : Debug: Setting VMs IP address to 192.168.133.208
+07/07/2016 14:28:05 : Debug: vm.ipv4 = 192.168.133.208 and ipv4 = 192.168.133.208
+07/07/2016 14:28:05 : Info : ubuntu-server-16.04 transitioned from SystemStarting to SystemUp
+07/07/2016 14:28:05 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:05 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:05 : Info : centos7 transitioned from PS1TestRunning to PS1TestCompleted
+07/07/2016 14:28:05 : Info : DoSystemUp(ubuntu-server-16.04)
+07/07/2016 14:28:05 : INFO : Call: echo y | bin\plink -i ssh\ubuntu-16.04-64\id_rsa root@192.168.133.208 exit
+07/07/2016 14:28:06 : INFO : The OS type is Linux
+07/07/2016 14:28:06 : Info : ubuntu-server-16.04 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:28:06 : Info : DoPS1TestCompleted(centos7)
+07/07/2016 14:28:06 : Info : centos7 Status for test SQM_Basic = Success
+07/07/2016 14:28:06 : Info : centos7 transitioned from PS1TestCompleted to DetermineReboot
+07/07/2016 14:28:07 : Info : DoWaitForDependencyVM(ubuntu-server-16.04)
+07/07/2016 14:28:07 : Info : ubuntu-server-16.04 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:28:07 : Info : DoDetermineReboot(centos7)
+07/07/2016 14:28:07 : Info :    GetNextText(centos7)
+07/07/2016 14:28:07 : Debug:      vm.currentTest = SQM_Basic
+07/07/2016 14:28:07 : Debug:      vm.suite = KVP
+07/07/2016 14:28:07 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:07 : Info : centos7 transitioned from DetermineReboot to ShutdownSystem
+07/07/2016 14:28:07 : Info : DoPushTestFiles(ubuntu-server-16.04)
+07/07/2016 14:28:07 : Info : ubuntu-server-16.04 Getting test data for current test SQM_Basic
+07/07/2016 14:28:07 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:07 : Info : ubuntu-server-16.04 Adding testparmas for test SQM_Basic
+07/07/2016 14:28:07 : Info : ubuntu-server-16.04 Adding ipv4=192.168.133.208
+07/07/2016 14:28:07 : Info : ubuntu-server-16.04 Pushing constants file constants.sh to VM
+07/07/2016 14:28:08 : Info : ubuntu-server-16.04 converting EOL for file constants.sh
+07/07/2016 14:28:08 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:28:09 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:28:09 : Info : ubuntu-server-16.04 Pushing files and directories to VM
+07/07/2016 14:28:09 : Info : ubuntu-server-16.04 transitioned from PushTestFiles to StartTest
+07/07/2016 14:28:09 : Info : DoShutdownSystem(centos7)
+07/07/2016 14:28:09 : Waiting 1 second to check the process status for Command = 'init 0'.
+07/07/2016 14:28:10 : Success: centos7 successfully sent command to VM. Command = 'init 0'
+07/07/2016 14:28:10 : Info : centos7 transitioned from ShutdownSystem to ShuttingDown
+07/07/2016 14:28:10 : Info : DoStartTest(ubuntu-server-16.04)
+07/07/2016 14:28:10 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:10 : Info : ubuntu-server-16.04 transitioned from StartTest to StartPS1Test
+07/07/2016 14:28:10 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:10 : Info : DoStartPS1Test(ubuntu-server-16.04)
+07/07/2016 14:28:10 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:10 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:10 : Info : ubuntu-server-16.04 Adding testparmas for test SQM_Basic
+07/07/2016 14:28:10 : Info : ubuntu-server-16.04 Run PowerShell test case script SetupScripts\SQM_Basic.ps1
+07/07/2016 14:28:10 : Info : vmName: ubuntu-server-16.04
+07/07/2016 14:28:10 : Info : hvServer: localhost
+07/07/2016 14:28:10 : Info : params: TC_COVERED=SQM-01;rootDir=C:\Users\bogda\Work\lis-test\WS2012R2\lisa;TestLogDir=TestResults\KvpTests-20160707-142749;TestName=SQM_Basic;scriptMode=TestCase;ipv4=192.168.133.208;sshKey=ubuntu-16.04-64\id_rsa;
+07/07/2016 14:28:10 : Info : ubuntu-server-16.04 transitioned from StartPS1Test to PS1TestRunning
+07/07/2016 14:28:10 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:10 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:10 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:10 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:11 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:11 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:11 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:11 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:11 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:11 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:11 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:11 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:11 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:11 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:11 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:11 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:11 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:11 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:11 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:11 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:11 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:11 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:11 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:11 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:11 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:12 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:12 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:12 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:12 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:12 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:12 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:12 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:12 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:12 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:12 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:12 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:12 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:12 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:12 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:12 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:12 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:12 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:12 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:12 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:12 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:13 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:13 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:13 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:13 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:13 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:13 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:13 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:13 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:13 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:13 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:13 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:13 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:13 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:13 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:13 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:13 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:13 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:13 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:13 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:14 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:14 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:14 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:14 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:14 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:14 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:14 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:14 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:14 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:14 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:14 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:14 : Info : DoShuttingDown(centos7)
+07/07/2016 14:28:14 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:14 : Info : centos7 transitioned from ShuttingDown to SystemDown
+07/07/2016 14:28:14 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:14 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:14 : Info : Entering DoSystemDown( centos7 )
+07/07/2016 14:28:14 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:14 : Info :    GetNextText(centos7)
+07/07/2016 14:28:14 : Debug:      vm.currentTest = SQM_Basic
+07/07/2016 14:28:14 : Debug:      vm.suite = KVP
+07/07/2016 14:28:14 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:28:14 : Info : centos7 currentTest updated to KVP_Basic
+07/07/2016 14:28:14 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:28:14 : Info : centos7 transitioned from SystemDown to StartSystem
+07/07/2016 14:28:14 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:14 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:14 : Info : DoStartSystem( centos7 )
+07/07/2016 14:28:14 : Info : centos7 is being started
+07/07/2016 14:28:15 : Info : centos7 transitioned from StartSystem to SystemStarting
+07/07/2016 14:28:15 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:15 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:15 : Info : ubuntu-server-16.04 transitioned from PS1TestRunning to PS1TestCompleted
+07/07/2016 14:28:15 : Info : Entering DoSystemStarting( centos7 )
+07/07/2016 14:28:15 : Debug: vm.ipv4 = 192.168.133.217
+07/07/2016 14:28:16 : Debug: vm.ipv4 = 192.168.133.217 and ipv4 =
+07/07/2016 14:28:19 : Info : DoPS1TestCompleted(ubuntu-server-16.04)
+07/07/2016 14:28:19 : Info : ubuntu-server-16.04 Status for test SQM_Basic = Success
+07/07/2016 14:28:19 : Info : ubuntu-server-16.04 transitioned from PS1TestCompleted to DetermineReboot
+07/07/2016 14:28:19 : Info : Entering DoSystemStarting( centos7 )
+07/07/2016 14:28:19 : Debug: vm.ipv4 = 192.168.133.217
+07/07/2016 14:28:19 : Debug: vm.ipv4 = 192.168.133.217 and ipv4 =
+07/07/2016 14:28:22 : Info : DoDetermineReboot(ubuntu-server-16.04)
+07/07/2016 14:28:22 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:28:22 : Debug:      vm.currentTest = SQM_Basic
+07/07/2016 14:28:22 : Debug:      vm.suite = KVP
+07/07/2016 14:28:22 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:22 : Info : ubuntu-server-16.04 transitioned from DetermineReboot to ShutdownSystem
+07/07/2016 14:28:22 : Info : Entering DoSystemStarting( centos7 )
+07/07/2016 14:28:22 : Debug: vm.ipv4 = 192.168.133.217
+07/07/2016 14:28:22 : Debug: vm.ipv4 = 192.168.133.217 and ipv4 =
+07/07/2016 14:28:26 : Info : DoShutdownSystem(ubuntu-server-16.04)
+07/07/2016 14:28:26 : Waiting 1 second to check the process status for Command = 'init 0'.
+07/07/2016 14:28:27 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'init 0'
+07/07/2016 14:28:27 : Info : ubuntu-server-16.04 transitioned from ShutdownSystem to ShuttingDown
+07/07/2016 14:28:27 : Info : Entering DoSystemStarting( centos7 )
+07/07/2016 14:28:27 : Debug: vm.ipv4 = 192.168.133.217
+07/07/2016 14:28:27 : Debug: vm.ipv4 = 192.168.133.217 and ipv4 =
+07/07/2016 14:28:30 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:28:30 : Info : Entering DoSystemStarting( centos7 )
+07/07/2016 14:28:30 : Debug: vm.ipv4 = 192.168.133.217
+07/07/2016 14:28:30 : Debug: vm.ipv4 = 192.168.133.217 and ipv4 =
+07/07/2016 14:28:33 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:28:33 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:34 : Info : ubuntu-server-16.04 transitioned from ShuttingDown to SystemDown
+07/07/2016 14:28:34 : Info : Entering DoSystemStarting( centos7 )
+07/07/2016 14:28:34 : Debug: vm.ipv4 = 192.168.133.217
+07/07/2016 14:28:34 : Debug: vm.ipv4 = 192.168.133.217 and ipv4 =
+07/07/2016 14:28:37 : Info : Entering DoSystemDown( ubuntu-server-16.04 )
+07/07/2016 14:28:37 : Info :    GetTestData(SQM_Basic)
+07/07/2016 14:28:37 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:28:37 : Debug:      vm.currentTest = SQM_Basic
+07/07/2016 14:28:37 : Debug:      vm.suite = KVP
+07/07/2016 14:28:37 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:28:37 : Info : ubuntu-server-16.04 currentTest updated to KVP_Basic
+07/07/2016 14:28:37 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:28:37 : Info : ubuntu-server-16.04 transitioned from SystemDown to StartSystem
+07/07/2016 14:28:37 : Info : Entering DoSystemStarting( centos7 )
+07/07/2016 14:28:37 : Debug: vm.ipv4 = 192.168.133.217
+07/07/2016 14:28:37 : Debug: vm.ipv4 = 192.168.133.217 and ipv4 =
+07/07/2016 14:28:40 : Info : DoStartSystem( ubuntu-server-16.04 )
+07/07/2016 14:28:40 : Info : ubuntu-server-16.04 is being started
+07/07/2016 14:28:41 : Info : ubuntu-server-16.04 transitioned from StartSystem to SystemStarting
+07/07/2016 14:28:41 : Info : Entering DoSystemStarting( centos7 )
+07/07/2016 14:28:41 : Debug: vm.ipv4 = 192.168.133.217
+07/07/2016 14:28:41 : Debug: vm.ipv4 = 192.168.133.217 and ipv4 =
+07/07/2016 14:28:44 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:44 : Debug: vm.ipv4 = 192.168.133.208
+07/07/2016 14:28:44 : Debug: vm.ipv4 = 192.168.133.208 and ipv4 =
+07/07/2016 14:28:47 : Info : Entering DoSystemStarting( centos7 )
+07/07/2016 14:28:48 : Debug: vm.ipv4 = 192.168.133.217
+07/07/2016 14:28:48 : Debug: vm.ipv4 = 192.168.133.217 and ipv4 =
+07/07/2016 14:28:48 : Info : centos7 transitioned from SystemStarting to SystemUp
+07/07/2016 14:28:48 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:49 : Debug: vm.ipv4 = 192.168.133.208
+07/07/2016 14:28:49 : Debug: vm.ipv4 = 192.168.133.208 and ipv4 =
+07/07/2016 14:28:52 : Info : DoSystemUp(centos7)
+07/07/2016 14:28:52 : INFO : Call: echo y | bin\plink -i ssh\id_rsa.ppk root@192.168.133.217 exit
+07/07/2016 14:28:53 : INFO : The OS type is Linux
+07/07/2016 14:28:53 : Info : centos7 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:28:53 : Info : Entering DoSystemStarting( ubuntu-server-16.04 )
+07/07/2016 14:28:53 : Debug: vm.ipv4 = 192.168.133.208
+07/07/2016 14:28:53 : Debug: vm.ipv4 = 192.168.133.208 and ipv4 = 192.168.133.208
+07/07/2016 14:28:53 : Info : ubuntu-server-16.04 transitioned from SystemStarting to SystemUp
+07/07/2016 14:28:53 : Info : DoWaitForDependencyVM(centos7)
+07/07/2016 14:28:53 : Info : centos7 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:28:53 : Info : DoSystemUp(ubuntu-server-16.04)
+07/07/2016 14:28:53 : INFO : Call: echo y | bin\plink -i ssh\ubuntu-16.04-64\id_rsa root@192.168.133.208 exit
+07/07/2016 14:28:54 : INFO : The OS type is Linux
+07/07/2016 14:28:54 : Info : ubuntu-server-16.04 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:28:54 : Info : DoPushTestFiles(centos7)
+07/07/2016 14:28:54 : Info : centos7 Getting test data for current test KVP_Basic
+07/07/2016 14:28:54 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:28:54 : Info : centos7 Adding testparmas for test KVP_Basic
+07/07/2016 14:28:54 : Info : centos7 Adding ipv4=192.168.133.217
+07/07/2016 14:28:54 : Info : centos7 Pushing constants file constants.sh to VM
+07/07/2016 14:28:55 : Info : centos7 converting EOL for file constants.sh
+07/07/2016 14:28:55 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:28:56 : Success: centos7 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:28:56 : Info : centos7 Pushing files and directories to VM
+07/07/2016 14:28:56 : Info : centos7 transitioned from PushTestFiles to StartTest
+07/07/2016 14:28:56 : Info : DoWaitForDependencyVM(ubuntu-server-16.04)
+07/07/2016 14:28:56 : Info : ubuntu-server-16.04 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:28:56 : Info : DoStartTest(centos7)
+07/07/2016 14:28:56 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:28:56 : Info : centos7 transitioned from StartTest to StartPS1Test
+07/07/2016 14:28:57 : Info : DoPushTestFiles(ubuntu-server-16.04)
+07/07/2016 14:28:57 : Info : ubuntu-server-16.04 Getting test data for current test KVP_Basic
+07/07/2016 14:28:57 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:28:57 : Info : ubuntu-server-16.04 Adding testparmas for test KVP_Basic
+07/07/2016 14:28:57 : Info : ubuntu-server-16.04 Adding ipv4=192.168.133.208
+07/07/2016 14:28:57 : Info : ubuntu-server-16.04 Pushing constants file constants.sh to VM
+07/07/2016 14:28:58 : Info : ubuntu-server-16.04 converting EOL for file constants.sh
+07/07/2016 14:28:58 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:28:59 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:28:59 : Info : ubuntu-server-16.04 Pushing files and directories to VM
+07/07/2016 14:28:59 : Info : ubuntu-server-16.04 transitioned from PushTestFiles to StartTest
+07/07/2016 14:28:59 : Info : DoStartPS1Test(centos7)
+07/07/2016 14:28:59 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:28:59 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:28:59 : Info : centos7 Adding testparmas for test KVP_Basic
+07/07/2016 14:28:59 : Info : centos7 Run PowerShell test case script SetupScripts\KVP_Basic.ps1
+07/07/2016 14:28:59 : Info : vmName: centos7
+07/07/2016 14:28:59 : Info : hvServer: localhost
+07/07/2016 14:28:59 : Info : params: TC_COVERED=KVP-01;DE_change=no;rootDir=C:\Users\bogda\Work\lis-test\WS2012R2\lisa;TestLogDir=TestResults\KvpTests-20160707-142749;TestName=KVP_Basic;scriptMode=TestCase;ipv4=192.168.133.217;sshKey=id_rsa.ppk;
+07/07/2016 14:28:59 : Info : centos7 transitioned from StartPS1Test to PS1TestRunning
+07/07/2016 14:28:59 : Info : DoStartTest(ubuntu-server-16.04)
+07/07/2016 14:28:59 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:28:59 : Info : ubuntu-server-16.04 transitioned from StartTest to StartPS1Test
+07/07/2016 14:28:59 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:59 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:28:59 : Info : DoStartPS1Test(ubuntu-server-16.04)
+07/07/2016 14:28:59 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:28:59 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:28:59 : Info : ubuntu-server-16.04 Adding testparmas for test KVP_Basic
+07/07/2016 14:28:59 : Info : ubuntu-server-16.04 Run PowerShell test case script SetupScripts\KVP_Basic.ps1
+07/07/2016 14:28:59 : Info : vmName: ubuntu-server-16.04
+07/07/2016 14:28:59 : Info : hvServer: localhost
+07/07/2016 14:28:59 : Info : params: TC_COVERED=KVP-01;DE_change=no;rootDir=C:\Users\bogda\Work\lis-test\WS2012R2\lisa;TestLogDir=TestResults\KvpTests-20160707-142749;TestName=KVP_Basic;scriptMode=TestCase;ipv4=192.168.133.208;sshKey=ubuntu-16.04-64\id_rsa;
+07/07/2016 14:28:59 : Info : ubuntu-server-16.04 transitioned from StartPS1Test to PS1TestRunning
+07/07/2016 14:28:59 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:59 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:28:59 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:28:59 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:28:59 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:28:59 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:00 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:29:00 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:00 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:29:00 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:00 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:29:00 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:00 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:29:00 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:00 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:29:00 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:00 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:29:00 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:00 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:29:00 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:00 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:29:00 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:00 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:29:00 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:00 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:29:00 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:00 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:29:00 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:00 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:29:00 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:00 : Info : centos7 transitioned from PS1TestRunning to PS1TestCompleted
+07/07/2016 14:29:00 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:29:00 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:00 : Info : DoPS1TestCompleted(centos7)
+07/07/2016 14:29:00 : Info : centos7 Status for test KVP_Basic = Success
+07/07/2016 14:29:00 : Info : centos7 transitioned from PS1TestCompleted to DetermineReboot
+07/07/2016 14:29:01 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:29:01 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:01 : Info : ubuntu-server-16.04 transitioned from PS1TestRunning to PS1TestCompleted
+07/07/2016 14:29:01 : Info : DoDetermineReboot(centos7)
+07/07/2016 14:29:01 : Info :    GetNextText(centos7)
+07/07/2016 14:29:01 : Debug:      vm.currentTest = KVP_Basic
+07/07/2016 14:29:01 : Debug:      vm.suite = KVP
+07/07/2016 14:29:01 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:01 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:01 : Info :    GetNextText(centos7)
+07/07/2016 14:29:01 : Debug:      vm.currentTest = KVP_Basic
+07/07/2016 14:29:01 : Debug:      vm.suite = KVP
+07/07/2016 14:29:01 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:01 : Info : centos7 currentTest updated to KVP_Add_Key_Values
+07/07/2016 14:29:01 : Info : centos7 transitioned from DetermineReboot to SystemUp
+07/07/2016 14:29:01 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:01 : Info : DoPS1TestCompleted(ubuntu-server-16.04)
+07/07/2016 14:29:01 : Info : ubuntu-server-16.04 Status for test KVP_Basic = Success
+07/07/2016 14:29:01 : Info : ubuntu-server-16.04 transitioned from PS1TestCompleted to DetermineReboot
+07/07/2016 14:29:01 : Info : DoSystemUp(centos7)
+07/07/2016 14:29:01 : INFO : Call: echo y | bin\plink -i ssh\id_rsa.ppk root@192.168.133.217 exit
+07/07/2016 14:29:02 : INFO : The OS type is Linux
+07/07/2016 14:29:02 : Info : centos7 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:29:02 : Info : DoDetermineReboot(ubuntu-server-16.04)
+07/07/2016 14:29:02 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:29:02 : Debug:      vm.currentTest = KVP_Basic
+07/07/2016 14:29:02 : Debug:      vm.suite = KVP
+07/07/2016 14:29:02 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:02 : Info :    GetTestData(KVP_Basic)
+07/07/2016 14:29:02 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:29:02 : Debug:      vm.currentTest = KVP_Basic
+07/07/2016 14:29:02 : Debug:      vm.suite = KVP
+07/07/2016 14:29:02 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:02 : Info : ubuntu-server-16.04 currentTest updated to KVP_Add_Key_Values
+07/07/2016 14:29:02 : Info : ubuntu-server-16.04 transitioned from DetermineReboot to SystemUp
+07/07/2016 14:29:02 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:02 : Info : DoWaitForDependencyVM(centos7)
+07/07/2016 14:29:02 : Info : centos7 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:29:02 : Info : DoSystemUp(ubuntu-server-16.04)
+07/07/2016 14:29:02 : INFO : Call: echo y | bin\plink -i ssh\ubuntu-16.04-64\id_rsa root@192.168.133.208 exit
+07/07/2016 14:29:03 : INFO : The OS type is Linux
+07/07/2016 14:29:03 : Info : ubuntu-server-16.04 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:29:03 : Info : DoPushTestFiles(centos7)
+07/07/2016 14:29:03 : Info : centos7 Getting test data for current test KVP_Add_Key_Values
+07/07/2016 14:29:03 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:03 : Info : centos7 Adding testparmas for test KVP_Add_Key_Values
+07/07/2016 14:29:04 : Info : centos7 Adding ipv4=192.168.133.217
+07/07/2016 14:29:04 : Info : centos7 Pushing constants file constants.sh to VM
+07/07/2016 14:29:05 : Info : centos7 converting EOL for file constants.sh
+07/07/2016 14:29:05 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:29:06 : Success: centos7 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:29:06 : Info : centos7 Pushing files and directories to VM
+07/07/2016 14:29:06 : Info : centos7 sending 'remote-scripts\ica\KVP_VerifyKeyValue.sh' to VM
+07/07/2016 14:29:07 : Info : centos7 sending 'tools/KVP/kvp_client32' to VM
+07/07/2016 14:29:08 : Info : centos7 sending 'tools/KVP/kvp_client64' to VM
+07/07/2016 14:29:09 : Info : centos7 converting EOL for file KVP_VerifyKeyValue.sh
+07/07/2016 14:29:09 : Waiting 1 second to check the process status for Command = 'dos2unix -q KVP_VerifyKeyValue.sh'.
+07/07/2016 14:29:10 : Success: centos7 successfully sent command to VM. Command = 'dos2unix -q KVP_VerifyKeyValue.sh'
+07/07/2016 14:29:10 : Info : centos7 setting x bit on KVP_VerifyKeyValue.sh
+07/07/2016 14:29:10 : Waiting 1 second to check the process status for Command = 'chmod 755 KVP_VerifyKeyValue.sh'.
+07/07/2016 14:29:11 : Success: centos7 successfully sent command to VM. Command = 'chmod 755 KVP_VerifyKeyValue.sh'
+07/07/2016 14:29:11 : Info : centos7 transitioned from PushTestFiles to RunPreTestScript
+07/07/2016 14:29:11 : Info : DoWaitForDependencyVM(ubuntu-server-16.04)
+07/07/2016 14:29:11 : Info : ubuntu-server-16.04 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:29:11 : Info : DoRunPreTestScript( centos7 )
+07/07/2016 14:29:11 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:11 : Info : centos7 - starting preTest script
+07/07/2016 14:29:11 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:11 : Info : RunPSScript(centos7, localhost, setupScripts\AddKeyValue.ps1)
+07/07/2016 14:29:11 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:11 : Info : centos7 Adding testparmas for test KVP_Add_Key_Values
+07/07/2016 14:29:11 : Info : Invoke-Expression setupScripts\AddKeyValue.ps1 -vmName centos7 -hvServer localhost -testParams "TC_COVERED=KVP-02;Key=EEE;Value=555;Pool=0;rootDir=C:\Users\bogda\Work\lis-test\WS2012R2\lisa;TestLogDir=TestResults\KvpTests-20160707-142749;TestName=KVP_Add_Key_Values;scriptMode=PreTest;TestLogDir=TestResults\KvpTests-20160707-142749;sshKey=id_rsa.ppk;"
+07/07/2016 14:29:11 : Debug: centos7 - Invoke-Expression returned array with 3 elements
+07/07/2016 14:29:11 : Info :    centos7 - Info : Adding Key=value of: EEE=555
+07/07/2016 14:29:11 : Info :    centos7 - Info : KVP item added successfully on guest
+07/07/2016 14:29:11 : Info :    centos7 - True
+07/07/2016 14:29:11 : Info : centos7 transitioned from RunPreTestScript to StartTest
+07/07/2016 14:29:11 : Info : DoPushTestFiles(ubuntu-server-16.04)
+07/07/2016 14:29:11 : Info : ubuntu-server-16.04 Getting test data for current test KVP_Add_Key_Values
+07/07/2016 14:29:11 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:11 : Info : ubuntu-server-16.04 Adding testparmas for test KVP_Add_Key_Values
+07/07/2016 14:29:11 : Info : ubuntu-server-16.04 Adding ipv4=192.168.133.208
+07/07/2016 14:29:11 : Info : ubuntu-server-16.04 Pushing constants file constants.sh to VM
+07/07/2016 14:29:12 : Info : ubuntu-server-16.04 converting EOL for file constants.sh
+07/07/2016 14:29:12 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:29:13 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:29:13 : Info : ubuntu-server-16.04 Pushing files and directories to VM
+07/07/2016 14:29:13 : Info : ubuntu-server-16.04 sending 'remote-scripts\ica\KVP_VerifyKeyValue.sh' to VM
+07/07/2016 14:29:14 : Info : ubuntu-server-16.04 sending 'tools/KVP/kvp_client32' to VM
+07/07/2016 14:29:15 : Info : ubuntu-server-16.04 sending 'tools/KVP/kvp_client64' to VM
+07/07/2016 14:29:16 : Info : ubuntu-server-16.04 converting EOL for file KVP_VerifyKeyValue.sh
+07/07/2016 14:29:16 : Waiting 1 second to check the process status for Command = 'dos2unix -q KVP_VerifyKeyValue.sh'.
+07/07/2016 14:29:17 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'dos2unix -q KVP_VerifyKeyValue.sh'
+07/07/2016 14:29:17 : Info : ubuntu-server-16.04 setting x bit on KVP_VerifyKeyValue.sh
+07/07/2016 14:29:17 : Waiting 1 second to check the process status for Command = 'chmod 755 KVP_VerifyKeyValue.sh'.
+07/07/2016 14:29:18 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'chmod 755 KVP_VerifyKeyValue.sh'
+07/07/2016 14:29:18 : Info : ubuntu-server-16.04 transitioned from PushTestFiles to RunPreTestScript
+07/07/2016 14:29:18 : Info : DoStartTest(centos7)
+07/07/2016 14:29:18 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:19 : Info : centos7 pushing file runtest.sh
+07/07/2016 14:29:20 : Info : centos7 setting the x bit on runtest.sh
+07/07/2016 14:29:20 : Waiting 1 second to check the process status for Command = 'chmod 755 runtest.sh'.
+07/07/2016 14:29:21 : Success: centos7 successfully sent command to VM. Command = 'chmod 755 runtest.sh'
+07/07/2016 14:29:21 : Info : centos7 correcting the EOL for runtest.sh
+07/07/2016 14:29:21 : Waiting 1 second to check the process status for Command = 'dos2unix -q runtest.sh'.
+07/07/2016 14:29:22 : Success: centos7 successfully sent command to VM. Command = 'dos2unix -q runtest.sh'
+07/07/2016 14:29:22 : Info : centos7 enabling atd daemon
+07/07/2016 14:29:22 : Waiting 1 second to check the process status for Command = '/etc/init.d/atd start'.
+07/07/2016 14:29:23 : Success: centos7 successfully sent command to VM. Command = '/etc/init.d/atd start'
+07/07/2016 14:29:23 : Waiting 1 second to check the process status for Command = 'rm -f state.txt'.
+07/07/2016 14:29:24 : Success: centos7 successfully sent command to VM. Command = 'rm -f state.txt'
+07/07/2016 14:29:24 : Info : centos7 submitting job runtest.sh
+07/07/2016 14:29:24 : Waiting 1 second to check the process status for Command = 'at -f runtest.sh now'.
+07/07/2016 14:29:25 : Waiting 1 second to check the process status for Command = 'at -f runtest.sh now'.
+07/07/2016 14:29:26 : Success: centos7 successfully sent command to VM. Command = 'at -f runtest.sh now'
+07/07/2016 14:29:26 : Info : centos7 transitioned from StartTest to TestStarting
+07/07/2016 14:29:26 : Info : DoRunPreTestScript( ubuntu-server-16.04 )
+07/07/2016 14:29:26 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:26 : Info : ubuntu-server-16.04 - starting preTest script
+07/07/2016 14:29:26 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:26 : Info : RunPSScript(ubuntu-server-16.04, localhost, setupScripts\AddKeyValue.ps1)
+07/07/2016 14:29:26 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:26 : Info : ubuntu-server-16.04 Adding testparmas for test KVP_Add_Key_Values
+07/07/2016 14:29:26 : Info : Invoke-Expression setupScripts\AddKeyValue.ps1 -vmName ubuntu-server-16.04 -hvServer localhost -testParams "TC_COVERED=KVP-02;Key=EEE;Value=555;Pool=0;rootDir=C:\Users\bogda\Work\lis-test\WS2012R2\lisa;TestLogDir=TestResults\KvpTests-20160707-142749;TestName=KVP_Add_Key_Values;scriptMode=PreTest;TestLogDir=TestResults\KvpTests-20160707-142749;sshKey=ubuntu-16.04-64\id_rsa;"
+07/07/2016 14:29:26 : Debug: ubuntu-server-16.04 - Invoke-Expression returned array with 3 elements
+07/07/2016 14:29:26 : Info :    ubuntu-server-16.04 - Info : Adding Key=value of: EEE=555
+07/07/2016 14:29:26 : Info :    ubuntu-server-16.04 - Info : KVP item added successfully on guest
+07/07/2016 14:29:26 : Info :    ubuntu-server-16.04 - True
+07/07/2016 14:29:26 : Info : ubuntu-server-16.04 transitioned from RunPreTestScript to StartTest
+07/07/2016 14:29:26 : Info : DoTestStarting(centos7)
+07/07/2016 14:29:27 : Info : centos7 transitioned from TestStarting to TestRunning
+07/07/2016 14:29:27 : Info : DoStartTest(ubuntu-server-16.04)
+07/07/2016 14:29:27 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:27 : Info : ubuntu-server-16.04 pushing file runtest.sh
+07/07/2016 14:29:28 : Info : ubuntu-server-16.04 setting the x bit on runtest.sh
+07/07/2016 14:29:28 : Waiting 1 second to check the process status for Command = 'chmod 755 runtest.sh'.
+07/07/2016 14:29:29 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'chmod 755 runtest.sh'
+07/07/2016 14:29:29 : Info : ubuntu-server-16.04 correcting the EOL for runtest.sh
+07/07/2016 14:29:29 : Waiting 1 second to check the process status for Command = 'dos2unix -q runtest.sh'.
+07/07/2016 14:29:30 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'dos2unix -q runtest.sh'
+07/07/2016 14:29:30 : Info : ubuntu-server-16.04 enabling atd daemon
+07/07/2016 14:29:30 : Waiting 1 second to check the process status for Command = '/etc/init.d/atd start'.
+07/07/2016 14:29:31 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = '/etc/init.d/atd start'
+07/07/2016 14:29:31 : Waiting 1 second to check the process status for Command = 'rm -f state.txt'.
+07/07/2016 14:29:32 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'rm -f state.txt'
+07/07/2016 14:29:32 : Info : ubuntu-server-16.04 submitting job runtest.sh
+07/07/2016 14:29:32 : Waiting 1 second to check the process status for Command = 'at -f runtest.sh now'.
+07/07/2016 14:29:33 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'at -f runtest.sh now'
+07/07/2016 14:29:33 : Info : ubuntu-server-16.04 transitioned from StartTest to TestStarting
+07/07/2016 14:29:33 : Info : DoTestRunning(centos7)
+07/07/2016 14:29:33 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:34 : Info : centos7 transitioned from TestRunning to CollectLogFiles
+07/07/2016 14:29:35 : Info : DoTestStarting(ubuntu-server-16.04)
+07/07/2016 14:29:36 : Info : ubuntu-server-16.04 transitioned from TestStarting to TestRunning
+07/07/2016 14:29:36 : Info : DoCollectLogFiles(centos7)
+07/07/2016 14:29:36 : Info : centos7 collecting logfiles
+07/07/2016 14:29:38 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:38 : Waiting 1 second to check the process status for Command = 'rm -f state.txt'.
+07/07/2016 14:29:39 : Success: centos7 successfully sent command to VM. Command = 'rm -f state.txt'
+07/07/2016 14:29:39 : Info : centos7 Status for test KVP_Add_Key_Values  = Success
+07/07/2016 14:29:39 : Info : centos7 transitioned from CollectLogFiles to DetermineReboot
+07/07/2016 14:29:39 : Info : DoTestRunning(ubuntu-server-16.04)
+07/07/2016 14:29:39 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:40 : Info : ubuntu-server-16.04 transitioned from TestRunning to CollectLogFiles
+07/07/2016 14:29:40 : Info : DoDetermineReboot(centos7)
+07/07/2016 14:29:40 : Info :    GetNextText(centos7)
+07/07/2016 14:29:40 : Debug:      vm.currentTest = KVP_Add_Key_Values
+07/07/2016 14:29:40 : Debug:      vm.suite = KVP
+07/07/2016 14:29:40 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:40 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:40 : Info :    GetNextText(centos7)
+07/07/2016 14:29:40 : Debug:      vm.currentTest = KVP_Add_Key_Values
+07/07/2016 14:29:40 : Debug:      vm.suite = KVP
+07/07/2016 14:29:40 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:29:40 : Info : centos7 currentTest updated to KVP_Modify_Key_Values
+07/07/2016 14:29:40 : Info : centos7 transitioned from DetermineReboot to SystemUp
+07/07/2016 14:29:40 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:29:40 : Info : DoCollectLogFiles(ubuntu-server-16.04)
+07/07/2016 14:29:40 : Info : ubuntu-server-16.04 collecting logfiles
+07/07/2016 14:29:42 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:42 : Waiting 1 second to check the process status for Command = 'rm -f state.txt'.
+07/07/2016 14:29:43 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'rm -f state.txt'
+07/07/2016 14:29:43 : Info : ubuntu-server-16.04 Status for test KVP_Add_Key_Values  = Success
+07/07/2016 14:29:43 : Info : ubuntu-server-16.04 transitioned from CollectLogFiles to DetermineReboot
+07/07/2016 14:29:43 : Info : DoSystemUp(centos7)
+07/07/2016 14:29:43 : INFO : Call: echo y | bin\plink -i ssh\id_rsa.ppk root@192.168.133.217 exit
+07/07/2016 14:29:44 : INFO : The OS type is Linux
+07/07/2016 14:29:44 : Info : centos7 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:29:44 : Info : DoDetermineReboot(ubuntu-server-16.04)
+07/07/2016 14:29:44 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:29:44 : Debug:      vm.currentTest = KVP_Add_Key_Values
+07/07/2016 14:29:44 : Debug:      vm.suite = KVP
+07/07/2016 14:29:44 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:44 : Info :    GetTestData(KVP_Add_Key_Values)
+07/07/2016 14:29:44 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:29:44 : Debug:      vm.currentTest = KVP_Add_Key_Values
+07/07/2016 14:29:44 : Debug:      vm.suite = KVP
+07/07/2016 14:29:44 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:29:44 : Info : ubuntu-server-16.04 currentTest updated to KVP_Modify_Key_Values
+07/07/2016 14:29:44 : Info : ubuntu-server-16.04 transitioned from DetermineReboot to SystemUp
+07/07/2016 14:29:44 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:29:44 : Info : DoWaitForDependencyVM(centos7)
+07/07/2016 14:29:44 : Info : centos7 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:29:44 : Info : DoSystemUp(ubuntu-server-16.04)
+07/07/2016 14:29:44 : INFO : Call: echo y | bin\plink -i ssh\ubuntu-16.04-64\id_rsa root@192.168.133.208 exit
+07/07/2016 14:29:45 : INFO : The OS type is Linux
+07/07/2016 14:29:45 : Info : ubuntu-server-16.04 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:29:45 : Info : DoPushTestFiles(centos7)
+07/07/2016 14:29:46 : Info : centos7 Getting test data for current test KVP_Modify_Key_Values
+07/07/2016 14:29:46 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:29:46 : Info : centos7 Adding testparmas for test KVP_Modify_Key_Values
+07/07/2016 14:29:46 : Info : centos7 Adding ipv4=192.168.133.217
+07/07/2016 14:29:46 : Info : centos7 Pushing constants file constants.sh to VM
+07/07/2016 14:29:47 : Info : centos7 converting EOL for file constants.sh
+07/07/2016 14:29:47 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:29:48 : Success: centos7 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:29:48 : Info : centos7 Pushing files and directories to VM
+07/07/2016 14:29:48 : Info : centos7 sending 'remote-scripts\ica\KVP_VerifyKeyValue.sh' to VM
+07/07/2016 14:29:49 : Info : centos7 sending 'tools/KVP/kvp_client32' to VM
+07/07/2016 14:29:50 : Info : centos7 sending 'tools/KVP/kvp_client64' to VM
+07/07/2016 14:29:51 : Info : centos7 converting EOL for file KVP_VerifyKeyValue.sh
+07/07/2016 14:29:51 : Waiting 1 second to check the process status for Command = 'dos2unix -q KVP_VerifyKeyValue.sh'.
+07/07/2016 14:29:52 : Success: centos7 successfully sent command to VM. Command = 'dos2unix -q KVP_VerifyKeyValue.sh'
+07/07/2016 14:29:52 : Info : centos7 setting x bit on KVP_VerifyKeyValue.sh
+07/07/2016 14:29:52 : Waiting 1 second to check the process status for Command = 'chmod 755 KVP_VerifyKeyValue.sh'.
+07/07/2016 14:29:53 : Success: centos7 successfully sent command to VM. Command = 'chmod 755 KVP_VerifyKeyValue.sh'
+07/07/2016 14:29:53 : Info : centos7 transitioned from PushTestFiles to RunPreTestScript
+07/07/2016 14:29:53 : Info : DoWaitForDependencyVM(ubuntu-server-16.04)
+07/07/2016 14:29:53 : Info : ubuntu-server-16.04 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:29:53 : Info : DoRunPreTestScript( centos7 )
+07/07/2016 14:29:53 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:29:53 : Info : centos7 - starting preTest script
+07/07/2016 14:29:53 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:29:53 : Info : RunPSScript(centos7, localhost, setupscripts\ModifyKeyValue.ps1)
+07/07/2016 14:29:53 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:29:53 : Info : centos7 Adding testparmas for test KVP_Modify_Key_Values
+07/07/2016 14:29:53 : Info : Invoke-Expression setupscripts\ModifyKeyValue.ps1 -vmName centos7 -hvServer localhost -testParams "TC_COVERED=KVP-03;Key=EEE;Value=999;Pool=0;rootDir=C:\Users\bogda\Work\lis-test\WS2012R2\lisa;TestLogDir=TestResults\KvpTests-20160707-142749;TestName=KVP_Modify_Key_Values;scriptMode=PreTest;TestLogDir=TestResults\KvpTests-20160707-142749;sshKey=id_rsa.ppk;"
+07/07/2016 14:29:53 : Debug: centos7 - Invoke-Expression returned array with 3 elements
+07/07/2016 14:29:53 : Info :    centos7 - Info : Modifying Key 'EEE'to '999'
+07/07/2016 14:29:53 : Info :    centos7 - Info : KVP item successfully modified
+07/07/2016 14:29:53 : Info :    centos7 - True
+07/07/2016 14:29:53 : Info : centos7 transitioned from RunPreTestScript to StartTest
+07/07/2016 14:29:53 : Info : DoPushTestFiles(ubuntu-server-16.04)
+07/07/2016 14:29:53 : Info : ubuntu-server-16.04 Getting test data for current test KVP_Modify_Key_Values
+07/07/2016 14:29:53 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:29:53 : Info : ubuntu-server-16.04 Adding testparmas for test KVP_Modify_Key_Values
+07/07/2016 14:29:53 : Info : ubuntu-server-16.04 Adding ipv4=192.168.133.208
+07/07/2016 14:29:53 : Info : ubuntu-server-16.04 Pushing constants file constants.sh to VM
+07/07/2016 14:29:54 : Info : ubuntu-server-16.04 converting EOL for file constants.sh
+07/07/2016 14:29:54 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:29:55 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:29:55 : Info : ubuntu-server-16.04 Pushing files and directories to VM
+07/07/2016 14:29:55 : Info : ubuntu-server-16.04 sending 'remote-scripts\ica\KVP_VerifyKeyValue.sh' to VM
+07/07/2016 14:29:56 : Info : ubuntu-server-16.04 sending 'tools/KVP/kvp_client32' to VM
+07/07/2016 14:29:57 : Info : ubuntu-server-16.04 sending 'tools/KVP/kvp_client64' to VM
+07/07/2016 14:29:58 : Info : ubuntu-server-16.04 converting EOL for file KVP_VerifyKeyValue.sh
+07/07/2016 14:29:58 : Waiting 1 second to check the process status for Command = 'dos2unix -q KVP_VerifyKeyValue.sh'.
+07/07/2016 14:29:59 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'dos2unix -q KVP_VerifyKeyValue.sh'
+07/07/2016 14:29:59 : Info : ubuntu-server-16.04 setting x bit on KVP_VerifyKeyValue.sh
+07/07/2016 14:29:59 : Waiting 1 second to check the process status for Command = 'chmod 755 KVP_VerifyKeyValue.sh'.
+07/07/2016 14:30:00 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'chmod 755 KVP_VerifyKeyValue.sh'
+07/07/2016 14:30:00 : Info : ubuntu-server-16.04 transitioned from PushTestFiles to RunPreTestScript
+07/07/2016 14:30:00 : Info : DoStartTest(centos7)
+07/07/2016 14:30:00 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:30:00 : Info : centos7 pushing file runtest.sh
+07/07/2016 14:30:01 : Info : centos7 setting the x bit on runtest.sh
+07/07/2016 14:30:02 : Waiting 1 second to check the process status for Command = 'chmod 755 runtest.sh'.
+07/07/2016 14:30:03 : Success: centos7 successfully sent command to VM. Command = 'chmod 755 runtest.sh'
+07/07/2016 14:30:03 : Info : centos7 correcting the EOL for runtest.sh
+07/07/2016 14:30:03 : Waiting 1 second to check the process status for Command = 'dos2unix -q runtest.sh'.
+07/07/2016 14:30:04 : Success: centos7 successfully sent command to VM. Command = 'dos2unix -q runtest.sh'
+07/07/2016 14:30:04 : Info : centos7 enabling atd daemon
+07/07/2016 14:30:04 : Waiting 1 second to check the process status for Command = '/etc/init.d/atd start'.
+07/07/2016 14:30:05 : Success: centos7 successfully sent command to VM. Command = '/etc/init.d/atd start'
+07/07/2016 14:30:05 : Waiting 1 second to check the process status for Command = 'rm -f state.txt'.
+07/07/2016 14:30:06 : Success: centos7 successfully sent command to VM. Command = 'rm -f state.txt'
+07/07/2016 14:30:06 : Info : centos7 submitting job runtest.sh
+07/07/2016 14:30:06 : Waiting 1 second to check the process status for Command = 'at -f runtest.sh now'.
+07/07/2016 14:30:07 : Success: centos7 successfully sent command to VM. Command = 'at -f runtest.sh now'
+07/07/2016 14:30:07 : Info : centos7 transitioned from StartTest to TestStarting
+07/07/2016 14:30:07 : Info : DoRunPreTestScript( ubuntu-server-16.04 )
+07/07/2016 14:30:07 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:30:07 : Info : ubuntu-server-16.04 - starting preTest script
+07/07/2016 14:30:07 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:30:07 : Info : RunPSScript(ubuntu-server-16.04, localhost, setupscripts\ModifyKeyValue.ps1)
+07/07/2016 14:30:07 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:30:07 : Info : ubuntu-server-16.04 Adding testparmas for test KVP_Modify_Key_Values
+07/07/2016 14:30:07 : Info : Invoke-Expression setupscripts\ModifyKeyValue.ps1 -vmName ubuntu-server-16.04 -hvServer localhost -testParams "TC_COVERED=KVP-03;Key=EEE;Value=999;Pool=0;rootDir=C:\Users\bogda\Work\lis-test\WS2012R2\lisa;TestLogDir=TestResults\KvpTests-20160707-142749;TestName=KVP_Modify_Key_Values;scriptMode=PreTest;TestLogDir=TestResults\KvpTests-20160707-142749;sshKey=ubuntu-16.04-64\id_rsa;"
+07/07/2016 14:30:07 : Debug: ubuntu-server-16.04 - Invoke-Expression returned array with 3 elements
+07/07/2016 14:30:07 : Info :    ubuntu-server-16.04 - Info : Modifying Key 'EEE'to '999'
+07/07/2016 14:30:07 : Info :    ubuntu-server-16.04 - Info : KVP item successfully modified
+07/07/2016 14:30:07 : Info :    ubuntu-server-16.04 - True
+07/07/2016 14:30:07 : Info : ubuntu-server-16.04 transitioned from RunPreTestScript to StartTest
+07/07/2016 14:30:07 : Info : DoTestStarting(centos7)
+07/07/2016 14:30:08 : Info : centos7 transitioned from TestStarting to TestRunning
+07/07/2016 14:30:08 : Info : DoStartTest(ubuntu-server-16.04)
+07/07/2016 14:30:08 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:30:08 : Info : ubuntu-server-16.04 pushing file runtest.sh
+07/07/2016 14:30:09 : Info : ubuntu-server-16.04 setting the x bit on runtest.sh
+07/07/2016 14:30:09 : Waiting 1 second to check the process status for Command = 'chmod 755 runtest.sh'.
+07/07/2016 14:30:10 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'chmod 755 runtest.sh'
+07/07/2016 14:30:10 : Info : ubuntu-server-16.04 correcting the EOL for runtest.sh
+07/07/2016 14:30:10 : Waiting 1 second to check the process status for Command = 'dos2unix -q runtest.sh'.
+07/07/2016 14:30:11 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'dos2unix -q runtest.sh'
+07/07/2016 14:30:11 : Info : ubuntu-server-16.04 enabling atd daemon
+07/07/2016 14:30:11 : Waiting 1 second to check the process status for Command = '/etc/init.d/atd start'.
+07/07/2016 14:30:12 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = '/etc/init.d/atd start'
+07/07/2016 14:30:12 : Waiting 1 second to check the process status for Command = 'rm -f state.txt'.
+07/07/2016 14:30:13 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'rm -f state.txt'
+07/07/2016 14:30:13 : Info : ubuntu-server-16.04 submitting job runtest.sh
+07/07/2016 14:30:13 : Waiting 1 second to check the process status for Command = 'at -f runtest.sh now'.
+07/07/2016 14:30:14 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'at -f runtest.sh now'
+07/07/2016 14:30:14 : Info : ubuntu-server-16.04 transitioned from StartTest to TestStarting
+07/07/2016 14:30:14 : Info : DoTestRunning(centos7)
+07/07/2016 14:30:14 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:30:15 : Info : centos7 transitioned from TestRunning to CollectLogFiles
+07/07/2016 14:30:16 : Info : DoTestStarting(ubuntu-server-16.04)
+07/07/2016 14:30:17 : Info : ubuntu-server-16.04 transitioned from TestStarting to TestRunning
+07/07/2016 14:30:17 : Info : DoCollectLogFiles(centos7)
+07/07/2016 14:30:17 : Info : centos7 collecting logfiles
+07/07/2016 14:30:19 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:30:19 : Waiting 1 second to check the process status for Command = 'rm -f state.txt'.
+07/07/2016 14:30:20 : Success: centos7 successfully sent command to VM. Command = 'rm -f state.txt'
+07/07/2016 14:30:20 : Info : centos7 Status for test KVP_Modify_Key_Values  = Success
+07/07/2016 14:30:20 : Info : centos7 transitioned from CollectLogFiles to DetermineReboot
+07/07/2016 14:30:20 : Info : DoTestRunning(ubuntu-server-16.04)
+07/07/2016 14:30:20 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:30:21 : Info : ubuntu-server-16.04 transitioned from TestRunning to CollectLogFiles
+07/07/2016 14:30:21 : Info : DoDetermineReboot(centos7)
+07/07/2016 14:30:21 : Info :    GetNextText(centos7)
+07/07/2016 14:30:21 : Debug:      vm.currentTest = KVP_Modify_Key_Values
+07/07/2016 14:30:21 : Debug:      vm.suite = KVP
+07/07/2016 14:30:21 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:30:21 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:30:21 : Info :    GetNextText(centos7)
+07/07/2016 14:30:21 : Debug:      vm.currentTest = KVP_Modify_Key_Values
+07/07/2016 14:30:21 : Debug:      vm.suite = KVP
+07/07/2016 14:30:21 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:21 : Info : centos7 currentTest updated to KVP_Remove_Key_Values
+07/07/2016 14:30:21 : Info : centos7 transitioned from DetermineReboot to SystemUp
+07/07/2016 14:30:21 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:21 : Info : DoCollectLogFiles(ubuntu-server-16.04)
+07/07/2016 14:30:21 : Info : ubuntu-server-16.04 collecting logfiles
+07/07/2016 14:30:23 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:30:23 : Waiting 1 second to check the process status for Command = 'rm -f state.txt'.
+07/07/2016 14:30:24 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'rm -f state.txt'
+07/07/2016 14:30:24 : Info : ubuntu-server-16.04 Status for test KVP_Modify_Key_Values  = Success
+07/07/2016 14:30:24 : Info : ubuntu-server-16.04 transitioned from CollectLogFiles to DetermineReboot
+07/07/2016 14:30:24 : Info : DoSystemUp(centos7)
+07/07/2016 14:30:24 : INFO : Call: echo y | bin\plink -i ssh\id_rsa.ppk root@192.168.133.217 exit
+07/07/2016 14:30:25 : INFO : The OS type is Linux
+07/07/2016 14:30:25 : Info : centos7 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:30:25 : Info : DoDetermineReboot(ubuntu-server-16.04)
+07/07/2016 14:30:25 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:30:25 : Debug:      vm.currentTest = KVP_Modify_Key_Values
+07/07/2016 14:30:25 : Debug:      vm.suite = KVP
+07/07/2016 14:30:25 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:30:25 : Info :    GetTestData(KVP_Modify_Key_Values)
+07/07/2016 14:30:25 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:30:25 : Debug:      vm.currentTest = KVP_Modify_Key_Values
+07/07/2016 14:30:25 : Debug:      vm.suite = KVP
+07/07/2016 14:30:25 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:25 : Info : ubuntu-server-16.04 currentTest updated to KVP_Remove_Key_Values
+07/07/2016 14:30:25 : Info : ubuntu-server-16.04 transitioned from DetermineReboot to SystemUp
+07/07/2016 14:30:25 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:25 : Info : DoWaitForDependencyVM(centos7)
+07/07/2016 14:30:25 : Info : centos7 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:30:25 : Info : DoSystemUp(ubuntu-server-16.04)
+07/07/2016 14:30:25 : INFO : Call: echo y | bin\plink -i ssh\ubuntu-16.04-64\id_rsa root@192.168.133.208 exit
+07/07/2016 14:30:26 : INFO : The OS type is Linux
+07/07/2016 14:30:26 : Info : ubuntu-server-16.04 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:30:26 : Info : DoPushTestFiles(centos7)
+07/07/2016 14:30:26 : Info : centos7 Getting test data for current test KVP_Remove_Key_Values
+07/07/2016 14:30:26 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:26 : Info : centos7 Adding testparmas for test KVP_Remove_Key_Values
+07/07/2016 14:30:26 : Info : centos7 Adding ipv4=192.168.133.217
+07/07/2016 14:30:26 : Info : centos7 Pushing constants file constants.sh to VM
+07/07/2016 14:30:27 : Info : centos7 converting EOL for file constants.sh
+07/07/2016 14:30:27 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:30:28 : Success: centos7 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:30:28 : Info : centos7 Pushing files and directories to VM
+07/07/2016 14:30:28 : Info : centos7 transitioned from PushTestFiles to StartTest
+07/07/2016 14:30:29 : Info : DoWaitForDependencyVM(ubuntu-server-16.04)
+07/07/2016 14:30:29 : Info : ubuntu-server-16.04 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:30:29 : Info : DoStartTest(centos7)
+07/07/2016 14:30:29 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:29 : Info : centos7 transitioned from StartTest to StartPS1Test
+07/07/2016 14:30:29 : Info : DoPushTestFiles(ubuntu-server-16.04)
+07/07/2016 14:30:29 : Info : ubuntu-server-16.04 Getting test data for current test KVP_Remove_Key_Values
+07/07/2016 14:30:29 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:29 : Info : ubuntu-server-16.04 Adding testparmas for test KVP_Remove_Key_Values
+07/07/2016 14:30:29 : Info : ubuntu-server-16.04 Adding ipv4=192.168.133.208
+07/07/2016 14:30:29 : Info : ubuntu-server-16.04 Pushing constants file constants.sh to VM
+07/07/2016 14:30:30 : Info : ubuntu-server-16.04 converting EOL for file constants.sh
+07/07/2016 14:30:30 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:30:31 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:30:31 : Info : ubuntu-server-16.04 Pushing files and directories to VM
+07/07/2016 14:30:31 : Info : ubuntu-server-16.04 transitioned from PushTestFiles to StartTest
+07/07/2016 14:30:31 : Info : DoStartPS1Test(centos7)
+07/07/2016 14:30:31 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:31 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:31 : Info : centos7 Adding testparmas for test KVP_Remove_Key_Values
+07/07/2016 14:30:31 : Info : centos7 Run PowerShell test case script setupscripts\KVP_DeleteKeyValue.ps1
+07/07/2016 14:30:31 : Info : vmName: centos7
+07/07/2016 14:30:31 : Info : hvServer: localhost
+07/07/2016 14:30:31 : Info : params: TC_COVERED=KVP-04;Key=EEE;Value=999;Pool=0;rootDir=C:\Users\bogda\Work\lis-test\WS2012R2\lisa;TestLogDir=TestResults\KvpTests-20160707-142749;TestName=KVP_Remove_Key_Values;scriptMode=TestCase;ipv4=192.168.133.217;sshKey=id_rsa.ppk;
+07/07/2016 14:30:31 : Info : centos7 transitioned from StartPS1Test to PS1TestRunning
+07/07/2016 14:30:31 : Info : DoStartTest(ubuntu-server-16.04)
+07/07/2016 14:30:31 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:31 : Info : ubuntu-server-16.04 transitioned from StartTest to StartPS1Test
+07/07/2016 14:30:31 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:30:31 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:31 : Info : DoStartPS1Test(ubuntu-server-16.04)
+07/07/2016 14:30:31 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:31 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:31 : Info : ubuntu-server-16.04 Adding testparmas for test KVP_Remove_Key_Values
+07/07/2016 14:30:31 : Info : ubuntu-server-16.04 Run PowerShell test case script setupscripts\KVP_DeleteKeyValue.ps1
+07/07/2016 14:30:31 : Info : vmName: ubuntu-server-16.04
+07/07/2016 14:30:31 : Info : hvServer: localhost
+07/07/2016 14:30:31 : Info : params: TC_COVERED=KVP-04;Key=EEE;Value=999;Pool=0;rootDir=C:\Users\bogda\Work\lis-test\WS2012R2\lisa;TestLogDir=TestResults\KvpTests-20160707-142749;TestName=KVP_Remove_Key_Values;scriptMode=TestCase;ipv4=192.168.133.208;sshKey=ubuntu-16.04-64\id_rsa;
+07/07/2016 14:30:31 : Info : ubuntu-server-16.04 transitioned from StartPS1Test to PS1TestRunning
+07/07/2016 14:30:31 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:30:31 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:32 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:30:32 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:32 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:30:32 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:32 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:30:32 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:32 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:30:32 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:32 : Info : centos7 transitioned from PS1TestRunning to PS1TestCompleted
+07/07/2016 14:30:32 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:30:32 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:32 : Info : DoPS1TestCompleted(centos7)
+07/07/2016 14:30:32 : Info : centos7 Status for test KVP_Remove_Key_Values = Success
+07/07/2016 14:30:32 : Info : centos7 transitioned from PS1TestCompleted to DetermineReboot
+07/07/2016 14:30:32 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:30:32 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:32 : Info : DoDetermineReboot(centos7)
+07/07/2016 14:30:32 : Info :    GetNextText(centos7)
+07/07/2016 14:30:32 : Debug:      vm.currentTest = KVP_Remove_Key_Values
+07/07/2016 14:30:32 : Debug:      vm.suite = KVP
+07/07/2016 14:30:32 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:32 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:32 : Info :    GetNextText(centos7)
+07/07/2016 14:30:32 : Debug:      vm.currentTest = KVP_Remove_Key_Values
+07/07/2016 14:30:32 : Debug:      vm.suite = KVP
+07/07/2016 14:30:32 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:30:32 : Info : centos7 currentTest updated to KVP_Push_Key_Values
+07/07/2016 14:30:32 : Info : centos7 transitioned from DetermineReboot to SystemUp
+07/07/2016 14:30:32 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:30:32 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:30:32 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:32 : Info : ubuntu-server-16.04 transitioned from PS1TestRunning to PS1TestCompleted
+07/07/2016 14:30:32 : Info : DoSystemUp(centos7)
+07/07/2016 14:30:32 : INFO : Call: echo y | bin\plink -i ssh\id_rsa.ppk root@192.168.133.217 exit
+07/07/2016 14:30:33 : INFO : The OS type is Linux
+07/07/2016 14:30:33 : Info : centos7 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:30:33 : Info : DoPS1TestCompleted(ubuntu-server-16.04)
+07/07/2016 14:30:33 : Info : ubuntu-server-16.04 Status for test KVP_Remove_Key_Values = Success
+07/07/2016 14:30:33 : Info : ubuntu-server-16.04 transitioned from PS1TestCompleted to DetermineReboot
+07/07/2016 14:30:33 : Info : DoWaitForDependencyVM(centos7)
+07/07/2016 14:30:34 : Info : centos7 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:30:34 : Info : DoDetermineReboot(ubuntu-server-16.04)
+07/07/2016 14:30:34 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:30:34 : Debug:      vm.currentTest = KVP_Remove_Key_Values
+07/07/2016 14:30:34 : Debug:      vm.suite = KVP
+07/07/2016 14:30:34 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:34 : Info :    GetTestData(KVP_Remove_Key_Values)
+07/07/2016 14:30:34 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:30:34 : Debug:      vm.currentTest = KVP_Remove_Key_Values
+07/07/2016 14:30:34 : Debug:      vm.suite = KVP
+07/07/2016 14:30:34 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:30:34 : Info : ubuntu-server-16.04 currentTest updated to KVP_Push_Key_Values
+07/07/2016 14:30:34 : Info : ubuntu-server-16.04 transitioned from DetermineReboot to SystemUp
+07/07/2016 14:30:34 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:30:34 : Info : DoPushTestFiles(centos7)
+07/07/2016 14:30:34 : Info : centos7 Getting test data for current test KVP_Push_Key_Values
+07/07/2016 14:30:34 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:30:34 : Info : centos7 Adding testparmas for test KVP_Push_Key_Values
+07/07/2016 14:30:34 : Info : centos7 Adding ipv4=192.168.133.217
+07/07/2016 14:30:34 : Info : centos7 Pushing constants file constants.sh to VM
+07/07/2016 14:30:35 : Info : centos7 converting EOL for file constants.sh
+07/07/2016 14:30:35 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:30:36 : Success: centos7 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:30:36 : Info : centos7 Pushing files and directories to VM
+07/07/2016 14:30:36 : Info : centos7 sending 'tools/KVP/kvp_client32' to VM
+07/07/2016 14:30:37 : Info : centos7 sending 'tools/KVP/kvp_client64' to VM
+07/07/2016 14:30:38 : Info : centos7 transitioned from PushTestFiles to StartTest
+07/07/2016 14:30:38 : Info : DoSystemUp(ubuntu-server-16.04)
+07/07/2016 14:30:38 : INFO : Call: echo y | bin\plink -i ssh\ubuntu-16.04-64\id_rsa root@192.168.133.208 exit
+07/07/2016 14:30:39 : INFO : The OS type is Linux
+07/07/2016 14:37:02 : Info : ubuntu-server-16.04 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:37:02 : Info : DoStartTest(centos7)
+07/07/2016 14:37:02 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:02 : Info : centos7 transitioned from StartTest to StartPS1Test
+07/07/2016 14:37:02 : Info : DoWaitForDependencyVM(ubuntu-server-16.04)
+07/07/2016 14:37:02 : Info : ubuntu-server-16.04 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:37:02 : Info : DoStartPS1Test(centos7)
+07/07/2016 14:37:02 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:02 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:02 : Info : centos7 Adding testparmas for test KVP_Push_Key_Values
+07/07/2016 14:37:02 : Info : centos7 Run PowerShell test case script setupscripts\KVP_VerifyGuestCreatedItem.ps1
+07/07/2016 14:37:02 : Info : vmName: centos7
+07/07/2016 14:37:02 : Info : hvServer: localhost
+07/07/2016 14:37:02 : Info : params: TC_COVERED=KVP-05;Key=BBB;Value=111;sshKey=rhel5_id_rsa.ppk;rootDir=C:\Users\bogda\Work\lis-test\WS2012R2\lisa;TestLogDir=TestResults\KvpTests-20160707-142749;TestName=KVP_Push_Key_Values;scriptMode=TestCase;ipv4=192.168.133.217;sshKey=id_rsa.ppk;
+07/07/2016 14:37:02 : Info : centos7 transitioned from StartPS1Test to PS1TestRunning
+07/07/2016 14:37:02 : Info : DoPushTestFiles(ubuntu-server-16.04)
+07/07/2016 14:37:02 : Info : ubuntu-server-16.04 Getting test data for current test KVP_Push_Key_Values
+07/07/2016 14:37:02 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:02 : Info : ubuntu-server-16.04 Adding testparmas for test KVP_Push_Key_Values
+07/07/2016 14:37:02 : Info : ubuntu-server-16.04 Adding ipv4=192.168.133.208
+07/07/2016 14:37:02 : Info : ubuntu-server-16.04 Pushing constants file constants.sh to VM
+07/07/2016 14:37:03 : Info : ubuntu-server-16.04 converting EOL for file constants.sh
+07/07/2016 14:37:03 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:37:04 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:37:04 : Info : ubuntu-server-16.04 Pushing files and directories to VM
+07/07/2016 14:37:04 : Info : ubuntu-server-16.04 sending 'tools/KVP/kvp_client32' to VM
+07/07/2016 14:37:05 : Info : ubuntu-server-16.04 sending 'tools/KVP/kvp_client64' to VM
+07/07/2016 14:37:06 : Info : ubuntu-server-16.04 transitioned from PushTestFiles to StartTest
+07/07/2016 14:37:06 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:06 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:06 : Info : DoStartTest(ubuntu-server-16.04)
+07/07/2016 14:37:06 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:06 : Info : ubuntu-server-16.04 transitioned from StartTest to StartPS1Test
+07/07/2016 14:37:06 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:06 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:07 : Info : DoStartPS1Test(ubuntu-server-16.04)
+07/07/2016 14:37:07 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:07 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:07 : Info : ubuntu-server-16.04 Adding testparmas for test KVP_Push_Key_Values
+07/07/2016 14:37:07 : Info : ubuntu-server-16.04 Run PowerShell test case script setupscripts\KVP_VerifyGuestCreatedItem.ps1
+07/07/2016 14:37:07 : Info : vmName: ubuntu-server-16.04
+07/07/2016 14:37:07 : Info : hvServer: localhost
+07/07/2016 14:37:07 : Info : params: TC_COVERED=KVP-05;Key=BBB;Value=111;sshKey=rhel5_id_rsa.ppk;rootDir=C:\Users\bogda\Work\lis-test\WS2012R2\lisa;TestLogDir=TestResults\KvpTests-20160707-142749;TestName=KVP_Push_Key_Values;scriptMode=TestCase;ipv4=192.168.133.208;sshKey=ubuntu-16.04-64\id_rsa;
+07/07/2016 14:37:07 : Info : ubuntu-server-16.04 transitioned from StartPS1Test to PS1TestRunning
+07/07/2016 14:37:07 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:07 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:07 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:07 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:07 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:07 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:07 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:07 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:07 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:07 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:07 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:07 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:07 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:07 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:07 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:07 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:07 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:07 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:07 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:07 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:07 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:07 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:08 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:08 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:08 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:08 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:08 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:08 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:08 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:08 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:08 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:08 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:08 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:08 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:08 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:08 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:08 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:08 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:08 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:08 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:08 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:08 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:08 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:08 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:08 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:08 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:08 : Info : centos7 transitioned from PS1TestRunning to PS1TestCompleted
+07/07/2016 14:37:08 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:08 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:08 : Info : DoPS1TestCompleted(centos7)
+07/07/2016 14:37:08 : Info : centos7 Status for test KVP_Push_Key_Values = Success
+07/07/2016 14:37:08 : Info : centos7 transitioned from PS1TestCompleted to DetermineReboot
+07/07/2016 14:37:09 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:09 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:09 : Info : DoDetermineReboot(centos7)
+07/07/2016 14:37:09 : Info :    GetNextText(centos7)
+07/07/2016 14:37:09 : Debug:      vm.currentTest = KVP_Push_Key_Values
+07/07/2016 14:37:09 : Debug:      vm.suite = KVP
+07/07/2016 14:37:09 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:09 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:09 : Info :    GetNextText(centos7)
+07/07/2016 14:37:09 : Debug:      vm.currentTest = KVP_Push_Key_Values
+07/07/2016 14:37:09 : Debug:      vm.suite = KVP
+07/07/2016 14:37:09 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:09 : Info : centos7 currentTest updated to KVP_DeleteNonExistKVPOnGuest
+07/07/2016 14:37:09 : Info : centos7 transitioned from DetermineReboot to SystemUp
+07/07/2016 14:37:09 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:09 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:09 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:09 : Info : DoSystemUp(centos7)
+07/07/2016 14:37:09 : INFO : Call: echo y | bin\plink -i ssh\id_rsa.ppk root@192.168.133.217 exit
+07/07/2016 14:37:10 : INFO : The OS type is Linux
+07/07/2016 14:37:10 : Info : centos7 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:37:10 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:10 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:10 : Info : DoWaitForDependencyVM(centos7)
+07/07/2016 14:37:10 : Info : centos7 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:37:10 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:10 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:10 : Info : DoPushTestFiles(centos7)
+07/07/2016 14:37:10 : Info : centos7 Getting test data for current test KVP_DeleteNonExistKVPOnGuest
+07/07/2016 14:37:10 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:10 : Info : centos7 Adding testparmas for test KVP_DeleteNonExistKVPOnGuest
+07/07/2016 14:37:10 : Info : centos7 Adding ipv4=192.168.133.217
+07/07/2016 14:37:10 : Info : centos7 Pushing constants file constants.sh to VM
+07/07/2016 14:37:11 : Info : centos7 converting EOL for file constants.sh
+07/07/2016 14:37:11 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:37:12 : Success: centos7 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:37:12 : Info : centos7 Pushing files and directories to VM
+07/07/2016 14:37:12 : Info : centos7 transitioned from PushTestFiles to StartTest
+07/07/2016 14:37:12 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:12 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:12 : Info : DoStartTest(centos7)
+07/07/2016 14:37:12 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:12 : Info : centos7 transitioned from StartTest to StartPS1Test
+07/07/2016 14:37:13 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:13 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:13 : Info : DoStartPS1Test(centos7)
+07/07/2016 14:37:13 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:13 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:13 : Info : centos7 Adding testparmas for test KVP_DeleteNonExistKVPOnGuest
+07/07/2016 14:37:13 : Info : centos7 Run PowerShell test case script setupscripts\KVP_DeleteNonExistKeyValue.ps1
+07/07/2016 14:37:13 : Info : vmName: centos7
+07/07/2016 14:37:13 : Info : hvServer: localhost
+07/07/2016 14:37:13 : Info : params: TC_COVERED=KVP-06;Key=AAA;Value=000;Pool=0;rootDir=C:\Users\bogda\Work\lis-test\WS2012R2\lisa;TestLogDir=TestResults\KvpTests-20160707-142749;TestName=KVP_DeleteNonExistKVPOnGuest;scriptMode=TestCase;ipv4=192.168.133.217;sshKey=id_rsa.ppk;
+07/07/2016 14:37:13 : Info : centos7 transitioned from StartPS1Test to PS1TestRunning
+07/07/2016 14:37:13 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:13 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:13 : Info : ubuntu-server-16.04 transitioned from PS1TestRunning to PS1TestCompleted
+07/07/2016 14:37:13 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:13 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:13 : Info : DoPS1TestCompleted(ubuntu-server-16.04)
+07/07/2016 14:37:13 : Info : ubuntu-server-16.04 Status for test KVP_Push_Key_Values = Success
+07/07/2016 14:37:13 : Info : ubuntu-server-16.04 transitioned from PS1TestCompleted to DetermineReboot
+07/07/2016 14:37:13 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:13 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:13 : Info : DoDetermineReboot(ubuntu-server-16.04)
+07/07/2016 14:37:13 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:37:13 : Debug:      vm.currentTest = KVP_Push_Key_Values
+07/07/2016 14:37:13 : Debug:      vm.suite = KVP
+07/07/2016 14:37:13 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:13 : Info :    GetTestData(KVP_Push_Key_Values)
+07/07/2016 14:37:13 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:37:13 : Debug:      vm.currentTest = KVP_Push_Key_Values
+07/07/2016 14:37:13 : Debug:      vm.suite = KVP
+07/07/2016 14:37:13 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:13 : Info : ubuntu-server-16.04 currentTest updated to KVP_DeleteNonExistKVPOnGuest
+07/07/2016 14:37:13 : Info : ubuntu-server-16.04 transitioned from DetermineReboot to SystemUp
+07/07/2016 14:37:13 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:13 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:13 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:13 : Info : DoSystemUp(ubuntu-server-16.04)
+07/07/2016 14:37:13 : INFO : Call: echo y | bin\plink -i ssh\ubuntu-16.04-64\id_rsa root@192.168.133.208 exit
+07/07/2016 14:37:14 : INFO : The OS type is Linux
+07/07/2016 14:37:14 : Info : ubuntu-server-16.04 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:37:14 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:14 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:14 : Info : centos7 transitioned from PS1TestRunning to PS1TestCompleted
+07/07/2016 14:37:14 : Info : DoWaitForDependencyVM(ubuntu-server-16.04)
+07/07/2016 14:37:14 : Info : ubuntu-server-16.04 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:37:15 : Info : DoPS1TestCompleted(centos7)
+07/07/2016 14:37:15 : Info : centos7 Status for test KVP_DeleteNonExistKVPOnGuest = Success
+07/07/2016 14:37:15 : Info : centos7 transitioned from PS1TestCompleted to DetermineReboot
+07/07/2016 14:37:15 : Info : DoPushTestFiles(ubuntu-server-16.04)
+07/07/2016 14:37:15 : Info : ubuntu-server-16.04 Getting test data for current test KVP_DeleteNonExistKVPOnGuest
+07/07/2016 14:37:15 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:15 : Info : ubuntu-server-16.04 Adding testparmas for test KVP_DeleteNonExistKVPOnGuest
+07/07/2016 14:37:15 : Info : ubuntu-server-16.04 Adding ipv4=192.168.133.208
+07/07/2016 14:37:15 : Info : ubuntu-server-16.04 Pushing constants file constants.sh to VM
+07/07/2016 14:37:16 : Info : ubuntu-server-16.04 converting EOL for file constants.sh
+07/07/2016 14:37:16 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:37:17 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:37:17 : Info : ubuntu-server-16.04 Pushing files and directories to VM
+07/07/2016 14:37:17 : Info : ubuntu-server-16.04 transitioned from PushTestFiles to StartTest
+07/07/2016 14:37:17 : Info : DoDetermineReboot(centos7)
+07/07/2016 14:37:17 : Info :    GetNextText(centos7)
+07/07/2016 14:37:17 : Debug:      vm.currentTest = KVP_DeleteNonExistKVPOnGuest
+07/07/2016 14:37:17 : Debug:      vm.suite = KVP
+07/07/2016 14:37:17 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:17 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:17 : Info :    GetNextText(centos7)
+07/07/2016 14:37:17 : Debug:      vm.currentTest = KVP_DeleteNonExistKVPOnGuest
+07/07/2016 14:37:17 : Debug:      vm.suite = KVP
+07/07/2016 14:37:17 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:17 : Info : centos7 currentTest updated to KVP_ModifyNonExistKVPOnGuest
+07/07/2016 14:37:17 : Info : centos7 transitioned from DetermineReboot to SystemUp
+07/07/2016 14:37:17 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:17 : Info : DoStartTest(ubuntu-server-16.04)
+07/07/2016 14:37:17 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:17 : Info : ubuntu-server-16.04 transitioned from StartTest to StartPS1Test
+07/07/2016 14:37:17 : Info : DoSystemUp(centos7)
+07/07/2016 14:37:17 : INFO : Call: echo y | bin\plink -i ssh\id_rsa.ppk root@192.168.133.217 exit
+07/07/2016 14:37:18 : INFO : The OS type is Linux
+07/07/2016 14:37:18 : Info : centos7 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:37:18 : Info : DoStartPS1Test(ubuntu-server-16.04)
+07/07/2016 14:37:18 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:18 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:18 : Info : ubuntu-server-16.04 Adding testparmas for test KVP_DeleteNonExistKVPOnGuest
+07/07/2016 14:37:18 : Info : ubuntu-server-16.04 Run PowerShell test case script setupscripts\KVP_DeleteNonExistKeyValue.ps1
+07/07/2016 14:37:18 : Info : vmName: ubuntu-server-16.04
+07/07/2016 14:37:18 : Info : hvServer: localhost
+07/07/2016 14:37:18 : Info : params: TC_COVERED=KVP-06;Key=AAA;Value=000;Pool=0;rootDir=C:\Users\bogda\Work\lis-test\WS2012R2\lisa;TestLogDir=TestResults\KvpTests-20160707-142749;TestName=KVP_DeleteNonExistKVPOnGuest;scriptMode=TestCase;ipv4=192.168.133.208;sshKey=ubuntu-16.04-64\id_rsa;
+07/07/2016 14:37:18 : Info : ubuntu-server-16.04 transitioned from StartPS1Test to PS1TestRunning
+07/07/2016 14:37:18 : Info : DoWaitForDependencyVM(centos7)
+07/07/2016 14:37:18 : Info : centos7 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:37:19 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:19 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:19 : Info : DoPushTestFiles(centos7)
+07/07/2016 14:37:19 : Info : centos7 Getting test data for current test KVP_ModifyNonExistKVPOnGuest
+07/07/2016 14:37:19 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:19 : Info : centos7 Adding testparmas for test KVP_ModifyNonExistKVPOnGuest
+07/07/2016 14:37:19 : Info : centos7 Adding ipv4=192.168.133.217
+07/07/2016 14:37:19 : Info : centos7 Pushing constants file constants.sh to VM
+07/07/2016 14:37:20 : Info : centos7 converting EOL for file constants.sh
+07/07/2016 14:37:20 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:37:21 : Success: centos7 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:37:21 : Info : centos7 Pushing files and directories to VM
+07/07/2016 14:37:21 : Info : centos7 transitioned from PushTestFiles to StartTest
+07/07/2016 14:37:21 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:21 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:21 : Info : ubuntu-server-16.04 transitioned from PS1TestRunning to PS1TestCompleted
+07/07/2016 14:37:21 : Info : DoStartTest(centos7)
+07/07/2016 14:37:21 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:21 : Info : centos7 transitioned from StartTest to StartPS1Test
+07/07/2016 14:37:21 : Info : DoPS1TestCompleted(ubuntu-server-16.04)
+07/07/2016 14:37:21 : Info : ubuntu-server-16.04 Status for test KVP_DeleteNonExistKVPOnGuest = Success
+07/07/2016 14:37:21 : Info : ubuntu-server-16.04 transitioned from PS1TestCompleted to DetermineReboot
+07/07/2016 14:37:21 : Info : DoStartPS1Test(centos7)
+07/07/2016 14:37:21 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:21 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:21 : Info : centos7 Adding testparmas for test KVP_ModifyNonExistKVPOnGuest
+07/07/2016 14:37:21 : Info : centos7 Run PowerShell test case script setupscripts\KVP_ModifyNonExistKeyValue.ps1
+07/07/2016 14:37:21 : Info : vmName: centos7
+07/07/2016 14:37:21 : Info : hvServer: localhost
+07/07/2016 14:37:21 : Info : params: TC_COVERED=KVP-07;Key=AAA;Value=000;Pool=0;rootDir=C:\Users\bogda\Work\lis-test\WS2012R2\lisa;TestLogDir=TestResults\KvpTests-20160707-142749;TestName=KVP_ModifyNonExistKVPOnGuest;scriptMode=TestCase;ipv4=192.168.133.217;sshKey=id_rsa.ppk;
+07/07/2016 14:37:21 : Info : centos7 transitioned from StartPS1Test to PS1TestRunning
+07/07/2016 14:37:21 : Info : DoDetermineReboot(ubuntu-server-16.04)
+07/07/2016 14:37:21 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:37:21 : Debug:      vm.currentTest = KVP_DeleteNonExistKVPOnGuest
+07/07/2016 14:37:21 : Debug:      vm.suite = KVP
+07/07/2016 14:37:21 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:21 : Info :    GetTestData(KVP_DeleteNonExistKVPOnGuest)
+07/07/2016 14:37:21 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:37:21 : Debug:      vm.currentTest = KVP_DeleteNonExistKVPOnGuest
+07/07/2016 14:37:21 : Debug:      vm.suite = KVP
+07/07/2016 14:37:21 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:21 : Info : ubuntu-server-16.04 currentTest updated to KVP_ModifyNonExistKVPOnGuest
+07/07/2016 14:37:21 : Info : ubuntu-server-16.04 transitioned from DetermineReboot to SystemUp
+07/07/2016 14:37:21 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:21 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:21 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:22 : Info : DoSystemUp(ubuntu-server-16.04)
+07/07/2016 14:37:22 : INFO : Call: echo y | bin\plink -i ssh\ubuntu-16.04-64\id_rsa root@192.168.133.208 exit
+07/07/2016 14:37:23 : INFO : The OS type is Linux
+07/07/2016 14:37:23 : Info : ubuntu-server-16.04 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:37:23 : Info : DoPS1TestRunning(centos7)
+07/07/2016 14:37:23 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:23 : Info : centos7 transitioned from PS1TestRunning to PS1TestCompleted
+07/07/2016 14:37:23 : Info : DoWaitForDependencyVM(ubuntu-server-16.04)
+07/07/2016 14:37:23 : Info : ubuntu-server-16.04 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:37:23 : Info : DoPS1TestCompleted(centos7)
+07/07/2016 14:37:23 : Info : centos7 Status for test KVP_ModifyNonExistKVPOnGuest = Success
+07/07/2016 14:37:23 : Info : centos7 transitioned from PS1TestCompleted to DetermineReboot
+07/07/2016 14:37:23 : Info : DoPushTestFiles(ubuntu-server-16.04)
+07/07/2016 14:37:23 : Info : ubuntu-server-16.04 Getting test data for current test KVP_ModifyNonExistKVPOnGuest
+07/07/2016 14:37:23 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:23 : Info : ubuntu-server-16.04 Adding testparmas for test KVP_ModifyNonExistKVPOnGuest
+07/07/2016 14:37:23 : Info : ubuntu-server-16.04 Adding ipv4=192.168.133.208
+07/07/2016 14:37:23 : Info : ubuntu-server-16.04 Pushing constants file constants.sh to VM
+07/07/2016 14:37:24 : Info : ubuntu-server-16.04 converting EOL for file constants.sh
+07/07/2016 14:37:24 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:37:25 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:37:25 : Info : ubuntu-server-16.04 Pushing files and directories to VM
+07/07/2016 14:37:25 : Info : ubuntu-server-16.04 transitioned from PushTestFiles to StartTest
+07/07/2016 14:37:25 : Info : DoDetermineReboot(centos7)
+07/07/2016 14:37:25 : Info :    GetNextText(centos7)
+07/07/2016 14:37:25 : Debug:      vm.currentTest = KVP_ModifyNonExistKVPOnGuest
+07/07/2016 14:37:25 : Debug:      vm.suite = KVP
+07/07/2016 14:37:25 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:25 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:25 : Info :    GetNextText(centos7)
+07/07/2016 14:37:25 : Debug:      vm.currentTest = KVP_ModifyNonExistKVPOnGuest
+07/07/2016 14:37:25 : Debug:      vm.suite = KVP
+07/07/2016 14:37:25 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:37:25 : Info : centos7 currentTest updated to KVP_VerifyHostInjectedItems
+07/07/2016 14:37:25 : Info : centos7 transitioned from DetermineReboot to SystemUp
+07/07/2016 14:37:25 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:37:25 : Info : DoStartTest(ubuntu-server-16.04)
+07/07/2016 14:37:25 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:25 : Info : ubuntu-server-16.04 transitioned from StartTest to StartPS1Test
+07/07/2016 14:37:25 : Info : DoSystemUp(centos7)
+07/07/2016 14:37:25 : INFO : Call: echo y | bin\plink -i ssh\id_rsa.ppk root@192.168.133.217 exit
+07/07/2016 14:37:26 : INFO : The OS type is Linux
+07/07/2016 14:37:26 : Info : centos7 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:37:26 : Info : DoStartPS1Test(ubuntu-server-16.04)
+07/07/2016 14:37:26 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:26 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:26 : Info : ubuntu-server-16.04 Adding testparmas for test KVP_ModifyNonExistKVPOnGuest
+07/07/2016 14:37:26 : Info : ubuntu-server-16.04 Run PowerShell test case script setupscripts\KVP_ModifyNonExistKeyValue.ps1
+07/07/2016 14:37:26 : Info : vmName: ubuntu-server-16.04
+07/07/2016 14:37:26 : Info : hvServer: localhost
+07/07/2016 14:37:26 : Info : params: TC_COVERED=KVP-07;Key=AAA;Value=000;Pool=0;rootDir=C:\Users\bogda\Work\lis-test\WS2012R2\lisa;TestLogDir=TestResults\KvpTests-20160707-142749;TestName=KVP_ModifyNonExistKVPOnGuest;scriptMode=TestCase;ipv4=192.168.133.208;sshKey=ubuntu-16.04-64\id_rsa;
+07/07/2016 14:37:26 : Info : ubuntu-server-16.04 transitioned from StartPS1Test to PS1TestRunning
+07/07/2016 14:37:26 : Info : DoWaitForDependencyVM(centos7)
+07/07/2016 14:37:26 : Info : centos7 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:37:27 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:27 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:27 : Info : DoPushTestFiles(centos7)
+07/07/2016 14:37:27 : Info : centos7 Getting test data for current test KVP_VerifyHostInjectedItems
+07/07/2016 14:37:27 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:37:27 : Info : centos7 Adding testparmas for test KVP_VerifyHostInjectedItems
+07/07/2016 14:37:27 : Info : centos7 Adding ipv4=192.168.133.217
+07/07/2016 14:37:27 : Info : centos7 Pushing constants file constants.sh to VM
+07/07/2016 14:37:28 : Info : centos7 converting EOL for file constants.sh
+07/07/2016 14:37:28 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:37:29 : Success: centos7 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:37:29 : Info : centos7 Pushing files and directories to VM
+07/07/2016 14:37:29 : Info : centos7 sending 'remote-scripts\ica\KVP_VerifyHostInjectedItems.sh' to VM
+07/07/2016 14:37:30 : Info : centos7 sending 'tools/KVP/kvp_client32' to VM
+07/07/2016 14:37:31 : Info : centos7 sending 'tools/KVP/kvp_client64' to VM
+07/07/2016 14:37:32 : Info : centos7 converting EOL for file KVP_VerifyHostInjectedItems.sh
+07/07/2016 14:37:32 : Waiting 1 second to check the process status for Command = 'dos2unix -q KVP_VerifyHostInjectedItems.sh'.
+07/07/2016 14:37:33 : Success: centos7 successfully sent command to VM. Command = 'dos2unix -q KVP_VerifyHostInjectedItems.sh'
+07/07/2016 14:37:33 : Info : centos7 setting x bit on KVP_VerifyHostInjectedItems.sh
+07/07/2016 14:37:33 : Waiting 1 second to check the process status for Command = 'chmod 755 KVP_VerifyHostInjectedItems.sh'.
+07/07/2016 14:37:34 : Success: centos7 successfully sent command to VM. Command = 'chmod 755 KVP_VerifyHostInjectedItems.sh'
+07/07/2016 14:37:34 : Info : centos7 transitioned from PushTestFiles to StartTest
+07/07/2016 14:37:34 : Info : DoPS1TestRunning(ubuntu-server-16.04)
+07/07/2016 14:37:34 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:34 : Info : ubuntu-server-16.04 transitioned from PS1TestRunning to PS1TestCompleted
+07/07/2016 14:37:34 : Info : DoStartTest(centos7)
+07/07/2016 14:37:34 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:37:34 : Info : centos7 pushing file runtest.sh
+07/07/2016 14:37:35 : Info : centos7 setting the x bit on runtest.sh
+07/07/2016 14:37:35 : Waiting 1 second to check the process status for Command = 'chmod 755 runtest.sh'.
+07/07/2016 14:37:36 : Success: centos7 successfully sent command to VM. Command = 'chmod 755 runtest.sh'
+07/07/2016 14:37:36 : Info : centos7 correcting the EOL for runtest.sh
+07/07/2016 14:37:36 : Waiting 1 second to check the process status for Command = 'dos2unix -q runtest.sh'.
+07/07/2016 14:37:37 : Success: centos7 successfully sent command to VM. Command = 'dos2unix -q runtest.sh'
+07/07/2016 14:37:37 : Info : centos7 enabling atd daemon
+07/07/2016 14:37:37 : Waiting 1 second to check the process status for Command = '/etc/init.d/atd start'.
+07/07/2016 14:37:38 : Success: centos7 successfully sent command to VM. Command = '/etc/init.d/atd start'
+07/07/2016 14:37:38 : Waiting 1 second to check the process status for Command = 'rm -f state.txt'.
+07/07/2016 14:37:39 : Success: centos7 successfully sent command to VM. Command = 'rm -f state.txt'
+07/07/2016 14:37:39 : Info : centos7 submitting job runtest.sh
+07/07/2016 14:37:39 : Waiting 1 second to check the process status for Command = 'at -f runtest.sh now'.
+07/07/2016 14:37:40 : Success: centos7 successfully sent command to VM. Command = 'at -f runtest.sh now'
+07/07/2016 14:37:40 : Info : centos7 transitioned from StartTest to TestStarting
+07/07/2016 14:37:40 : Info : DoPS1TestCompleted(ubuntu-server-16.04)
+07/07/2016 14:37:40 : Info : ubuntu-server-16.04 Status for test KVP_ModifyNonExistKVPOnGuest = Success
+07/07/2016 14:37:40 : Info : ubuntu-server-16.04 transitioned from PS1TestCompleted to DetermineReboot
+07/07/2016 14:37:40 : Info : DoTestStarting(centos7)
+07/07/2016 14:37:41 : Info : centos7 transitioned from TestStarting to TestRunning
+07/07/2016 14:37:41 : Info : DoDetermineReboot(ubuntu-server-16.04)
+07/07/2016 14:37:41 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:37:41 : Debug:      vm.currentTest = KVP_ModifyNonExistKVPOnGuest
+07/07/2016 14:37:41 : Debug:      vm.suite = KVP
+07/07/2016 14:37:41 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:42 : Info :    GetTestData(KVP_ModifyNonExistKVPOnGuest)
+07/07/2016 14:37:42 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:37:42 : Debug:      vm.currentTest = KVP_ModifyNonExistKVPOnGuest
+07/07/2016 14:37:42 : Debug:      vm.suite = KVP
+07/07/2016 14:37:42 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:37:42 : Info : ubuntu-server-16.04 currentTest updated to KVP_VerifyHostInjectedItems
+07/07/2016 14:37:42 : Info : ubuntu-server-16.04 transitioned from DetermineReboot to SystemUp
+07/07/2016 14:37:42 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:37:42 : Info : DoTestRunning(centos7)
+07/07/2016 14:37:42 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:37:43 : Info : centos7 transitioned from TestRunning to CollectLogFiles
+07/07/2016 14:37:43 : Info : DoSystemUp(ubuntu-server-16.04)
+07/07/2016 14:37:43 : INFO : Call: echo y | bin\plink -i ssh\ubuntu-16.04-64\id_rsa root@192.168.133.208 exit
+07/07/2016 14:37:44 : INFO : The OS type is Linux
+07/07/2016 14:37:44 : Info : ubuntu-server-16.04 transitioned from SystemUp to WaitForDependencyVM
+07/07/2016 14:37:44 : Info : DoCollectLogFiles(centos7)
+07/07/2016 14:37:44 : Info : centos7 collecting logfiles
+07/07/2016 14:37:46 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:37:46 : Waiting 1 second to check the process status for Command = 'rm -f state.txt'.
+07/07/2016 14:37:47 : Success: centos7 successfully sent command to VM. Command = 'rm -f state.txt'
+07/07/2016 14:37:47 : Info : centos7 Status for test KVP_VerifyHostInjectedItems  = Success
+07/07/2016 14:37:47 : Info : centos7 transitioned from CollectLogFiles to DetermineReboot
+07/07/2016 14:37:47 : Info : DoWaitForDependencyVM(ubuntu-server-16.04)
+07/07/2016 14:37:47 : Info : ubuntu-server-16.04 transitioned from WaitForDependencyVM to PushTestFiles
+07/07/2016 14:37:47 : Info : DoDetermineReboot(centos7)
+07/07/2016 14:37:47 : Info :    GetNextText(centos7)
+07/07/2016 14:37:47 : Debug:      vm.currentTest = KVP_VerifyHostInjectedItems
+07/07/2016 14:37:47 : Debug:      vm.suite = KVP
+07/07/2016 14:37:47 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:37:47 : Info : centos7 transitioned from DetermineReboot to ShutdownSystem
+07/07/2016 14:37:47 : Info : DoPushTestFiles(ubuntu-server-16.04)
+07/07/2016 14:37:47 : Info : ubuntu-server-16.04 Getting test data for current test KVP_VerifyHostInjectedItems
+07/07/2016 14:37:47 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:37:47 : Info : ubuntu-server-16.04 Adding testparmas for test KVP_VerifyHostInjectedItems
+07/07/2016 14:37:47 : Info : ubuntu-server-16.04 Adding ipv4=192.168.133.208
+07/07/2016 14:37:47 : Info : ubuntu-server-16.04 Pushing constants file constants.sh to VM
+07/07/2016 14:37:48 : Info : ubuntu-server-16.04 converting EOL for file constants.sh
+07/07/2016 14:37:48 : Waiting 1 second to check the process status for Command = 'dos2unix -q constants.sh'.
+07/07/2016 14:37:49 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'dos2unix -q constants.sh'
+07/07/2016 14:37:49 : Info : ubuntu-server-16.04 Pushing files and directories to VM
+07/07/2016 14:37:49 : Info : ubuntu-server-16.04 sending 'remote-scripts\ica\KVP_VerifyHostInjectedItems.sh' to VM
+07/07/2016 14:37:50 : Info : ubuntu-server-16.04 sending 'tools/KVP/kvp_client32' to VM
+07/07/2016 14:37:51 : Info : ubuntu-server-16.04 sending 'tools/KVP/kvp_client64' to VM
+07/07/2016 14:37:52 : Info : ubuntu-server-16.04 converting EOL for file KVP_VerifyHostInjectedItems.sh
+07/07/2016 14:37:52 : Waiting 1 second to check the process status for Command = 'dos2unix -q KVP_VerifyHostInjectedItems.sh'.
+07/07/2016 14:37:54 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'dos2unix -q KVP_VerifyHostInjectedItems.sh'
+07/07/2016 14:37:54 : Info : ubuntu-server-16.04 setting x bit on KVP_VerifyHostInjectedItems.sh
+07/07/2016 14:37:54 : Waiting 1 second to check the process status for Command = 'chmod 755 KVP_VerifyHostInjectedItems.sh'.
+07/07/2016 14:37:55 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'chmod 755 KVP_VerifyHostInjectedItems.sh'
+07/07/2016 14:37:55 : Info : ubuntu-server-16.04 transitioned from PushTestFiles to StartTest
+07/07/2016 14:37:55 : Info : DoShutdownSystem(centos7)
+07/07/2016 14:37:55 : Waiting 1 second to check the process status for Command = 'init 0'.
+07/07/2016 14:37:56 : Success: centos7 successfully sent command to VM. Command = 'init 0'
+07/07/2016 14:37:56 : Info : centos7 transitioned from ShutdownSystem to ShuttingDown
+07/07/2016 14:37:56 : Info : DoStartTest(ubuntu-server-16.04)
+07/07/2016 14:37:56 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:37:56 : Info : ubuntu-server-16.04 pushing file runtest.sh
+07/07/2016 14:37:57 : Info : ubuntu-server-16.04 setting the x bit on runtest.sh
+07/07/2016 14:37:57 : Waiting 1 second to check the process status for Command = 'chmod 755 runtest.sh'.
+07/07/2016 14:37:58 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'chmod 755 runtest.sh'
+07/07/2016 14:37:58 : Info : ubuntu-server-16.04 correcting the EOL for runtest.sh
+07/07/2016 14:37:58 : Waiting 1 second to check the process status for Command = 'dos2unix -q runtest.sh'.
+07/07/2016 14:37:59 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'dos2unix -q runtest.sh'
+07/07/2016 14:37:59 : Info : ubuntu-server-16.04 enabling atd daemon
+07/07/2016 14:37:59 : Waiting 1 second to check the process status for Command = '/etc/init.d/atd start'.
+07/07/2016 14:38:00 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = '/etc/init.d/atd start'
+07/07/2016 14:38:00 : Waiting 1 second to check the process status for Command = 'rm -f state.txt'.
+07/07/2016 14:38:01 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'rm -f state.txt'
+07/07/2016 14:38:01 : Info : ubuntu-server-16.04 submitting job runtest.sh
+07/07/2016 14:38:01 : Waiting 1 second to check the process status for Command = 'at -f runtest.sh now'.
+07/07/2016 14:38:02 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'at -f runtest.sh now'
+07/07/2016 14:38:02 : Info : ubuntu-server-16.04 transitioned from StartTest to TestStarting
+07/07/2016 14:38:02 : Info : DoShuttingDown(centos7)
+07/07/2016 14:38:02 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:38:02 : Info : centos7 transitioned from ShuttingDown to SystemDown
+07/07/2016 14:38:02 : Info : DoTestStarting(ubuntu-server-16.04)
+07/07/2016 14:38:03 : Info : ubuntu-server-16.04 transitioned from TestStarting to TestRunning
+07/07/2016 14:38:03 : Info : Entering DoSystemDown( centos7 )
+07/07/2016 14:38:03 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:38:03 : Info :    GetNextText(centos7)
+07/07/2016 14:38:03 : Debug:      vm.currentTest = KVP_VerifyHostInjectedItems
+07/07/2016 14:38:03 : Debug:      vm.suite = KVP
+07/07/2016 14:38:03 : Info :    GetTestData(done)
+07/07/2016 14:38:03 : Info : centos7 currentTest updated to done
+07/07/2016 14:38:03 : Info : centos7 transitioned from SystemDown to Finished
+07/07/2016 14:38:03 : Info : DoTestRunning(ubuntu-server-16.04)
+07/07/2016 14:38:03 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:38:04 : Error: ubuntu-server-16.04 ubuntu-server-16.04 Test KVP_VerifyHostInjectedItems failed. See logfile for details
+07/07/2016 14:38:04 : Info : ubuntu-server-16.04 transitioned to state CollectLogFiles
+07/07/2016 14:38:05 : Info : DoCollectLogFiles(ubuntu-server-16.04)
+07/07/2016 14:38:05 : Info : ubuntu-server-16.04 collecting logfiles
+07/07/2016 14:38:07 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:38:07 : Waiting 1 second to check the process status for Command = 'rm -f state.txt'.
+07/07/2016 14:38:08 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'rm -f state.txt'
+07/07/2016 14:38:08 : Info : ubuntu-server-16.04 Status for test KVP_VerifyHostInjectedItems  = Failed
+07/07/2016 14:38:08 : Info : ubuntu-server-16.04 transitioned from CollectLogFiles to DetermineReboot
+07/07/2016 14:38:08 : Info : DoDetermineReboot(ubuntu-server-16.04)
+07/07/2016 14:38:08 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:38:08 : Debug:      vm.currentTest = KVP_VerifyHostInjectedItems
+07/07/2016 14:38:08 : Debug:      vm.suite = KVP
+07/07/2016 14:38:08 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:38:08 : Info : ubuntu-server-16.04 transitioned from DetermineReboot to ShutdownSystem
+07/07/2016 14:38:08 : Info : DoShutdownSystem(ubuntu-server-16.04)
+07/07/2016 14:38:08 : Waiting 1 second to check the process status for Command = 'init 0'.
+07/07/2016 14:38:09 : Success: ubuntu-server-16.04 successfully sent command to VM. Command = 'init 0'
+07/07/2016 14:38:09 : Info : ubuntu-server-16.04 transitioned from ShutdownSystem to ShuttingDown
+07/07/2016 14:38:09 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:09 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:09 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:09 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:10 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:10 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:10 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:10 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:10 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:10 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:10 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:10 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:11 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:11 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:11 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:11 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:11 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:11 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:11 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:11 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:12 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:12 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:12 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:12 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:12 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:12 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:12 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:12 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:13 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:13 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:13 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:13 : Info : DoShuttingDown(ubuntu-server-16.04)
+07/07/2016 14:38:13 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:38:13 : Info : ubuntu-server-16.04 transitioned from ShuttingDown to SystemDown
+07/07/2016 14:38:13 : Info : Entering DoSystemDown( ubuntu-server-16.04 )
+07/07/2016 14:38:13 : Info :    GetTestData(KVP_VerifyHostInjectedItems)
+07/07/2016 14:38:13 : Info :    GetNextText(ubuntu-server-16.04)
+07/07/2016 14:38:13 : Debug:      vm.currentTest = KVP_VerifyHostInjectedItems
+07/07/2016 14:38:13 : Debug:      vm.suite = KVP
+07/07/2016 14:38:13 : Info :    GetTestData(done)
+07/07/2016 14:38:13 : Info : ubuntu-server-16.04 currentTest updated to done
+07/07/2016 14:38:13 : Info : ubuntu-server-16.04 transitioned from SystemDown to Finished
+07/07/2016 14:38:13 : Info : DoStateMachine() exiting
+07/07/2016 14:38:13 :
+Test Results Summary
+LISA test run on 07/07/2016 14:27:49
+XML file: .\xml\KvpTests.xml
+
+VM: ubuntu-server-16.04
+    Server :  localhost
+    OS :  Microsoft Windows 10 Pro build 10586
+
+    Test SQM_Basic                 : Success
+          Covers : SQM-01
+    Test KVP_Basic                 : Success
+          Covers : KVP-01
+    Test KVP_Add_Key_Values        : Success
+          Covers KVP-02
+    Test KVP_Modify_Key_Values     : Success
+          Covers KVP-03
+    Test KVP_Remove_Key_Values     : Success
+          Covers KVP-04
+    Test KVP_Push_Key_Values       : Success
+          Covers : KVP-05
+    Test KVP_DeleteNonExistKVPOnGuest : Success
+          Covers KVP-06
+    Test KVP_ModifyNonExistKVPOnGuest : Success
+          Covers KVP-07
+    Test KVP_VerifyHostInjectedItems : Failed
+          Covers KVP-10
+          Error: the kvp_pool_3 file size is zero
+
+VM: centos7
+    Server :  localhost
+    OS :  Microsoft Windows 10 Pro build 10586
+
+    Test SQM_Basic                 : Success
+          Covers : SQM-01
+    Test KVP_Basic                 : Success
+          Covers : KVP-01
+    Test KVP_Add_Key_Values        : Success
+          Covers KVP-02
+    Test KVP_Modify_Key_Values     : Success
+          Covers KVP-03
+    Test KVP_Remove_Key_Values     : Success
+          Covers KVP-04
+    Test KVP_Push_Key_Values       : Success
+          Covers : KVP-05
+    Test KVP_DeleteNonExistKVPOnGuest : Success
+          Covers KVP-06
+    Test KVP_ModifyNonExistKVPOnGuest : Success
+          Covers KVP-07
+    Test KVP_VerifyHostInjectedItems : Success
+          Covers KVP-10
+
+Logs can be found at \\DESKTOP-S0G4358\LisaTestResults\KvpTests-20160707-142749
+
+
+
