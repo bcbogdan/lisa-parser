@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="515532006">
+    <data-source source="LOCAL" name="SQL Server (Microsoft) - jdbc:sqlserver://localhost\SQLEXPRESS01:1433;databaseName=master'Trusted_Connection=True;" uuid="a9febf9a-0859-4069-87a7-bc552dc3917b">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost\SQLEXPRESS01:1433;databaseName=master'Trusted_Connection=True;</jdbc-url>
+    </data-source>
+  </component>
+</project>
