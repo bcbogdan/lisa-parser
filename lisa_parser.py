@@ -59,11 +59,12 @@ class ParseXML(object):
     def get_vms(self):
         vm_list = list()
         for machine in self.root.iter('vm'):
-            vm_list.append((
+            vm_list.append([
                 machine.find('vmName').text,
                 machine.find('hvServer').text,
-                machine.find('sshKey').text
-            ))
+                machine.find('sshKey').text,
+                machine.find('os').text
+            ])
 
         return vm_list
 
@@ -107,5 +108,7 @@ def parse_log_file(log_file, test_results):
                     error_details = ""
 
                 test_results[test[1]]['results'][vm_name] = (test[3], error_details)
+            elif re.search('^OS', line):
+                test_results['hostVersion'] = line
 
     return test_results
