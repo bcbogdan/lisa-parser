@@ -4,8 +4,10 @@ try:
 except ImportError:
     import xml.etree.ElementTree as ElementTree
 import re
+import vm_utils
 
 
+# TODO: Add posibility to selected fields that should be parsed
 class ParseXML(object):
     # TODO: Add try catch handles for search inside XML
     def __init__(self, file_path):
@@ -57,16 +59,15 @@ class ParseXML(object):
         return test_dict
 
     def get_vms(self):
-        vm_list = list()
+        vm_dict = dict()
         for machine in self.root.iter('vm'):
-            vm_list.append([
-                machine.find('vmName').text,
-                machine.find('hvServer').text,
-                machine.find('sshKey').text,
-                machine.find('os').text
-            ])
+            vm_dict[machine.find('vmName').text] = {
+                'hvServer': machine.find('hvServer').text,
+                'sshKey': machine.find('sshKey').text,
+                'os': machine.find('os').text
+            }
 
-        return vm_list
+        return vm_dict
 
     def __call__(self):
         parsed_xml = dict()
@@ -93,6 +94,7 @@ def parse_log_file(log_file, test_results):
         # Get timestamp
         test_results['timestamp'] = re.search('([0-9/]+) ([0-9:]+)', log_file.next()).group(0)
         vm_name = ""
+        host_version = dict()
         for line in log_file:
             line = line.strip()
             if "VM:" in line:
@@ -107,8 +109,8 @@ def parse_log_file(log_file, test_results):
                 else:
                     error_details = ""
 
-                test_results[test[1]]['results'][vm_name] = (test[3], error_details)
+                test_results['tests'][test[1]]['results'][vm_name] = (test[3], error_details)
             elif re.search('^OS', line):
-                test_results['hostVersion'] = line
+                test_results['vms'][vm_name]['hostOSVersion'] = line.split(':')[1].strip()
 
     return test_results
