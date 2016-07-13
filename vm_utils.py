@@ -4,55 +4,44 @@ from envparse import env
 import subprocess
 
 
-# TODO - Refactor vm methods into a single unified function
-def check_vm_status(vm_name, hv_server):
-    ps_command = subprocess.Popen([
-        env.str('PSPath'), 'get-vm', '-Name', vm_name, '-ComputerName', hv_server, '|', 'Select', 'State'
-    ], stdout=subprocess.PIPE)
+def manage_vm(action, vm_name, hv_server):
+    command = ''
+    if action == 'start':
+        command = 'start-vm'
+    elif action == 'stop':
+        command = 'stop-vm'
+    elif action == 'check':
+        ps_command = subprocess.Popen([
+            env.str('PSPath'), 'get-vm', '-Name', vm_name, '-ComputerName', hv_server, '|', 'Select', 'State'
+        ], stdout=subprocess.PIPE)
 
-    if ps_command.stdout.read().strip().split('\n')[2].strip() == 'Off':
-        return False
+        if ps_command.stdout.read().strip().split('\n')[2].strip() == 'Off':
+            return False
+        else:
+            return True
     else:
-        return True
+        return False
 
-
-def start_vm(vm_name, hv_server):
     ps_command = subprocess.Popen([
-        env.str('PSPath'), 'start-vm', '-Name', vm_name, '-ComputerName ', hv_server
+        env.str('PSPath'), command, '-Name', vm_name, '-ComputerName ', hv_server
     ], stdout=subprocess.PIPE)
 
-    return True
+    # TODO - check command output for errors
 
 
-def run_kvp_command(script_path, vm_name, hv_server):
-    kvp_command = subprocess.Popen([
-        env.str('PSPath'), script_path, '-vmName ', vm_name, '-hvServer', hv_server,
-        '-TestParams', '"TC_COVERED=KVP-01"'
-    ], stdout=subprocess.PIPE)
-
-    return kvp_command.stdout.read()
-
-
-def get_kvp_value(kvp_output, value):
-    kvp_output = kvp_output.split('\n')
-    pattern = ''.join(['^', value])
-    for line in kvp_output:
-        if re.search(pattern, line.strip()):
-            return line.split(':')[1].strip()
-
-
-def stop_vm(vm_name, hv_server):
+def get_vm_details(vm_name, hv_server):
+    query_strings = [
+        '"' + "Select * From Msvm_ComputerSystem where ElementName='" + vm_name + "'" + '";',
+        '"' + "Associators of {$vm} Where AssocClass=Msvm_SystemDevice ResultClass=Msvm_KvpExchangeComponent" + '"'
+    ]
     ps_command = subprocess.Popen([
-        env.str('PSPath'), 'stop-vm', '-Name', vm_name, '-ComputerName', hv_server
-    ], stdout=subprocess.PIPE)
+        env.str('PSPath'), '$vm', '=', 'Get-WmiObject', '-ComputerName', "'" + hv_server + "'",
+        '-Namespace', "root\\virtualization\\v2", '-Query', query_strings[0], '(', 'Get-WmiObject',
+        '-ComputerName', "'" + hv_server + "'", '-Namespace', 'root\\virtualization\\v2', '-Query',
+        query_strings[1], ').GuestIntrinsicExchangeItems'
+    ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-
-def get_vm_values(kvp_script, vm_name, hv_server, values_list):
-
-    kvp_output = run_kvp_command(kvp_script, vm_name, hv_server)
-    result = dict()
-    for value in values_list:
-        result[value] = get_kvp_value(kvp_output, value)
-
-    stop_vm(vm_name, hv_server)
-    return result
+    if ps_command.stdout:
+        return ps_command.stdout.read()
+    else:
+        return  ps_command.stderr.read()
