@@ -24,12 +24,13 @@ limitations under the License.
 """
 
 
+# TODO - Check for Test location
 def create_tests_list(tests_dict):
     tests_list = list()
     for test_name, test_props in tests_dict['tests'].iteritems():
         for name, details in tests_dict['vms'].iteritems():
             test_dict = dict()
-            test_dict['TestLocation'] = 'dontknow'
+            test_dict['TestLocation'] = details['TestLocation']
             test_dict['HostName'] = details['hvServer']
             test_dict['HostVersion'] = details['hostOSVersion']
             test_dict['GuestOSType'] = details['os']
@@ -55,40 +56,52 @@ def format_date(test_date):
 if __name__ == '__main__':
     env.read_envfile('config/.env')
 
-    # Parsing given xml and log files
+    # Parse arguments and check if they exist
     input_files = parse_arguments.parse_arguments(sys.argv[1:])
+
+    if not all(input_files):
+        print('Invalid command line arguments')
+        sys.exit(2)
+
+    # Parsing given xml and log files
     xml_parser = ParseXML(input_files[0])
     tests_object = xml_parser()
     parse_log_file(input_files[1], tests_object)
 
     # Getting more VM details from KVP exchange
     is_booting = False
-    for vm_name in tests_object['vms'].keys():
-        if not vm_utils.manage_vm('check', vm_name, tests_object['vms'][vm_name]['hvServer']):
+    for vm_name, vm_details in tests_object['vms'].iteritems():
+        if not vm_utils.manage_vm('check', vm_name, vm_details['hvServer']):
             print('Starting %s' % vm_name)
-            vm_utils.manage_vm('start', vm_name, tests_object['vms'][vm_name]['hvServer'])
-            is_booting = True
+            if vm_utils.manage_vm('start', vm_name, vm_details['hvServer']):
+                is_booting = True
+            else:
+                print("Unable to start vm. Exiting")
+                sys.exit(2)
 
     if is_booting:
         wait = 40
         print('Waiting %d seconds for VMs to boot' % wait)
         time.sleep(wait)
 
-    for vm_name in tests_object['vms'].keys():
-        vm_values = vm_utils.get_vm_details(vm_name,
-                                            tests_object['vms'][vm_name]['hvServer']).split('\r\n')
-        vm_details = {}
+    for vm_name, vm_details in tests_object['vms'].iteritems():
+        vm_values = vm_utils.get_vm_details(vm_name, vm_details['hvServer'])
+        if not vm_values:
+            print('Unable to get vm details for %s' % vm_name)
+            sys.exit(2)
+
+        vm_info = {}
 
         # Stop VM
-        vm_utils.manage_vm('stop', vm_name, tests_object['vms'][vm_name]['hvServer'])
-        for value in vm_values[:-1]:
+        vm_utils.manage_vm('stop', vm_name, vm_details['hvServer'])
+        for value in vm_values.split('\r\n')[:-1]:
             result_tuple = ParseXML.parse_from_string(value)
-            vm_details.update({
+            vm_info.update({
                 result_tuple[0]: result_tuple[1]
             })
 
-        tests_object['vms'][vm_name]['OSBuildNumber'] = vm_details['OSBuildNumber']
-        tests_object['vms'][vm_name]['OSName'] = vm_details['OSName']
+        vm_details['OSBuildNumber'] = vm_info['OSBuildNumber']
+        vm_details['OSName'] = vm_info['OSName']
 
     # Parse values to be inserted
     insert_values = create_tests_list(tests_object)
@@ -103,4 +116,5 @@ if __name__ == '__main__':
     rows = db_cursor.fetchall()
     for row in rows:
         print(row)
+
     #db_connection.commit()

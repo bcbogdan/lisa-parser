@@ -8,7 +8,6 @@ import re
 
 # TODO: Add posibility to selected fields that should be parsed
 class ParseXML(object):
-    # TODO: Add try catch handles for search inside XML
     def __init__(self, file_path):
         self.tree = ElementTree.ElementTree(file=file_path)
         self.root = self.tree.getroot()
@@ -45,13 +44,16 @@ class ParseXML(object):
             if test_property.tag == 'testName':
                 continue
             elif not test_property.getchildren():
-                test_dict[test_property.tag] = test_property.text.strip().split()
+                test_dict[test_property.tag] = \
+                    test_property.text.strip().split()
             else:
                 test_dict[test_property.tag] = list()
                 for item in test_property.getchildren():
                     if test_property.tag == 'testparams':
                         parameter = item.text.split('=')
-                        test_dict[test_property.tag].append((parameter[0], parameter[1]))
+                        test_dict[test_property.tag].append(
+                            (parameter[0], parameter[1])
+                        )
                     else:
                         test_dict[test_property.tag].append(item.text)
 
@@ -70,7 +72,8 @@ class ParseXML(object):
 
     def __call__(self):
         parsed_xml = dict()
-        parsed_xml['testSuite'] = self.root.find('testSuites').getchildren()[0].find('suiteName').text
+        parsed_xml['testSuite'] = self.root.find('testSuites').getchildren()[0]\
+            .find('suiteName').text
         parsed_xml['tests'] = self.get_tests()
         parsed_xml['vms'] = self.get_vms()
 
@@ -104,17 +107,26 @@ def parse_log_file(log_file, test_results):
     # Go through log file until the final results part
     with open(log_file, 'r') as log_file:
         for line in log_file:
-            if 'Test Results Summary' == line.strip():
+            if line.strip() == 'Test Results Summary':
                 break
 
         # Get timestamp
-        test_results['timestamp'] = re.search('([0-9/]+) ([0-9:]+)', log_file.next()).group(0)
+        test_results['timestamp'] = re.search(
+            '([0-9/]+) ([0-9:]+)',
+            log_file.next()).group(0)
         vm_name = ""
 
         for line in log_file:
             line = line.strip()
-            if "VM:" in line:
+            if re.search("^VM", line):
                 vm_name = line.split()[1]
+                # Check if there are any details about the VM
+                try:
+                    test_results['vms'][vm_name]['TestLocation'] = 'Hyper-V'
+                except KeyError:
+                    test_results['vms'][vm_name] = dict()
+                    test_results['vms'][vm_name]['TestLocation'] = 'Azure'
+
             elif re.search('^Test', line):
                 test = line.split()
 
@@ -125,8 +137,14 @@ def parse_log_file(log_file, test_results):
                 else:
                     error_details = ""
 
-                test_results['tests'][test[1]]['results'][vm_name] = (test[3], error_details)
+                test_results['tests'][test[1]]['results'][vm_name] = \
+                    (test[3], error_details)
             elif re.search('^OS', line):
-                test_results['vms'][vm_name]['hostOSVersion'] = line.split(':')[1].strip()
-
+                test_results['vms'][vm_name]['hostOSVersion'] = \
+                    line.split(':')[1].strip()
+            elif re.search('^Server', line):
+                test_results['vms'][vm_name]['hvServer'] = \
+                    line.split(':')[1].strip()
+                
     return test_results
+

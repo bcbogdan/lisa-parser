@@ -1,7 +1,6 @@
-from lisa_parser import ParseXML
-import pyodbc
-from envparse import env
 from string import Template
+from envparse import env
+import pyodbc
 
 
 def init_connection():
@@ -35,8 +34,8 @@ def get_connection_string():
 
 
 def insert_values(cursor, table_name, values_dict):
-    insert_command = Template('insert into $tableName($columns) values($values)')
-
+    insert_command = Template('insert into $tableName($columns)'
+                              ' values($values)')
 
     cursor.execute(insert_command.substitute(
         tableName=table_name,
