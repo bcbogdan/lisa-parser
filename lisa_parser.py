@@ -4,7 +4,6 @@ try:
 except ImportError:
     import xml.etree.ElementTree as ElementTree
 import re
-import vm_utils
 
 
 # TODO: Add posibility to selected fields that should be parsed
@@ -77,6 +76,23 @@ class ParseXML(object):
 
         return parsed_xml
 
+    @staticmethod
+    def parse_from_string(xml_string):
+        try:
+            root = ElementTree.fromstring(xml_string.strip())
+            prop_name = ''
+            prop_value = ''
+            for child in root:
+                if child.attrib['NAME'] == 'Name':
+                    prop_name = child[0].text
+                elif child.attrib['NAME'] == 'Data':
+                    prop_value = child[0].text
+
+            return prop_name, prop_value
+        except Exception as ex:
+            print(xml_string)
+            print(ex.__class__.__name__)
+
 
 def parse_log_file(log_file, test_results):
     """
@@ -94,7 +110,7 @@ def parse_log_file(log_file, test_results):
         # Get timestamp
         test_results['timestamp'] = re.search('([0-9/]+) ([0-9:]+)', log_file.next()).group(0)
         vm_name = ""
-        host_version = dict()
+
         for line in log_file:
             line = line.strip()
             if "VM:" in line:
