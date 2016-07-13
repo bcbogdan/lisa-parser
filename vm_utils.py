@@ -16,17 +16,15 @@ def check_vm_status(vm_name, hv_server):
         return True
 
 
-def start_vm(vm_name, hv_server, wait=20):
+def start_vm(vm_name, hv_server):
     ps_command = subprocess.Popen([
         env.str('PSPath'), 'start-vm', '-Name', vm_name, '-ComputerName ', hv_server
     ], stdout=subprocess.PIPE)
 
-    time.sleep(wait)
-    print("Waited %d seconds for vm to boot" % wait)
+    return True
 
 
 def run_kvp_command(script_path, vm_name, hv_server):
-    print(vm_name, check_vm_status(vm_name, hv_server))
     kvp_command = subprocess.Popen([
         env.str('PSPath'), script_path, '-vmName ', vm_name, '-hvServer', hv_server,
         '-TestParams', '"TC_COVERED=KVP-01"'
@@ -36,12 +34,11 @@ def run_kvp_command(script_path, vm_name, hv_server):
 
 
 def get_kvp_value(kvp_output, value):
-    print(kvp_output)
     kvp_output = kvp_output.split('\n')
     pattern = ''.join(['^', value])
     for line in kvp_output:
         if re.search(pattern, line.strip()):
-            return line.split(':')[1]
+            return line.split(':')[1].strip()
 
 
 def stop_vm(vm_name, hv_server):
@@ -51,8 +48,6 @@ def stop_vm(vm_name, hv_server):
 
 
 def get_vm_values(kvp_script, vm_name, hv_server, values_list):
-    if not check_vm_status(vm_name, hv_server):
-        start_vm(vm_name, hv_server)
 
     kvp_output = run_kvp_command(kvp_script, vm_name, hv_server)
     result = dict()
