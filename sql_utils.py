@@ -43,24 +43,3 @@ def insert_values(cursor, table_name, values_dict):
         columns=', '.join(values_dict.keys()),
         values=', '.join("'" + item + "'" for item in values_dict.values())
     ))
-
-
-def create_table(cursor):
-    cursor.execute("CREATE TABLE [dbo].[TestResults]("
-                   "[TestID] [bigint] IDENTITY(1,1) NOT NULL,"
-                   "[TestLocation] [nchar](10) NOT NULL,"
-                   "[TestArea] [nchar](50) NOT NULL,"
-                   "[TestCaseName] [nchar](50) NOT NULL,"
-                   "[TestDate] [date] NOT NULL,"
-                   "[HostName] [nchar](50) NOT NULL,"
-                   "[HostVersion] [nchar](50) NOT NULL,"
-                   "[GuestOSType] [nchar](30) NOT NULL,"
-                   "[GuestOSDistro] [nchar](50) NOT NULL,"
-                   "[TestResult] [nchar](10) NOT NULL,"
-                   "[KernelVersion] [nchar](30) NULL,"
-                   "[IPVersion] [nchar](4) NULL,"
-                   "PRIMARY KEY CLUSTERED ("
-                   "[TestID] ASC"
-                   ") WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON))"
-                   )
-
