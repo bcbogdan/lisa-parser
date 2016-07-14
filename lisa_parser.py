@@ -23,7 +23,7 @@ class ParseXML(object):
         """
         tests_dict = dict()
         for test in self.root.iter('test'):
-            test_name = test.find('testName').text
+            test_name = test.find('testName').text.lower()
             tests_dict[test_name] = dict()
             tests_dict[test_name]['results'] = dict()
             tests_dict[test_name]['details'] = self.get_test_details(test)
@@ -118,7 +118,7 @@ def parse_log_file(log_file, test_results):
 
         for line in log_file:
             line = line.strip()
-            if re.search("^VM", line):
+            if re.search("^VM:", line) and len(line.split()) == 2:
                 vm_name = line.split()[1]
                 # Check if there are any details about the VM
                 try:
@@ -127,18 +127,11 @@ def parse_log_file(log_file, test_results):
                     test_results['vms'][vm_name] = dict()
                     test_results['vms'][vm_name]['TestLocation'] = 'Azure'
 
-            elif re.search('^Test', line):
+            # TODO: Find better regex pattern
+            elif re.search('^Test', line) and re.search('(Success|Failed)', line):
                 test = line.split()
-
-                # Check if test failed and save error details
-                if test[3] == "Failed":
-                    log_file.next()
-                    error_details = log_file.next().strip()
-                else:
-                    error_details = ""
-
-                test_results['tests'][test[1]]['results'][vm_name] = \
-                    (test[3], error_details)
+                test_results['tests'][test[1].lower()]['results'][vm_name] = \
+                    test[3]
             elif re.search('^OS', line):
                 test_results['vms'][vm_name]['hostOSVersion'] = \
                     line.split(':')[1].strip()

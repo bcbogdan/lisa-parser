@@ -1,0 +1,9 @@
+CreateIfupConfigFile: interface eth1
+net.ipv4.conf.all.rp_filter = 0
+net.ipv4.conf.default.rp_filter = 0
+net.ipv4.conf.eth0.rp_filter = 0
+net.ipv4.conf.eth1.rp_filter = 0
+CreateIfupConfigFile: returned 0
+Successfully added vxlan0
+Successfully added an address for vxlan0.
+Could not ping the first VM through the vxlan interface. Lost connectivity between instances after rsync.

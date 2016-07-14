@@ -1,0 +1,8 @@
+dos2unix: converting file utils.sh to Unix format ...
+Mon May 09 16:12:10 2016 : Testscript running on redhat_7
+Mon May 09 16:12:10 2016 : Successfully initialized testscript!
+ls: cannot access : No such file or directory
+Mon May 09 16:12:10 2016 : Found 1 synthetic interface(s): eth1 in VM
+Mon May 09 16:12:10 2016 : Operstate is down
+Mon May 09 16:12:10 2016 : The only legacy interface is the loopback interface lo, which was set to be ignored.
+Mon May 09 16:12:10 2016 : Updating test case state to completed

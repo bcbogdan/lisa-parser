@@ -1,0 +1,6 @@
+Mon May 09 15:28:48 2016 : Updating test case state to running
+Mon May 09 15:28:48 2016 : Cleaning up previous copies of summary.log
+Mon May 09 15:28:49 2016 : constants disk count = 1
+Mon May 09 15:28:49 2016 : fdisk -l disk count = 0
+Mon May 09 15:28:49 2016 : Hot remove of Disk was successful
+Mon May 09 15:28:49 2016 : Exiting with state: TestCompleted.

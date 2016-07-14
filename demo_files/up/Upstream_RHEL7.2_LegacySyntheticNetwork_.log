@@ -1,0 +1,33 @@
+dos2unix: converting file utils.sh to Unix format ...
+Mon May 09 16:08:00 2016 : Testscript running on redhat_7
+Mon May 09 16:08:00 2016 : Successfully initialized testscript!
+Mon May 09 16:08:00 2016 : The test parameter SYNTH_STATIC_IP is not defined in constants file
+Mon May 09 16:08:00 2016 : The test parameter LEGACY_STATIC_IP is not defined in constants file
+Mon May 09 16:08:00 2016 : The test parameter SYNTH_NETMASK is not defined in constants file . Defaulting to 255.255.255.0
+Mon May 09 16:08:00 2016 : The test parameter LEGACY_NETMASK is not defined in constants file . Defaulting to 255.255.255.0
+Mon May 09 16:08:00 2016 : The test parameter GATEWAY is not defined in constants file . The default gateway will be set for all interfaces.
+Mon May 09 16:08:00 2016 : The test parameter DISABLE_NM is not defined in constants file. If the NetworkManager is running it could interfere with the test.
+ls: cannot access : No such file or directory
+Mon May 09 16:08:00 2016 : Found 1 synthetic interface(s): eth1 in VM
+Mon May 09 16:08:01 2016 : Found 1 legacy interface(s): enp0s10f0 in VM
+Mon May 09 16:08:01 2016 : Trying to get an IP Address via DHCP on synthetic interface eth1
+
+Determining IP information for eth1... done.
+net.ipv4.conf.all.rp_filter = 0
+net.ipv4.conf.default.rp_filter = 0
+net.ipv4.conf.eth0.rp_filter = 0
+net.ipv4.conf.eth1.rp_filter = 0
+Mon May 09 16:08:13 2016 : Setting 10.177.146.1 as default gateway on dev eth1
+Mon May 09 16:08:13 2016 : Trying to ping 8.8.8.8 from synthetic interface eth1
+Mon May 09 16:08:23 2016 : Successfully pinged 8.8.8.8 through synthetic eth1 (dhcp).
+Mon May 09 16:08:23 2016 : Trying to get an IP Address via DHCP on legacy interface enp0s10f0
+
+Determining IP information for enp0s10f0... done.
+net.ipv4.conf.all.rp_filter = 0
+net.ipv4.conf.default.rp_filter = 0
+net.ipv4.conf.eth0.rp_filter = 0
+net.ipv4.conf.enp0s10f0.rp_filter = 0
+Mon May 09 16:08:35 2016 : Setting 10.177.146.1 as default gateway on dev enp0s10f0
+Mon May 09 16:08:35 2016 : Trying to ping 8.8.8.8 from legacy interface enp0s10f0
+Mon May 09 16:08:44 2016 : Successfully pinged 8.8.8.8 through legacy enp0s10f0 (dhcp).
+Mon May 09 16:08:44 2016 : Updating test case state to completed

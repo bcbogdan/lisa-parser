@@ -1,0 +1,38 @@
+dos2unix: converting file utils.sh to Unix format ...
+Mon May 09 16:10:32 2016 : Testscript running on redhat_7
+Mon May 09 16:10:32 2016 : Successfully initialized testscript!
+Mon May 09 16:10:32 2016 : The test parameter STATIC_IP is not defined in constants file. Will try to set addresses via dhcp
+Mon May 09 16:10:32 2016 : The test parameter NETMASK is not defined in constants file . Defaulting to 255.255.255.0
+Mon May 09 16:10:32 2016 : The test parameter GATEWAY is not defined in constants file . The default gateway will be set for all interfaces.
+Mon May 09 16:10:32 2016 : The test parameter DISABLE_NM is not defined in constants file. If the NetworkManager is running it could interfere with the test.
+ls: cannot access : No such file or directory
+Mon May 09 16:10:32 2016 : Found 1 synthetic interface(s): eth1 in VM
+Mon May 09 16:10:32 2016 : The only legacy interface is the loopback interface lo, which was set to be ignored.
+Mon May 09 16:10:32 2016 : Found 0 legacy interface(s):  in VM
+Mon May 09 16:10:32 2016 : Trying to get an IP Address via DHCP on interface eth1
+Mon May 09 16:10:32 2016 : CreateIfupConfigFile: Warning will overwrite /etc/sysconfig/network-scripts/ifcfg-eth1 .
+
+Determining IP information for eth1... done.
+net.ipv4.conf.all.rp_filter = 0
+net.ipv4.conf.default.rp_filter = 0
+net.ipv4.conf.eth0.rp_filter = 0
+net.ipv4.conf.eth1.rp_filter = 0
+Mon May 09 16:10:51 2016 : Setting 10.177.146.1 as default gateway on dev eth1
+Mon May 09 16:10:51 2016 : Trying to ping 8.8.8.8
+PATTERN: 0xcafed00d00737461746963006d616300
+PING 8.8.8.8 (8.8.8.8) from 10.177.147.97 eth1: 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=49 time=2.60 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=49 time=3.39 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=49 time=3.33 ms
+64 bytes from 8.8.8.8: icmp_seq=4 ttl=49 time=1.91 ms
+64 bytes from 8.8.8.8: icmp_seq=5 ttl=49 time=3.43 ms
+64 bytes from 8.8.8.8: icmp_seq=6 ttl=49 time=2.11 ms
+64 bytes from 8.8.8.8: icmp_seq=7 ttl=49 time=3.48 ms
+64 bytes from 8.8.8.8: icmp_seq=8 ttl=49 time=2.46 ms
+64 bytes from 8.8.8.8: icmp_seq=9 ttl=49 time=3.44 ms
+64 bytes from 8.8.8.8: icmp_seq=10 ttl=49 time=2.22 ms
+
+--- 8.8.8.8 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9048ms
+rtt min/avg/max/mdev = 1.918/2.841/3.489/0.605 ms
+Mon May 09 16:11:00 2016 : Updating test case state to completed

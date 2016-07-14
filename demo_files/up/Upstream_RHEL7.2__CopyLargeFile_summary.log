@@ -1,0 +1,10 @@
+Test covers NET-01
+The test parameter STATIC_IP2_V6 is not defined in . No IPV6 related tests will be run.
+Successfully set ip from dhcp on interface eth1
+Trying to ping 
+Successfully pinged 10.177.146.244 through synthetic eth1 (dhcp).
+Enough free space locally to create the file
+Enough free space (both locally and remote) to create the file
+Successfully sent large_file_3478 to 10.177.146.244:/root/large_file_3478
+Received large_file_3478 from 10.177.146.244
+Checksums of file match. Test successful

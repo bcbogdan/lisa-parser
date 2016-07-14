@@ -1,0 +1,4 @@
+Mon May 09 14:19:51 2016 : Updating test case state to running
+Mon May 09 14:19:51 2016 : Cleaning up previous copies of summary.log
+Mon May 09 14:19:51 2016 : Test passed! Found a matching VMBus string:\n hv_vmbus: Hyper-V Host Build:9600-6.3-18-0.18119; Vmbus version:3.0
+Mon May 09 14:19:51 2016 : Test Passed

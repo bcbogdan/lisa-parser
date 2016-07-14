@@ -1,0 +1,338 @@
+dos2unix: converting file utils.sh to Unix format ...
+Mon May 09 16:19:21 2016 : Testscript running on redhat_7
+Mon May 09 16:19:21 2016 : Successfully initialized testscript!
+Mon May 09 16:19:21 2016 : REMOTE_USER set to root
+Mon May 09 16:19:21 2016 : The test parameter NO_DELETE is not defined in /root/constants.sh . Generated file will be deleted
+expect version 5.45
+Mon May 09 16:19:21 2016 : The test parameter GATEWAY is not defined in constants file . The default gateway will be set for all interfaces.
+Mon May 09 16:19:21 2016 : The test parameter DISABLE_NM is not defined in constants file. If the NetworkManager is running it could interfere with the test.
+ls: cannot access : No such file or directory
+Mon May 09 16:19:21 2016 : Found 1 synthetic interface(s): eth1 in VM
+
+Determining IP information for eth1... done.
+net.ipv4.conf.all.rp_filter = 0
+net.ipv4.conf.default.rp_filter = 0
+net.ipv4.conf.eth0.rp_filter = 0
+net.ipv4.conf.eth1.rp_filter = 0
+Mon May 09 16:19:30 2016 : 3: eth1    inet 10.177.146.175/23 brd 10.177.147.255 scope global dynamic eth1\       valid_lft 14395sec preferred_lft 14395sec
+Mon May 09 16:19:30 2016 : Setting 10.177.146.1 as default gateway on dev eth1
+Mon May 09 16:19:30 2016 : Trying to ping 
+Mon May 09 16:19:59 2016 : Successfully pinged 10.177.147.97 through synthetic eth1 (dhcp).
+Mon May 09 16:19:59 2016 : Successfully pinged 10.177.147.97 on synthetic interface(s) eth1
+Mon May 09 16:19:59 2016 : Checking for local disk space
+Mon May 09 16:19:59 2016 : Enough free space locally to create the file
+Mon May 09 16:19:59 2016 : Checking for disk space on 10.177.147.97
+Executing: program /usr/bin/ssh host 10.177.147.97, user root, command scp -v -t /tmp
+OpenSSH_6.6.1, OpenSSL 1.0.1e-fips 11 Feb 2013
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 56: Applying options for *
+debug1: Connecting to 10.177.147.97 [10.177.147.97] port 22.
+debug1: Connection established.
+debug1: permanently_set_uid: 0/0
+debug1: identity file /root/.ssh/rhel5_id_rsa type 1
+debug1: identity file /root/.ssh/rhel5_id_rsa-cert type -1
+debug1: Enabling compatibility mode for protocol 2.0
+debug1: Local version string SSH-2.0-OpenSSH_6.6.1
+debug1: Remote protocol version 2.0, remote software version OpenSSH_6.6.1
+debug1: match: OpenSSH_6.6.1 pat OpenSSH_6.6.1* compat 0x04000000
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug1: kex: server->client aes128-ctr hmac-md5-etm@openssh.com none
+debug1: kex: client->server aes128-ctr hmac-md5-etm@openssh.com none
+debug1: kex: curve25519-sha256@libssh.org need=16 dh_need=16
+debug1: kex: curve25519-sha256@libssh.org need=16 dh_need=16
+debug1: sending SSH2_MSG_KEX_ECDH_INIT
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+debug1: Server host key: ECDSA 2e:ca:c1:91:e5:19:f7:43:66:5c:8d:2a:27:70:d3:15
+Warning: Permanently added '10.177.147.97' (ECDSA) to the list of known hosts.
+debug1: ssh_ecdsa_verify: signature correct
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: expecting SSH2_MSG_NEWKEYS
+debug1: SSH2_MSG_NEWKEYS received
+debug1: Roaming not allowed by server
+debug1: SSH2_MSG_SERVICE_REQUEST sent
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+debug1: Authentications that can continue: publickey,gssapi-keyex,gssapi-with-mic,password
+debug1: Next authentication method: gssapi-keyex
+debug1: No valid Key exchange context
+debug1: Next authentication method: gssapi-with-mic
+debug1: Unspecified GSS failure.  Minor code may provide more information
+No Kerberos credentials available
+
+debug1: Unspecified GSS failure.  Minor code may provide more information
+No Kerberos credentials available
+
+debug1: Unspecified GSS failure.  Minor code may provide more information
+
+
+debug1: Unspecified GSS failure.  Minor code may provide more information
+No Kerberos credentials available
+
+debug1: Next authentication method: publickey
+debug1: Offering RSA public key: /root/.ssh/rhel5_id_rsa
+debug1: Server accepts key: pkalg ssh-rsa blen 277
+debug1: key_parse_private2: missing begin marker
+debug1: read PEM private key done: type RSA
+debug1: Authentication succeeded (publickey).
+Authenticated to 10.177.147.97 ([10.177.147.97]:22).
+debug1: channel 0: new [client-session]
+debug1: Requesting no-more-sessions@openssh.com
+debug1: Entering interactive session.
+debug1: Sending environment.
+debug1: Sending env LANG = en_US.UTF-8
+debug1: Sending command: scp -v -t /tmp
+Sending file modes: C0644 54233 utils.sh
+Sink: C0644 54233 utils.sh
+debug1: client_input_channel_req: channel 0 rtype exit-status reply 0
+debug1: channel 0: free: client-session, nchannels 1
+debug1: fd 0 clearing O_NONBLOCK
+debug1: fd 1 clearing O_NONBLOCK
+debug1: fd 2 clearing O_NONBLOCK
+Transferred: sent 57760, received 2616 bytes, in 0.1 seconds
+Bytes per second: sent 1013992.1, received 45924.6
+debug1: Exit status 0
+OpenSSH_6.6.1, OpenSSL 1.0.1e-fips 11 Feb 2013
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 56: Applying options for *
+debug1: Connecting to 10.177.147.97 [10.177.147.97] port 22.
+debug1: Connection established.
+debug1: permanently_set_uid: 0/0
+debug1: identity file /root/.ssh/rhel5_id_rsa type 1
+debug1: identity file /root/.ssh/rhel5_id_rsa-cert type -1
+debug1: Enabling compatibility mode for protocol 2.0
+debug1: Local version string SSH-2.0-OpenSSH_6.6.1
+debug1: Remote protocol version 2.0, remote software version OpenSSH_6.6.1
+debug1: match: OpenSSH_6.6.1 pat OpenSSH_6.6.1* compat 0x04000000
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug1: kex: server->client aes128-ctr hmac-md5-etm@openssh.com none
+debug1: kex: client->server aes128-ctr hmac-md5-etm@openssh.com none
+debug1: kex: curve25519-sha256@libssh.org need=16 dh_need=16
+debug1: kex: curve25519-sha256@libssh.org need=16 dh_need=16
+debug1: sending SSH2_MSG_KEX_ECDH_INIT
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+debug1: Server host key: ECDSA 2e:ca:c1:91:e5:19:f7:43:66:5c:8d:2a:27:70:d3:15
+debug1: Host '10.177.147.97' is known and matches the ECDSA host key.
+debug1: Found key in /root/.ssh/known_hosts:1
+debug1: ssh_ecdsa_verify: signature correct
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: expecting SSH2_MSG_NEWKEYS
+debug1: SSH2_MSG_NEWKEYS received
+debug1: Roaming not allowed by server
+debug1: SSH2_MSG_SERVICE_REQUEST sent
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+debug1: Authentications that can continue: publickey,gssapi-keyex,gssapi-with-mic,password
+debug1: Next authentication method: gssapi-keyex
+debug1: No valid Key exchange context
+debug1: Next authentication method: gssapi-with-mic
+debug1: Unspecified GSS failure.  Minor code may provide more information
+No Kerberos credentials available
+
+debug1: Unspecified GSS failure.  Minor code may provide more information
+No Kerberos credentials available
+
+debug1: Unspecified GSS failure.  Minor code may provide more information
+
+
+debug1: Unspecified GSS failure.  Minor code may provide more information
+No Kerberos credentials available
+
+debug1: Next authentication method: publickey
+debug1: Offering RSA public key: /root/.ssh/rhel5_id_rsa
+debug1: Server accepts key: pkalg ssh-rsa blen 277
+debug1: key_parse_private2: missing begin marker
+debug1: read PEM private key done: type RSA
+debug1: Authentication succeeded (publickey).
+Authenticated to 10.177.147.97 ([10.177.147.97]:22).
+debug1: channel 0: new [client-session]
+debug1: Requesting no-more-sessions@openssh.com
+debug1: Entering interactive session.
+debug1: Sending environment.
+debug1: Sending env LANG = en_US.UTF-8
+debug1: Sending command: 
+    . /tmp/utils.sh
+    IsFreeSpace "$HOME" 1073741824
+    if [ 0 -ne $? ]; then
+        exit 1
+    fi
+    echo "$HOME"
+    exit 0
+    
+debug1: client_input_channel_req: channel 0 rtype exit-status reply 0
+debug1: channel 0: free: client-session, nchannels 1
+debug1: fd 0 clearing O_NONBLOCK
+debug1: fd 1 clearing O_NONBLOCK
+debug1: fd 2 clearing O_NONBLOCK
+Transferred: sent 3520, received 2540 bytes, in 0.1 seconds
+Bytes per second: sent 64755.9, received 46727.2
+debug1: Exit status 0
+Mon May 09 16:19:59 2016 : Enough free space remotely to create the file
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB) copied, 1.13942 s, 942 MB/s
+Mon May 09 16:20:01 2016 : Successfully created large_file_2978
+Mon May 09 16:20:18 2016 : Successfully set mtu to 9000 on interface eth1
+Mon May 09 16:20:18 2016 : Setting all interfaces on 10.177.147.97 mtu to 9000
+OpenSSH_6.6.1, OpenSSL 1.0.1e-fips 11 Feb 2013
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 56: Applying options for *
+debug1: Connecting to 10.177.147.97 [10.177.147.97] port 22.
+debug1: Connection established.
+debug1: permanently_set_uid: 0/0
+debug1: identity file /root/.ssh/rhel5_id_rsa type 1
+debug1: identity file /root/.ssh/rhel5_id_rsa-cert type -1
+debug1: Enabling compatibility mode for protocol 2.0
+debug1: Local version string SSH-2.0-OpenSSH_6.6.1
+debug1: Remote protocol version 2.0, remote software version OpenSSH_6.6.1
+debug1: match: OpenSSH_6.6.1 pat OpenSSH_6.6.1* compat 0x04000000
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug1: kex: server->client aes128-ctr hmac-md5-etm@openssh.com none
+debug1: kex: client->server aes128-ctr hmac-md5-etm@openssh.com none
+debug1: kex: curve25519-sha256@libssh.org need=16 dh_need=16
+debug1: kex: curve25519-sha256@libssh.org need=16 dh_need=16
+debug1: sending SSH2_MSG_KEX_ECDH_INIT
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+debug1: Server host key: ECDSA 2e:ca:c1:91:e5:19:f7:43:66:5c:8d:2a:27:70:d3:15
+debug1: Host '10.177.147.97' is known and matches the ECDSA host key.
+debug1: Found key in /root/.ssh/known_hosts:1
+debug1: ssh_ecdsa_verify: signature correct
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: expecting SSH2_MSG_NEWKEYS
+debug1: SSH2_MSG_NEWKEYS received
+debug1: Roaming not allowed by server
+debug1: SSH2_MSG_SERVICE_REQUEST sent
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+debug1: Authentications that can continue: publickey,gssapi-keyex,gssapi-with-mic,password
+debug1: Next authentication method: gssapi-keyex
+debug1: No valid Key exchange context
+debug1: Next authentication method: gssapi-with-mic
+debug1: Unspecified GSS failure.  Minor code may provide more information
+No Kerberos credentials available
+
+debug1: Unspecified GSS failure.  Minor code may provide more information
+No Kerberos credentials available
+
+debug1: Unspecified GSS failure.  Minor code may provide more information
+
+
+debug1: Unspecified GSS failure.  Minor code may provide more information
+No Kerberos credentials available
+
+debug1: Next authentication method: publickey
+debug1: Offering RSA public key: /root/.ssh/rhel5_id_rsa
+debug1: Server accepts key: pkalg ssh-rsa blen 277
+debug1: key_parse_private2: missing begin marker
+debug1: read PEM private key done: type RSA
+debug1: Authentication succeeded (publickey).
+Authenticated to 10.177.147.97 ([10.177.147.97]:22).
+debug1: channel 0: new [client-session]
+debug1: Requesting no-more-sessions@openssh.com
+debug1: Entering interactive session.
+debug1: Sending environment.
+debug1: Sending env LANG = en_US.UTF-8
+debug1: Sending command: 
+		__remote_interface=$(ip -o addr show | grep "10.177.147.97" | cut -d ' ' -f2)
+		if [ x"$__remote_interface" = x ]; then
+			exit 1
+		fi
+
+		# make sure no legacy interfaces are present
+		__legacy_interface_no=$(find /sys/devices -name net -a ! -path '*vmbus*' -a ! -path '*virtual*' -a ! -path '*lo*' | wc -l)
+
+		if [ 0 -ne "$__legacy_interface_no" ]; then
+			exit 2
+		fi
+
+		ip link set dev $__remote_interface mtu "9000"
+		if [ 0 -ne $? ]; then
+			exit 2
+		fi
+
+		__remote_actual_mtu=$(ip -o link show "$__remote_interface" | cut -d ' ' -f5)
+
+		if [ x"$__remote_actual_mtu" !=  x"9000" ]; then
+			exit 3
+		fi
+
+		exit 0
+		
+debug1: client_input_channel_req: channel 0 rtype exit-status reply 0
+debug1: channel 0: free: client-session, nchannels 1
+debug1: fd 0 clearing O_NONBLOCK
+debug1: fd 1 clearing O_NONBLOCK
+Transferred: sent 3996, received 2504 bytes, in 1.7 seconds
+Bytes per second: sent 2330.3, received 1460.2
+debug1: Exit status 0
+spawn_id: spawn id exp5 not open
+    while executing
+"interact"
+Mon May 09 16:20:31 2016 : Successfully sent large_file_2978 to 10.177.147.97:/root/large_file_2978
+OpenSSH_6.6.1, OpenSSL 1.0.1e-fips 11 Feb 2013
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 56: Applying options for *
+debug1: Connecting to 10.177.147.97 [10.177.147.97] port 22.
+debug1: Connection established.
+debug1: permanently_set_uid: 0/0
+debug1: identity file /root/.ssh/rhel5_id_rsa type 1
+debug1: identity file /root/.ssh/rhel5_id_rsa-cert type -1
+debug1: Enabling compatibility mode for protocol 2.0
+debug1: Local version string SSH-2.0-OpenSSH_6.6.1
+debug1: Remote protocol version 2.0, remote software version OpenSSH_6.6.1
+debug1: match: OpenSSH_6.6.1 pat OpenSSH_6.6.1* compat 0x04000000
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug1: kex: server->client aes128-ctr hmac-md5-etm@openssh.com none
+debug1: kex: client->server aes128-ctr hmac-md5-etm@openssh.com none
+debug1: kex: curve25519-sha256@libssh.org need=16 dh_need=16
+debug1: kex: curve25519-sha256@libssh.org need=16 dh_need=16
+debug1: sending SSH2_MSG_KEX_ECDH_INIT
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+debug1: Server host key: ECDSA 2e:ca:c1:91:e5:19:f7:43:66:5c:8d:2a:27:70:d3:15
+debug1: Host '10.177.147.97' is known and matches the ECDSA host key.
+debug1: Found key in /root/.ssh/known_hosts:1
+debug1: ssh_ecdsa_verify: signature correct
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: expecting SSH2_MSG_NEWKEYS
+debug1: SSH2_MSG_NEWKEYS received
+debug1: Roaming not allowed by server
+debug1: SSH2_MSG_SERVICE_REQUEST sent
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+debug1: Authentications that can continue: publickey,gssapi-keyex,gssapi-with-mic,password
+debug1: Next authentication method: gssapi-keyex
+debug1: No valid Key exchange context
+debug1: Next authentication method: gssapi-with-mic
+debug1: Unspecified GSS failure.  Minor code may provide more information
+No Kerberos credentials available
+
+debug1: Unspecified GSS failure.  Minor code may provide more information
+No Kerberos credentials available
+
+debug1: Unspecified GSS failure.  Minor code may provide more information
+
+
+debug1: Unspecified GSS failure.  Minor code may provide more information
+No Kerberos credentials available
+
+debug1: Next authentication method: publickey
+debug1: Offering RSA public key: /root/.ssh/rhel5_id_rsa
+debug1: Server accepts key: pkalg ssh-rsa blen 277
+debug1: key_parse_private2: missing begin marker
+debug1: read PEM private key done: type RSA
+debug1: Authentication succeeded (publickey).
+Authenticated to 10.177.147.97 ([10.177.147.97]:22).
+debug1: channel 0: new [client-session]
+debug1: Requesting no-more-sessions@openssh.com
+debug1: Entering interactive session.
+debug1: Sending environment.
+debug1: Sending env LANG = en_US.UTF-8
+debug1: Sending command: md5sum large_file_2978
+debug1: client_input_channel_req: channel 0 rtype exit-status reply 0
+debug1: channel 0: free: client-session, nchannels 1
+debug1: fd 0 clearing O_NONBLOCK
+debug1: fd 1 clearing O_NONBLOCK
+debug1: fd 2 clearing O_NONBLOCK
+Transferred: sent 3388, received 2572 bytes, in 3.4 seconds
+Bytes per second: sent 1001.6, received 760.3
+debug1: Exit status 0
+Mon May 09 16:20:34 2016 : Updating test case state to completed

@@ -1,0 +1,11 @@
+Covers: STOR-13
+Disk test is completed for /dev/sdb1  with filesystem ext2
+Data integrity test on 31 blocks on drive /dev/sdb1 : success 
+Disk test is completed for /dev/sdb1  with filesystem ext3
+Data integrity test on 31 blocks on drive /dev/sdb1 : success 
+Disk test is completed for /dev/sdb1  with filesystem ext4
+Data integrity test on 31 blocks on drive /dev/sdb1 : success 
+Disk test is completed for /dev/sdb1  with filesystem xfs
+Data integrity test on 31 blocks on drive /dev/sdb1 : success 
+Disk test is completed for /dev/sdb1  with filesystem btrfs
+Data integrity test on 31 blocks on drive /dev/sdb1 : success 

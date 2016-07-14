@@ -1,0 +1,3 @@
+This script covers test case: VMBus-01
+Test passed! Found a matching VMBus string:
+hv_vmbus: Hyper-V Host Build:9600-6.3-18-0.18119; Vmbus version:3.0

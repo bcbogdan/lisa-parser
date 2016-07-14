@@ -1,0 +1,5 @@
+dos2unix: converting file utils.sh to Unix format ...
+Mon May 09 15:34:05 2016 : Testscript running on redhat_7
+Mon May 09 15:34:05 2016 : Successfully initialized testscript!
+Mon May 09 15:34:05 2016 : Testing testcase DM-01
+Mon May 09 15:34:05 2016 : Updating test case state to completed

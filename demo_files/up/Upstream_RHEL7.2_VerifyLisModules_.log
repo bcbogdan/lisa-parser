@@ -1,0 +1,28 @@
+Mon May 09 12:55:15 2016 : Cleaning up previous copies of summary.log
+Mon May 09 12:55:15 2016 : #### Status of Hyper-V Kernel Modules ####\n
+Mon May 09 12:55:15 2016 : Module: hv_vmbus
+Mon May 09 12:55:15 2016 : Status: loaded
+Mon May 09 12:55:15 2016 : hv_vmbus 610304 6 hyperv_keyboard,hv_netvsc,hid_hyperv,hv_utils,hyperv_fb,hv_storvsc
+
+
+Mon May 09 12:55:15 2016 : Module: hv_netvsc
+Mon May 09 12:55:15 2016 : Status: loaded
+Mon May 09 12:55:15 2016 : hv_netvsc 40960 0 hv_vmbus 610304 6 hyperv_keyboard,hv_netvsc,hid_hyperv,hv_utils,hyperv_fb,hv_storvsc
+
+
+Mon May 09 12:55:15 2016 : Module: hid_hyperv
+Mon May 09 12:55:15 2016 : Status: loaded
+Mon May 09 12:55:15 2016 : hid_hyperv 16384 0 hv_vmbus 610304 6 hyperv_keyboard,hv_netvsc,hid_hyperv,hv_utils,hyperv_fb,hv_storvsc
+
+
+Mon May 09 12:55:15 2016 : Module: hv_utils
+Mon May 09 12:55:15 2016 : Status: loaded
+Mon May 09 12:55:15 2016 : hv_utils 24576 3 hv_vmbus 610304 6 hyperv_keyboard,hv_netvsc,hid_hyperv,hv_utils,hyperv_fb,hv_storvsc
+
+
+Mon May 09 12:55:15 2016 : Module: hv_storvsc
+Mon May 09 12:55:15 2016 : Status: loaded
+Mon May 09 12:55:15 2016 : hv_storvsc 20480 2 scsi_transport_fc 65536 1 hv_storvsc hv_vmbus 610304 6 hyperv_keyboard,hv_netvsc,hid_hyperv,hv_utils,hyperv_fb,hv_storvsc
+
+
+Mon May 09 12:55:15 2016 : Exiting with state: TestCompleted.

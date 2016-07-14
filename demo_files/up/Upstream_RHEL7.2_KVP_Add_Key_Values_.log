@@ -1,0 +1,4 @@
+Mon May 09 13:36:31 2016 : Updating test case state to running
+Linux localhost.localdomain 4.6.0-rc7-next-20160509 #1 SMP Mon May 9 06:16:13 EDT 2016 x86_64 x86_64 x86_64 GNU/Linux
+Mon May 09 13:36:31 2016 : 64 bit architecture was detected
+Mon May 09 13:36:31 2016 : Error: kvp_client64 tool is not on the system

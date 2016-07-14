@@ -1,0 +1,6 @@
+Test covers NET-08
+Trying to ping 8.8.8.8 from synthetic interface eth1
+Successfully pinged 8.8.8.8 through synthetic eth1 (dhcp).
+Trying to ping 8.8.8.8 from legacy interface enp0s10f0
+Successfully pinged 8.8.8.8 through legacy enp0s10f0 (dhcp).
+Test successful
