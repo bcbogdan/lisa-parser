@@ -1,7 +1,7 @@
 from string import Template
 from envparse import env
 import pyodbc
-
+from difflib import Differ
 
 def init_connection():
     connection = pyodbc.connect(get_connection_string())

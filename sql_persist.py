@@ -7,7 +7,7 @@ from lisa_parser import parse_log_file
 import parse_arguments
 import sql_utils
 import vm_utils
-
+import pprint
 """
 Copyright (c) Cloudbase Solutions
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,7 +34,11 @@ def create_tests_list(tests_dict):
             test_dict['HostName'] = details['hvServer']
             test_dict['HostVersion'] = details['hostOSVersion']
             test_dict['GuestOSType'] = details['os']
-            test_dict['TestResult'] = test_props['results'][name][0]
+            try:
+                test_dict['TestResult'] = test_props['results'][name]
+            except KeyError:
+                print('Test result not found for %s on vm %s' % (test_name, name))
+                continue
             test_dict['TestCaseName'] = test_name
             test_dict['TestArea'] = tests_dict['testSuite']
             test_dict['TestDate'] = format_date(tests_dict['timestamp'])
@@ -55,7 +59,7 @@ def format_date(test_date):
 
 if __name__ == '__main__':
     env.read_envfile('config/.env')
-
+    pp = pprint.PrettyPrinter(indent=4)
     # Parse arguments and check if they exist
     input_files = parse_arguments.parse_arguments(sys.argv[1:])
 
@@ -71,6 +75,7 @@ if __name__ == '__main__':
     # Getting more VM details from KVP exchange
     is_booting = False
     for vm_name, vm_details in tests_object['vms'].iteritems():
+        #pp.pprint(tests_object['tests'])
         if not vm_utils.manage_vm('check', vm_name, vm_details['hvServer']):
             print('Starting %s' % vm_name)
             if vm_utils.manage_vm('start', vm_name, vm_details['hvServer']):
