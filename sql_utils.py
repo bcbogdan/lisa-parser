@@ -1,7 +1,22 @@
+"""
+Copyright (c) Cloudbase Solutions 2016
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
 from string import Template
 from envparse import env
 import pyodbc
-from difflib import Differ
+
 
 def init_connection():
     connection = pyodbc.connect(get_connection_string())
@@ -9,6 +24,11 @@ def init_connection():
 
 
 def get_connection_string():
+    """
+    Constructs the connection string necessary
+    for the Azure DB using constants saved in
+    config/.env
+    """
     env.read_envfile('config/.env')
 
     connection_string = Template("Driver={$SQLDriver};"
@@ -34,6 +54,12 @@ def get_connection_string():
 
 
 def insert_values(cursor, table_name, values_dict):
+    """
+    Executes an insert command on the db using the values
+     provided by de value_dict in which the keys represent
+     table columns and the dict values are the values to be
+     inserted
+    """
     insert_command = Template('insert into $tableName($columns)'
                               ' values($values)')
 

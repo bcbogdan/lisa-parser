@@ -1,3 +1,18 @@
+"""
+Copyright (c) Cloudbase Solutions 2016
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
 from __future__ import print_function
 try:
     import xml.etree.cElementTree as ElementTree
@@ -7,6 +22,9 @@ import re
 
 
 class ParseXML(object):
+    """
+    Class used to parse a specific xml test suite file
+    """
     def __init__(self, file_path):
         self.tree = ElementTree.ElementTree(file=file_path)
         self.root = self.tree.getroot()
@@ -24,7 +42,7 @@ class ParseXML(object):
         for test in self.root.iter('suiteTest'):
             tests_dict[test.text.lower()] = {
                 'details': {},
-                'result': {}
+                'results': {}
             }
 
             if get_details:
@@ -64,6 +82,14 @@ class ParseXML(object):
         return test_dict
 
     def get_vms(self):
+        """
+        Method searches for the 'vm' sections in the XML file
+        saving a dict for each vm found.
+        Dict structure:
+        {
+            vm_name: { vm_details }
+        }
+        """
         vm_dict = dict()
         for machine in self.root.iter('vm'):
             vm_dict[machine.find('vmName').text] = {
@@ -83,8 +109,19 @@ class ParseXML(object):
 
         return parsed_xml
 
+    # TODO: Narrow exception field
     @staticmethod
     def parse_from_string(xml_string):
+        """
+        Static method that parses xml content from a string
+        The method is used to parse the output of the PS command
+        that is sent to the vm in order to get more details
+
+        It returns a dict with the following structure:
+        {
+            vm_property: value
+        }
+        """
         try:
             root = ElementTree.fromstring(xml_string.strip())
             prop_name = ''
@@ -133,15 +170,20 @@ def parse_log_file(log_file, test_results):
 
             # TODO: Find better regex pattern
             # TODO: Get log file path in case of test failed
-            elif re.search('^Test', line) and re.search('(Success|Failed)', line):
+            elif re.search('^Test', line) and \
+                    re.search('(Success|Failed)', line):
                 test = line.split()
-                test_results['tests'][test[1].lower()]['results'][vm_name] = \
-                    test[3]
+                try:
+                    test_results['tests'][test[1].lower()]['results'][vm_name] = \
+                        test[3]
+                except KeyError:
+                    print('Test %s was not listed in Test Suites section.'
+                          'It will be ignored from the final results' % test)
             elif re.search('^OS', line):
                 test_results['vms'][vm_name]['hostOSVersion'] = \
                     line.split(':')[1].strip()
             elif re.search('^Server', line):
                 test_results['vms'][vm_name]['hvServer'] = \
                     line.split(':')[1].strip()
-                
+
     return test_results
