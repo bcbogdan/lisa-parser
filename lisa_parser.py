@@ -6,13 +6,12 @@ except ImportError:
 import re
 
 
-# TODO: Add posibility to selected fields that should be parsed
 class ParseXML(object):
     def __init__(self, file_path):
         self.tree = ElementTree.ElementTree(file=file_path)
         self.root = self.tree.getroot()
 
-    def get_tests(self):
+    def get_tests(self, get_details=False):
         """
         Iterates through the xml file looking for <test> sections
          and initializes a dict for every test case returning them in
@@ -22,12 +21,17 @@ class ParseXML(object):
             { 'testName' : { 'details' : {}, 'results' : {} }
         """
         tests_dict = dict()
-        for test in self.root.iter('test'):
-            test_name = test.find('testName').text.lower()
-            tests_dict[test_name] = dict()
-            tests_dict[test_name]['results'] = dict()
-            tests_dict[test_name]['details'] = self.get_test_details(test)
+        for test in self.root.iter('suiteTest'):
+            tests_dict[test.text.lower()] = {
+                'details': {},
+                'result': {}
+            }
 
+            if get_details:
+                for test_case in self.root.iter('test'):
+                    if test_case.find('testName').text == test.text:
+                        tests_dict[test.text.lower()]['details'] = \
+                            self.get_test_details(test_case)
         return tests_dict
 
     @staticmethod
@@ -128,6 +132,7 @@ def parse_log_file(log_file, test_results):
                     test_results['vms'][vm_name]['TestLocation'] = 'Azure'
 
             # TODO: Find better regex pattern
+            # TODO: Get log file path in case of test failed
             elif re.search('^Test', line) and re.search('(Success|Failed)', line):
                 test = line.split()
                 test_results['tests'][test[1].lower()]['results'][vm_name] = \
@@ -140,4 +145,3 @@ def parse_log_file(log_file, test_results):
                     line.split(':')[1].strip()
                 
     return test_results
-
