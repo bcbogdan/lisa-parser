@@ -40,6 +40,7 @@ def create_tests_list(tests_dict):
             test_dict['GuestOSType'] = details['os']
             try:
                 test_dict['TestResult'] = test_props['results'][name]
+                test_dict['LogFolder'] = tests_dict['logDir']
             except KeyError:
                 print('Test result not found for %s on vm %s' %
                       (test_name, name))
@@ -153,7 +154,7 @@ def main(args):
     for row in rows:
         print(row)
 
-    db_connection.commit()
+    #db_connection.commit()
 
 if __name__ == '__main__':
     main(sys.argv[1:])

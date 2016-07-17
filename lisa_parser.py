@@ -185,5 +185,7 @@ def parse_log_file(log_file, test_results):
             elif re.search('^Server', line):
                 test_results['vms'][vm_name]['hvServer'] = \
                     line.split(':')[1].strip()
+            elif re.search('^Logs can be found at', line):
+                test_results['logDir'] = line.split()[-1]
 
     return test_results
