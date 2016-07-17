@@ -37,6 +37,7 @@ def manage_vm(action, vm_name, hv_server):
         ], stdout=subprocess.PIPE)
 
         if ps_command.stdout.read().strip().split('\n')[2].strip() == 'Off':
+            print(ps_command.stdout.read())
             return False
         else:
             return True
@@ -49,6 +50,7 @@ def manage_vm(action, vm_name, hv_server):
     ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     if ps_command.stderr.read():
+        print(ps_command.stdout.read())
         return False
     else:
         return True
@@ -77,7 +79,8 @@ def get_vm_details(vm_name, hv_server):
         query_strings[1], ').GuestIntrinsicExchangeItems'
     ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-    if ps_command.stdout:
-        return ps_command.stdout.read()
-    else:
+    if ps_command.stderr().read():
+        print(ps_command.stdout.read())
         return False
+    else:
+        return ps_command.stdout.read()
