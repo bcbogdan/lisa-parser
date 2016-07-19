@@ -36,11 +36,15 @@ def manage_vm(action, vm_name, hv_server):
             vm_name, '-ComputerName', hv_server, '|', 'Select', 'State'
         ], stdout=subprocess.PIPE)
 
-        if ps_command.stdout.read().strip().split('\n')[2].strip() == 'Off':
-            print(ps_command.stdout.read())
-            return False
+        stdout_data, stderr_data = ps_command.communicate()
+
+        if ps_command.returncode != 0:
+            raise RuntimeError("Command failed, status code %s stdout %r stderr %r" % (
+                ps_command.returncode, stdout_data, stderr_data
+            ))
         else:
-            return True
+            return stdout_data
+
     else:
         return False
 
@@ -49,11 +53,14 @@ def manage_vm(action, vm_name, hv_server):
         '-ComputerName ', hv_server
     ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-    if ps_command.stderr.read():
-        print(ps_command.stdout.read())
-        return False
+    stdout_data, stderr_data = ps_command.communicate()
+
+    if ps_command.returncode != 0:
+        raise RuntimeError("Command failed, status code %s stdout %r stderr %r" % (
+            ps_command.returncode, stdout_data, stderr_data
+        ))
     else:
-        return True
+        return stdout_data
 
 
 def get_vm_details(vm_name, hv_server):
@@ -79,8 +86,11 @@ def get_vm_details(vm_name, hv_server):
         query_strings[1], ').GuestIntrinsicExchangeItems'
     ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-    if ps_command.stderr().read():
-        print(ps_command.stdout.read())
-        return False
+    stdout_data, stderr_data = ps_command.communicate()
+
+    if ps_command.returncode != 0:
+        raise RuntimeError("Command failed, status code %s stdout %r stderr %r" % (
+            ps_command.returncode, stdout_data, stderr_data
+        ))
     else:
-        return ps_command.stdout.read()
+        return stdout_data
