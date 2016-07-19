@@ -74,7 +74,12 @@ def get_vm_info(vms_dict):
     and saves them in the vm dictionary
     """
     for vm_name, vm_details in vms_dict.iteritems():
-        vm_values = vm_utils.get_vm_details(vm_name, vm_details['hvServer'])
+        try:
+            vm_values = vm_utils.get_vm_details(vm_name, vm_details['hvServer'])
+        except RuntimeError, e:
+            print('Error on running command')
+            sys.exit(0)
+
         if not vm_values:
             print('Unable to get vm details for %s' % vm_name)
             sys.exit(2)
@@ -90,7 +95,7 @@ def get_vm_info(vms_dict):
             })
 
         vm_details['OSBuildNumber'] = vm_info['OSBuildNumber']
-        vm_details['OSName'] = vm_info['OSName']
+        vm_details['OSName'] = ' '.join([vm_info['OSName'], vm_info['OSMajorVersion']])
 
     return vms_dict
 
@@ -117,7 +122,8 @@ def create_tests_dict(xml_file, log_file):
                 sys.exit(2)
 
     if is_booting:
-        wait = 40
+        # TODO: Check for better option to see if VM has booted
+        wait = 30
         print('Waiting %d seconds for VMs to boot' % wait)
         time.sleep(wait)
 
