@@ -19,6 +19,7 @@ try:
 except ImportError:
     import xml.etree.ElementTree as ElementTree
 import re
+import logging
 
 
 class ParseXML(object):
@@ -29,7 +30,7 @@ class ParseXML(object):
         self.tree = ElementTree.ElementTree(file=file_path)
         self.root = self.tree.getroot()
 
-    def get_tests(self, get_details=False):
+    def get_tests(self):
         """
         Iterates through the xml file looking for <test> sections
          and initializes a dict for every test case returning them in
@@ -38,18 +39,24 @@ class ParseXML(object):
          Dict structure:
             { 'testName' : { 'details' : {}, 'results' : {} }
         """
+        logger = logging.getLogger(__name__)
+        logger.debug('Initializing empty tests dict')
         tests_dict = dict()
+
+        logger.debug('Iterating through suiteTest section')
         for test in self.root.iter('suiteTest'):
             tests_dict[test.text.lower()] = {
                 'details': {},
                 'results': {}
             }
 
-            if get_details:
-                for test_case in self.root.iter('test'):
-                    if test_case.find('testName').text == test.text:
-                        tests_dict[test.text.lower()]['details'] = \
-                            self.get_test_details(test_case)
+            for test_case in self.root.iter('test'):
+                # Check if testCase was not commented out
+                if test_case.find('testName').text == test.text:
+                    logger.debug('Getting test details for - %s', test.text)
+                    tests_dict[test.text.lower()]['details'] = \
+                        self.get_test_details(test_case)
+
         return tests_dict
 
     @staticmethod
@@ -61,6 +68,7 @@ class ParseXML(object):
          Dict structure:
             { 'testProperty' : [ value(s) ] }
         """
+
         test_dict = dict()
         for test_property in test_root.getchildren():
             if test_property.tag == 'testName':
@@ -90,6 +98,8 @@ class ParseXML(object):
             vm_name: { vm_details }
         }
         """
+        logger = logging.getLogger(__name__)
+        logger.debug('Getting VM details from XML files')
         vm_dict = dict()
         for machine in self.root.iter('vm'):
             vm_dict[machine.find('vmName').text] = {
@@ -122,7 +132,9 @@ class ParseXML(object):
             vm_property: value
         }
         """
+        logger = logging.getLogger(__name__)
         try:
+            logger.debug('Converting XML string from PS Command')
             root = ElementTree.fromstring(xml_string.strip())
             prop_name = ''
             prop_value = ''
@@ -133,9 +145,9 @@ class ParseXML(object):
                     prop_value = child[0].text
 
             return prop_name, prop_value
-        except Exception as ex:
-            print(xml_string)
-            print(ex.__class__.__name__)
+        except Exception, ex:
+            logger.error('Failed to parse XML string,', exc_info=True)
+            return False
 
 
 def parse_log_file(log_file, test_results):
@@ -146,21 +158,26 @@ def parse_log_file(log_file, test_results):
      the xml file
     """
     # Go through log file until the final results part
+    logger = logging.getLogger(__name__)
+    logger.debug('Iterating through %s file until the test results part', log_file)
     with open(log_file, 'r') as log_file:
         for line in log_file:
             if line.strip() == 'Test Results Summary':
                 break
 
         # Get timestamp
+        logging.debug('Saving timestamp of test run')
         test_results['timestamp'] = re.search(
             '([0-9/]+) ([0-9:]+)',
             log_file.next()).group(0)
         vm_name = ""
+        logging.debug('Timestamp - %s', test_results['timestamp'])
 
         for line in log_file:
             line = line.strip()
             if re.search("^VM:", line) and len(line.split()) == 2:
                 vm_name = line.split()[1]
+                logging.debug('Saving VM name - %s', vm_name)
                 # Check if there are any details about the VM
                 try:
                     test_results['vms'][vm_name]['TestLocation'] = 'Hyper-V'
@@ -169,23 +186,29 @@ def parse_log_file(log_file, test_results):
                     test_results['vms'][vm_name]['TestLocation'] = 'Azure'
 
             # TODO: Find better regex pattern
-            # TODO: Get log file path in case of test failed
             elif re.search('^Test', line) and \
                     re.search('(Success|Failed)', line):
                 test = line.split()
                 try:
                     test_results['tests'][test[1].lower()]['results'][vm_name] = \
                         test[3]
+                    logging.debug('Saving test result for %s - %s',
+                                  test[1].lower(), test[3])
                 except KeyError:
-                    print('Test %s was not listed in Test Suites section.'
-                          'It will be ignored from the final results' % test)
+                    logging.debug('Test %s was not listed in Test Suites section. '
+                                  'It will be ignored from the final results', test)
             elif re.search('^OS', line):
                 test_results['vms'][vm_name]['hostOSVersion'] = \
                     line.split(':')[1].strip()
+                logging.debug('Saving Host OS Version - %s',
+                              test_results['vms'][vm_name]['hostOSVersion'])
             elif re.search('^Server', line):
                 test_results['vms'][vm_name]['hvServer'] = \
                     line.split(':')[1].strip()
+                logging.debug('Saving server location - %s',
+                              test_results['vms'][vm_name]['hvServer'])
             elif re.search('^Logs can be found at', line):
                 test_results['logDir'] = line.split()[-1]
+                logging.debug('Saving log folder path - %s', test_results['logDir'])
 
     return test_results

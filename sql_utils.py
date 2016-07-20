@@ -23,13 +23,13 @@ def init_connection():
     return connection, connection.cursor()
 
 
-def get_connection_string():
+def get_connection_string(env_file='config/.env'):
     """
     Constructs the connection string necessary
     for the Azure DB using constants saved in
     config/.env
     """
-    env.read_envfile('config/.env')
+    env.read_envfile(env_file)
 
     connection_string = Template("Driver={$SQLDriver};"
                                  "Server=$server,$port;"

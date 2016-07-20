@@ -15,8 +15,10 @@ limitations under the License.
 
 import subprocess
 from envparse import env
+import logging
 
 
+# TODO : Refactor by using a single method for sending a command
 def manage_vm(action, vm_name, hv_server):
     """
     Method starts, stops or checks a vm depending on
@@ -25,6 +27,8 @@ def manage_vm(action, vm_name, hv_server):
     It returns true if the command has been run successfully
     or false if any errors occurred
     """
+    logger = logging.getLogger(__name__)
+    logging.debug('Executing %s command on %s', action, vm_name)
     command = ''
     if action == 'start':
         command = 'start-vm'
@@ -37,7 +41,7 @@ def manage_vm(action, vm_name, hv_server):
         ], stdout=subprocess.PIPE)
 
         stdout_data, stderr_data = ps_command.communicate()
-
+        logger.debug('%s command output %s', action, stdout_data)
         if ps_command.returncode != 0:
             raise RuntimeError("Command failed, status code %s stdout %r stderr %r" % (
                 ps_command.returncode, stdout_data, stderr_data
@@ -54,7 +58,7 @@ def manage_vm(action, vm_name, hv_server):
     ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     stdout_data, stderr_data = ps_command.communicate()
-
+    logger.debug('Command output %s - %s', stdout_data, stderr_data)
     if ps_command.returncode != 0:
         raise RuntimeError("Command failed, status code %s stdout %r stderr %r" % (
             ps_command.returncode, stdout_data, stderr_data
@@ -71,6 +75,8 @@ def get_vm_details(vm_name, hv_server):
      The method returns a string containing XML formatted
      content
     """
+    logger = logging.getLogger(__name__)
+    logger.debug('Excuting Get-WmiObject command on %s', vm_name)
     query_strings = [
         '"' + "Select * From Msvm_ComputerSystem where ElementName='" +
         vm_name + "'" + '";',
@@ -88,6 +94,7 @@ def get_vm_details(vm_name, hv_server):
 
     stdout_data, stderr_data = ps_command.communicate()
 
+    logger.debug('Command output %s - %s', stdout_data, stderr_data)
     if ps_command.returncode != 0:
         raise RuntimeError("Command failed, status code %s stdout %r stderr %r" % (
             ps_command.returncode, stdout_data, stderr_data
