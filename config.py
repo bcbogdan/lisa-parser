@@ -23,7 +23,7 @@ import datetime
 def parse_arguments(arg_list):
     xml_file = ''
     log_file = ''
-    env_file = ''
+    env_file = 'config/.env'
     log_level = 2
 
     try:
@@ -47,7 +47,22 @@ def parse_arguments(arg_list):
         elif opt in ('-a', "--dbg"):
             log_level = arg
 
-    return xml_file, log_file, env_file, log_level
+    return {
+        'xml': xml_file,
+        'log': log_file,
+        'env': env_file,
+        'level': log_level
+    }
+
+
+def validate_input(parsed_arguments):
+    if not parsed_arguments['xml'] or \
+            not parsed_arguments['log']:
+        return False
+
+    if not os.path.exists(parsed_arguments['xml']) or \
+            not os.path.exists(parsed_arguments['log']):
+        return False
 
 
 def setup_logging(
@@ -58,8 +73,16 @@ def setup_logging(
     """
     Setup logging configuration
     """
+    if default_level == 1:
+        level = logging.WARNING
+    elif default_level == 2:
+        level = logging.INFO
+    elif default_level == 3:
+        level = logging.DEBUG
+    else:
+        level = default_level
+
     path = default_path
-    level = default_level
     value = os.getenv(env_key, None)
     log_folder = 'logs'
 

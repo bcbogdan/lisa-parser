@@ -20,7 +20,7 @@ import sys
 from envparse import env
 from lisa_parser import ParseXML
 from lisa_parser import parse_log_file
-import parse_arguments
+import config
 import sql_utils
 import vm_utils
 
@@ -168,27 +168,25 @@ def main(args):
     """
     The main entry point of the application
     """
-    parse_arguments.setup_logging(default_level=logging.DEBUG)
+    # Parse arguments and check if they exist
+    parsed_arguments = config.parse_arguments(args)
+    if not config.validate_input(parsed_arguments):
+        print('Invalid command line arguments')
+        sys.exit(0)
+
+    config.setup_logging(default_level=parsed_arguments['level'])
+
     logger = logging.getLogger(__name__)
 
     logger.debug('Parsing env variables')
-    env.read_envfile('config/.env')
-    # Parse arguments and check if they exist
+    env.read_envfile(parsed_arguments['env'])
 
-    logger.debug('Parsing command line arguments')
-    input_files = parse_arguments.parse_arguments(args)
-
-    print(input_files)
-    sys.exit(0)
-
-    if not all(input_files):
-        print('Invalid command line arguments')
-        sys.exit(2)
+    print(parsed_arguments)
 
     logger.info('Creating tests dictionary')
     tests_object = create_tests_dict(
-        input_files[0],
-        input_files[1]
+        parsed_arguments['xml'],
+        parsed_arguments['log']
     )
 
     # Parse values to be inserted
