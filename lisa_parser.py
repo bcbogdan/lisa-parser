@@ -21,6 +21,8 @@ except ImportError:
 import re
 import logging
 
+logger = logging.getLogger(__name__)
+
 
 class ParseXML(object):
     """
@@ -39,7 +41,6 @@ class ParseXML(object):
          Dict structure:
             { 'testName' : { 'details' : {}, 'results' : {} }
         """
-        logger = logging.getLogger(__name__)
         logger.debug('Initializing empty tests dict')
         tests_dict = dict()
 
@@ -98,7 +99,6 @@ class ParseXML(object):
             vm_name: { vm_details }
         }
         """
-        logger = logging.getLogger(__name__)
         logger.debug('Getting VM details from XML files')
         vm_dict = dict()
         for machine in self.root.iter('vm'):
@@ -132,7 +132,6 @@ class ParseXML(object):
             vm_property: value
         }
         """
-        logger = logging.getLogger(__name__)
         try:
             logger.debug('Converting XML string from PS Command')
             root = ElementTree.fromstring(xml_string.strip())
@@ -158,7 +157,6 @@ def parse_log_file(log_file, test_results):
      the xml file
     """
     # Go through log file until the final results part
-    logger = logging.getLogger(__name__)
     logger.debug('Iterating through %s file until the test results part', log_file)
     with open(log_file, 'r') as log_file:
         for line in log_file:
