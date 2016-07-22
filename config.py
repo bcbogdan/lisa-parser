@@ -64,6 +64,8 @@ def validate_input(parsed_arguments):
             not os.path.exists(parsed_arguments['log']):
         return False
 
+    return True
+
 
 def setup_logging(
         default_path='config/log_config.json',
@@ -80,7 +82,7 @@ def setup_logging(
     elif default_level == 3:
         level = logging.DEBUG
     else:
-        level = default_level
+        level = logging.INFO
 
     path = default_path
     value = os.getenv(env_key, None)
