@@ -25,23 +25,28 @@ import sql_utils
 import vm_utils
 
 
+logger = logging.getLogger(__name__)
+
+
 def create_tests_list(tests_dict):
     """
     Method creates a list of dicts with keys that
     match the column names from the SQL Server table,
     each dict corresponding to a table line
     """
-    logger = logging.getLogger(__name__)
-    logger.debug('Creating the list with the lines to be inserted')
+    logger.debug('Creating a list with the lines to be inserted')
     tests_list = list()
     for test_name, test_props in tests_dict['tests'].iteritems():
         for name, details in tests_dict['vms'].iteritems():
             test_dict = dict()
 
             # Getting test id from tests dict
-            # for param in test_props['details']['testparams']:
-            #     if param[0] == 'TC_COVERED':
-            #         test_dict['TestID'] = param[1]
+            try:
+                for param in test_props['details']['testparams']:
+                    if param[0] == 'TC_COVERED':
+                        test_dict['TestID'] = param[1]
+            except KeyError:
+                logger.warning('No params found for %s', test_name)
 
             test_dict['TestLocation'] = details['TestLocation']
             test_dict['HostName'] = details['hvServer']
@@ -80,30 +85,48 @@ def format_date(test_date):
     )
 
 
+def parse_cmd_output(cmd_ouput):
+    vm_info = {}
+    for value in cmd_ouput.split('\r\n')[:-1]:
+        result_tuple = ParseXML.parse_from_string(value)
+        vm_info.update({
+            result_tuple[0]: result_tuple[1]
+        })
+    return vm_info
+
+
 # TODO: Find a better name for method
-def get_vm_info(vms_dict):
+def get_vm_info(vms_dict, wait_to_boot, timeout=180):
     """
     Method calls the get_vm_details function in order
     to find the Kernel version and Distro Name from the vm
     and saves them in the vm dictionary
     """
-    logger = logging.getLogger(__name__)
+
     for vm_name, vm_details in vms_dict.iteritems():
-        try:
-            vm_values = vm_utils.get_vm_details(vm_name, vm_details['hvServer'])
-        except RuntimeError, e:
-            logger.error('Error on running command', exc_info=True)
-            sys.exit(0)
+        logging.debug('Running PS command to get details for %s', vm_name)
+        vm_values = vm_utils.run_cmd('vm-info', vm_name, vm_details['hvServer'])
+        is_booting = True
 
-        if not vm_values:
-            logger.error('Unable to get vm details for %s', vm_name)
-            sys.exit(2)
+        if wait_to_boot[vm_name]:
+            start = time.time()
 
-        vm_info = {}
+        while is_booting:
+            vm_info = parse_cmd_output(vm_values)
 
-        # Stop VM
-        logger.info('Stopping %s', vm_name)
-        vm_utils.manage_vm('stop', vm_name, vm_details['hvServer'])
+            if 'OSName' in vm_info.keys():
+                is_booting = False
+                continue
+
+            current_time = time.time()
+            if int(current_time - start) > timeout:
+                logger.error('Unable to get details for %s', vm_name)
+                sys.exit(0)
+
+            logging.debug('Running PS command to get details for %s', vm_name)
+            vm_values = vm_utils.run_cmd(
+                'vm-info', vm_name, vm_details['hvServer']
+            )
 
         logger.debug('Parsing xml output of PS command')
         for value in vm_values.split('\r\n')[:-1]:
@@ -126,7 +149,6 @@ def create_tests_dict(xml_file, log_file):
      in order for it to be processed for db insertion
     """
     # Parsing given xml and log files
-    logger = logging.getLogger(__name__)
     logger.info('Parsing XML file - %s', xml_file)
     xml_parser = ParseXML(xml_file)
     tests_object = xml_parser()
@@ -135,31 +157,26 @@ def create_tests_dict(xml_file, log_file):
 
     # Getting more VM details from KVP exchange
     logger.info('Getting VM details using PS Script')
-    is_booting = False
+    wait_to_boot = {}
     for vm_name, vm_details in tests_object['vms'].iteritems():
         logging.debug('Checking %s status', vm_name)
-        try:
-            vm_state = vm_utils.manage_vm('check', vm_name, vm_details['hvServer'])
-        except RuntimeError, ex:
-            logger.error('Error on command for checking vm', exc_info=True)
-            sys.exit(0)
+        vm_state = vm_utils.run_cmd('check', vm_name, vm_details['hvServer'])
 
         if vm_state.split('-----')[1].strip() == 'Off':
             logging.info('Starting %s', vm_name)
-            try:
-                vm_utils.manage_vm('start', vm_name, vm_details['hvServer'])
-                is_booting = True
-            except RuntimeError, ex:
-                logger.error('Error on command for starting vm', exc_info=True)
-                sys.exit(0)
+            vm_utils.run_cmd('start', vm_name, vm_details['hvServer'])
+            wait_to_boot[vm_name] = True
+        else:
+            wait_to_boot[vm_name] = False
 
-    if is_booting:
-        # TODO: Check for better option to see if VM has booted
-        wait = 60
-        logging.info('Waiting %d seconds for VMs to boot', wait)
-        time.sleep(wait)
+    tests_object['vms'] = get_vm_info(tests_object['vms'], wait_to_boot)
 
-    tests_object['vms'] = get_vm_info(tests_object['vms'])
+    # Stop VM
+    logger.info('Running stop vm command')
+    [
+        vm_utils.run_cmd('stop', vm_name, vm_details['hvServer'])
+        for vm_name, vm_details in tests_object['vms'].iteritems()
+    ]
 
     return tests_object
 
@@ -174,9 +191,9 @@ def main(args):
         print('Invalid command line arguments')
         sys.exit(0)
 
-    config.setup_logging(default_level=parsed_arguments['level'])
-
-    logger = logging.getLogger(__name__)
+    config.setup_logging(
+        default_level=int(parsed_arguments['level'])
+    )
 
     logger.debug('Parsing env variables')
     env.read_envfile(parsed_arguments['env'])

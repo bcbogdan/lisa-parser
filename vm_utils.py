@@ -16,88 +16,66 @@ limitations under the License.
 import subprocess
 from envparse import env
 import logging
+import sys
+
+logger = logging.getLogger(__name__)
 
 
-# TODO : Refactor by using a single method for sending a command
-def manage_vm(action, vm_name, hv_server):
-    """
-    Method starts, stops or checks a vm depending on
-    the action that it has received
+def execute_command(command_arguments):
+    ps_command = subprocess.Popen(
+        command_arguments,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE
+    )
 
-    It returns true if the command has been run successfully
-    or false if any errors occurred
-    """
-    logger = logging.getLogger(__name__)
-    logging.debug('Executing %s command on %s', action, vm_name)
-    command = ''
-    if action == 'start':
-        command = 'start-vm'
-    elif action == 'stop':
-        command = 'stop-vm'
-    elif action == 'check':
-        ps_command = subprocess.Popen([
-            env.str('PSPath'), 'get-vm', '-Name',
-            vm_name, '-ComputerName', hv_server, '|', 'Select', 'State'
-        ], stdout=subprocess.PIPE)
+    stdout_data, stderr_data = ps_command.communicate()
 
-        stdout_data, stderr_data = ps_command.communicate()
-        logger.debug('%s command output %s', action, stdout_data)
-        if ps_command.returncode != 0:
-            raise RuntimeError("Command failed, status code %s stdout %r stderr %r" % (
+    logger.debug('Command output %s', stdout_data)
+
+    if ps_command.returncode != 0:
+        raise RuntimeError(
+            "Command failed, status code %s stdout %r stderr %r" % (
                 ps_command.returncode, stdout_data, stderr_data
-            ))
-        else:
-            return stdout_data
-
-    else:
-        return False
-
-    ps_command = subprocess.Popen([
-        env.str('PSPath'), command, '-Name', vm_name,
-        '-ComputerName ', hv_server
-    ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-    stdout_data, stderr_data = ps_command.communicate()
-    logger.debug('Command output %s - %s', stdout_data, stderr_data)
-    if ps_command.returncode != 0:
-        raise RuntimeError("Command failed, status code %s stdout %r stderr %r" % (
-            ps_command.returncode, stdout_data, stderr_data
-        ))
+            )
+        )
     else:
         return stdout_data
 
 
-def get_vm_details(vm_name, hv_server):
-    """
-    Method used to execute a series of PS commands
-     in order to retrieve info on the selected vm
-
-     The method returns a string containing XML formatted
-     content
-    """
-    logger = logging.getLogger(__name__)
-    logger.debug('Excuting Get-WmiObject command on %s', vm_name)
-    query_strings = [
-        '"' + "Select * From Msvm_ComputerSystem where ElementName='" +
-        vm_name + "'" + '";',
-        '"' + "Associators of {$vm} Where AssocClass=Msvm_SystemDevice "
-              "ResultClass=Msvm_KvpExchangeComponent" + '"'
+def run_cmd(cmd_type, vm_name, hv_server):
+    cmd_args = [
+        env.str('PSPath'), 'cmd', '-Name', vm_name, '-ComputerName',
+        hv_server
     ]
-    ps_command = subprocess.Popen([
-        env.str('PSPath'), '$vm', '=',
-        'Get-WmiObject', '-ComputerName', "'" + hv_server + "'",
-        '-Namespace', "root\\virtualization\\v2", '-Query', query_strings[0],
-        '(', 'Get-WmiObject', '-ComputerName', "'" + hv_server + "'",
-        '-Namespace', 'root\\virtualization\\v2', '-Query',
-        query_strings[1], ').GuestIntrinsicExchangeItems'
-    ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-    stdout_data, stderr_data = ps_command.communicate()
+    if cmd_type == 'start':
+        cmd_args[1] = 'start-vm'
+    elif cmd_type == 'stop':
+        cmd_args[1] = 'stop-vm'
+    elif cmd_type == 'check':
+        cmd_args[1] = 'get-vm'
+        cmd_args.extend([
+            '|', 'Select', 'State'
+        ])
+    elif cmd_type == 'vm-info':
+        query_strings = [
+            '"' + "Select * From Msvm_ComputerSystem where ElementName='" +
+            vm_name + "'" + '";',
+            '"' + "Associators of {$vm} Where AssocClass=Msvm_SystemDevice "
+            "ResultClass=Msvm_KvpExchangeComponent" + '"'
+        ]
 
-    logger.debug('Command output %s - %s', stdout_data, stderr_data)
-    if ps_command.returncode != 0:
-        raise RuntimeError("Command failed, status code %s stdout %r stderr %r" % (
-            ps_command.returncode, stdout_data, stderr_data
-        ))
-    else:
-        return stdout_data
+        cmd_args = [
+            env.str('PSPath'), '$vm', '=', 'Get-WmiObject', '-ComputerName',
+            hv_server, '-Namespace', "root\\virtualization\\v2", '-Query',
+            query_strings[0], '(', 'Get-WmiObject', '-ComputerName', hv_server,
+            '-Namespace', 'root\\virtualization\\v2', '-Query',
+            query_strings[1], ').GuestIntrinsicExchangeItems'
+        ]
+
+    try:
+        return execute_command(cmd_args)
+    except RuntimeError, e:
+        logger.error('Error on running command', exc_info=True)
+        logger.info('Terminating execution')
+        sys.exit(0)
