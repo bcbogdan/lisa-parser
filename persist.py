@@ -61,6 +61,11 @@ def create_tests_list(tests_dict):
                                test_name, name)
                 continue
 
+            try:
+                test_dict['LISVersion'] = test_props['lisVersion']
+            except KeyError, ex:
+                logger.warning('LIS Version not found in XML file')
+            
             test_dict['TestCaseName'] = test_name
             test_dict['TestArea'] = tests_dict['testSuite']
             test_dict['TestDate'] = format_date(tests_dict['timestamp'])
@@ -95,7 +100,6 @@ def parse_cmd_output(cmd_ouput):
     return vm_info
 
 
-# TODO: Find a better name for method
 def get_vm_info(vms_dict, wait_to_boot, timeout=180):
     """
     Method calls the get_vm_details function in order

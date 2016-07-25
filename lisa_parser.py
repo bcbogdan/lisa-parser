@@ -208,5 +208,8 @@ def parse_log_file(log_file, test_results):
             elif re.search('^Logs can be found at', line):
                 test_results['logDir'] = line.split()[-1]
                 logging.debug('Saving log folder path - %s', test_results['logDir'])
+            elif re.search('^LIS Version', line):
+                test_results['lisVersion'] = line.split(':')[1].strip()
+                logging.debug('Saving LIS Version - %s', test_results['lisVersion'])
 
     return test_results
