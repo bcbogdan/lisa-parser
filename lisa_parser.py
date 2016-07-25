@@ -185,7 +185,7 @@ def parse_log_file(log_file, test_results):
 
             # TODO: Find better regex pattern
             elif re.search('^Test', line) and \
-                    re.search('(Success|Failed)', line):
+                    re.search('(Success|Failed|Aborted)', line):
                 test = line.split()
                 try:
                     test_results['tests'][test[1].lower()]['results'][vm_name] = \
