@@ -65,7 +65,7 @@ def create_tests_list(tests_dict):
                 test_dict['LISVersion'] = test_props['lisVersion']
             except KeyError, ex:
                 logger.warning('LIS Version not found in XML file')
-            
+
             test_dict['TestCaseName'] = test_name
             test_dict['TestArea'] = tests_dict['testSuite']
             test_dict['TestDate'] = format_date(tests_dict['timestamp'])

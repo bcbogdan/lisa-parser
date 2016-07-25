@@ -39,7 +39,7 @@ def get_connection_string(env_file='config/.env'):
                                  "Encrypt=$encrypt;"
                                  "TrustServerCertificate=$certificate;"
                                  "Connection Timeout=$timeout;")
-
+    
     return connection_string.substitute(
         SQLDriver=env.str('Driver'),
         server=env.str('Server'),
