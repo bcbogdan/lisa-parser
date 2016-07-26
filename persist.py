@@ -159,7 +159,6 @@ def create_tests_dict(xml_file, log_file, run_vm_commands=True):
     logger.info('Parsing XML file - %s', xml_file)
     xml_parser = ParseXML(xml_file)
     tests_object = xml_parser()
-    logger.info('Parsing log file - %s', log_file)
     parse_log_file(log_file, tests_object)
 
     if run_vm_commands:
@@ -207,8 +206,6 @@ def main(args):
 
     logger.debug('Parsing env variables')
     env.read_envfile(parsed_arguments['env'])
-
-    print(parsed_arguments)
 
     logger.info('Creating tests dictionary')
     tests_object = create_tests_dict(

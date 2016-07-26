@@ -53,7 +53,7 @@ class ParseXML(object):
 
             for test_case in self.root.iter('test'):
                 # Check if testCase was not commented out
-                if test_case.find('testName').text == test.text:
+                if test_case.find('testName').text.lower() == test.text.lower():
                     logger.debug('Getting test details for - %s', test.text)
                     tests_dict[test.text.lower()]['details'] = \
                         self.get_test_details(test_case)
@@ -75,18 +75,18 @@ class ParseXML(object):
             if test_property.tag == 'testName':
                 continue
             elif not test_property.getchildren():
-                test_dict[test_property.tag] = \
+                test_dict[test_property.tag.lower()] = \
                     test_property.text.strip().split()
             else:
-                test_dict[test_property.tag] = list()
+                test_dict[test_property.tag.lower()] = list()
                 for item in test_property.getchildren():
-                    if test_property.tag == 'testparams':
+                    if test_property.tag.lower() == 'testparams':
                         parameter = item.text.split('=')
-                        test_dict[test_property.tag].append(
+                        test_dict[test_property.tag.lower()].append(
                             (parameter[0], parameter[1])
                         )
                     else:
-                        test_dict[test_property.tag].append(item.text)
+                        test_dict[test_property.tag.lower()].append(item.text)
 
         return test_dict
 
