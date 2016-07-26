@@ -25,10 +25,11 @@ def parse_arguments(arg_list):
     log_file = ''
     env_file = 'config/.env'
     log_level = 2
+    vm_info = True
 
     try:
         opts, args = getopt.getopt(arg_list,
-                                   "he:x:l:a:", ["xmlfile=", "logfile=", "dbg=", "env="])
+                                   "he:x:l:d:v", ["xmlfile=", "logfile=", "dbg=", "env=", "vminfo="])
     except getopt.GetoptError:
         print('Invalid command line arguments:')
         print('persist.py -x <XmlFile> -l <LogFile>')
@@ -44,14 +45,17 @@ def parse_arguments(arg_list):
             log_file = arg
         elif opt in ('-e', "--env"):
             env_file = arg
-        elif opt in ('-a', "--dbg"):
+        elif opt in ('-d', "--dbg"):
             log_level = arg
+        elif opt in ('-v', "--vminfo"):
+            vm_info = False
 
     return {
         'xml': xml_file,
         'log': log_file,
         'env': env_file,
-        'level': log_level
+        'level': log_level,
+        'vmInfo': vm_info
     }
 
 

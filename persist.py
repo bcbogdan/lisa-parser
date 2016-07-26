@@ -24,7 +24,6 @@ import config
 import sql_utils
 import vm_utils
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -36,6 +35,7 @@ def create_tests_list(tests_dict):
     """
     logger.debug('Creating a list with the lines to be inserted')
     tests_list = list()
+    # TODO : Check not to save empty values
     for test_name, test_props in tests_dict['tests'].iteritems():
         for name, details in tests_dict['vms'].iteritems():
             test_dict = dict()
@@ -69,9 +69,12 @@ def create_tests_list(tests_dict):
             test_dict['TestCaseName'] = test_name
             test_dict['TestArea'] = tests_dict['testSuite']
             test_dict['TestDate'] = format_date(tests_dict['timestamp'])
-            test_dict['GuestOSDistro'] = details['OSName']
-            test_dict['KernelVersion'] = details['OSBuildNumber']
 
+            try:
+                test_dict['GuestOSDistro'] = details['OSName']
+                test_dict['KernelVersion'] = details['OSBuildNumber']
+            except KeyError, ex:
+                logger.warning('Not saving distro and kernel version for test %s', test_name)
             logger.debug(test_dict)
             tests_list.append(test_dict)
 
@@ -147,7 +150,7 @@ def get_vm_info(vms_dict, wait_to_boot, timeout=180):
     return vms_dict
 
 
-def create_tests_dict(xml_file, log_file):
+def create_tests_dict(xml_file, log_file, run_vm_commands=True):
     """
     The method creates the general tests dictionary
      in order for it to be processed for db insertion
@@ -159,28 +162,30 @@ def create_tests_dict(xml_file, log_file):
     logger.info('Parsing log file - %s', log_file)
     parse_log_file(log_file, tests_object)
 
-    # Getting more VM details from KVP exchange
-    logger.info('Getting VM details using PS Script')
-    wait_to_boot = {}
-    for vm_name, vm_details in tests_object['vms'].iteritems():
-        logging.debug('Checking %s status', vm_name)
-        vm_state = vm_utils.run_cmd('check', vm_name, vm_details['hvServer'])
+    if run_vm_commands:
+        # Getting more VM details from KVP exchange
+        # TODO : Section should be handled by separate method
+        logger.info('Getting VM details using PS Script')
+        wait_to_boot = {}
+        for vm_name, vm_details in tests_object['vms'].iteritems():
+            logging.debug('Checking %s status', vm_name)
+            vm_state = vm_utils.run_cmd('check', vm_name, vm_details['hvServer'])
 
-        if vm_state.split('-----')[1].strip() == 'Off':
-            logging.info('Starting %s', vm_name)
-            vm_utils.run_cmd('start', vm_name, vm_details['hvServer'])
-            wait_to_boot[vm_name] = True
-        else:
-            wait_to_boot[vm_name] = False
+            if vm_state.split('-----')[1].strip() == 'Off':
+                logging.info('Starting %s', vm_name)
+                vm_utils.run_cmd('start', vm_name, vm_details['hvServer'])
+                wait_to_boot[vm_name] = True
+            else:
+                wait_to_boot[vm_name] = False
 
-    tests_object['vms'] = get_vm_info(tests_object['vms'], wait_to_boot)
+        tests_object['vms'] = get_vm_info(tests_object['vms'], wait_to_boot)
 
-    # Stop VM
-    logger.info('Running stop vm command')
-    [
-        vm_utils.run_cmd('stop', vm_name, vm_details['hvServer'])
-        for vm_name, vm_details in tests_object['vms'].iteritems()
-    ]
+        # Stop VM
+        logger.info('Running stop vm command')
+        [
+            vm_utils.run_cmd('stop', vm_name, vm_details['hvServer'])
+            for vm_name, vm_details in tests_object['vms'].iteritems()
+        ]
 
     return tests_object
 
@@ -191,6 +196,7 @@ def main(args):
     """
     # Parse arguments and check if they exist
     parsed_arguments = config.parse_arguments(args)
+
     if not config.validate_input(parsed_arguments):
         print('Invalid command line arguments')
         sys.exit(0)
@@ -207,7 +213,8 @@ def main(args):
     logger.info('Creating tests dictionary')
     tests_object = create_tests_dict(
         parsed_arguments['xml'],
-        parsed_arguments['log']
+        parsed_arguments['log'],
+        parsed_arguments['vmInfo']
     )
 
     # Parse values to be inserted
