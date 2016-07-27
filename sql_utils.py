@@ -53,7 +53,7 @@ def get_connection_string(env_file='config/.env'):
     )
 
 
-def insert_values(cursor, table_name, values_dict):
+def insert_values(cursor, values_dict):
     """
     Executes an insert command on the db using the values
      provided by de value_dict in which the keys represent
@@ -64,7 +64,7 @@ def insert_values(cursor, table_name, values_dict):
                               ' values($values)')
 
     cursor.execute(insert_command.substitute(
-        tableName=table_name,
+        tableName=env.str('TableName'),
         columns=', '.join(values_dict.keys()),
         values=', '.join("'" + item + "'" for item in values_dict.values())
     ))

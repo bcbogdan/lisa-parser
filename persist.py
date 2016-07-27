@@ -224,7 +224,7 @@ def main(args):
 
     logger.info('Executing insertion commands')
     for table_line in insert_values:
-        sql_utils.insert_values(db_cursor, 'TestResults', table_line)
+        sql_utils.insert_values(db_cursor, table_line)
 
     logger.info('Committing changes to the database')
     db_connection.commit()

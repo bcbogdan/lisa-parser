@@ -2,6 +2,7 @@ Driver='SQL Driver name'
 Server=ServerAddress
 Port=1433
 Database=db_name
+TableName=table_name
 User=db_user
 Password=db_password
 Encrypt=yes|no
