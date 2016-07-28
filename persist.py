@@ -40,6 +40,13 @@ def create_tests_list(tests_dict):
         for name, details in tests_dict['vms'].iteritems():
             test_dict = dict()
 
+            try:
+                test_dict['TestResult'] = test_props['results'][name]
+                test_dict['LogPath'] = tests_dict['logDir']
+            except KeyError:
+                logger.warning('Test result not found for %s on vm %s',
+                               test_name, name)
+                continue
             # Getting test id from tests dict
             try:
                 for param in test_props['details']['testparams']:
@@ -54,17 +61,9 @@ def create_tests_list(tests_dict):
             test_dict['GuestOSType'] = details['os']
 
             try:
-                test_dict['TestResult'] = test_props['results'][name]
-                test_dict['LogPath'] = tests_dict['logDir']
-            except KeyError, ex:
-                logger.warning('Test result not found for %s on vm %s',
-                               test_name, name)
-                continue
-
-            try:
                 test_dict['LISVersion'] = test_props['lisVersion']
-            except KeyError, ex:
-                logger.warning('LIS Version not found in XML file')
+            except KeyError:
+                pass
 
             test_dict['TestCaseName'] = test_name
             test_dict['TestArea'] = tests_dict['testSuite']
