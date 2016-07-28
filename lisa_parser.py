@@ -172,8 +172,8 @@ def parse_log_file(log_file, test_results):
         logging.debug('Timestamp - %s', test_results['timestamp'])
 
         for line in log_file:
-            line = line.strip()
-            if re.search("^VM:", line) and len(line.split()) == 2:
+            line = line.strip().lower()
+            if re.search("^vm:", line) and len(line.split()) == 2:
                 vm_name = line.split()[1]
                 logging.debug('Saving VM name - %s', vm_name)
                 # Check if there are any details about the VM
@@ -183,9 +183,8 @@ def parse_log_file(log_file, test_results):
                     test_results['vms'][vm_name] = dict()
                     test_results['vms'][vm_name]['TestLocation'] = 'Azure'
 
-            # TODO: Find better regex pattern
-            elif re.search('^Test', line) and \
-                    re.search('(Success|Failed|Aborted)', line):
+            elif re.search('^test', line) and \
+                    re.search('(success|failed|aborted)', line):
                 test = line.split()
                 try:
                     test_results['tests'][test[1].lower()]['results'][vm_name] = \
@@ -195,20 +194,20 @@ def parse_log_file(log_file, test_results):
                 except KeyError:
                     logging.debug('Test %s was not listed in Test Suites section. '
                                   'It will be ignored from the final results', test)
-            elif re.search('^OS', line):
+            elif re.search('^os', line):
                 test_results['vms'][vm_name]['hostOSVersion'] = \
                     line.split(':')[1].strip()
                 logging.debug('Saving Host OS Version - %s',
                               test_results['vms'][vm_name]['hostOSVersion'])
-            elif re.search('^Server', line):
+            elif re.search('^server', line):
                 test_results['vms'][vm_name]['hvServer'] = \
                     line.split(':')[1].strip()
                 logging.debug('Saving server location - %s',
                               test_results['vms'][vm_name]['hvServer'])
-            elif re.search('^Logs can be found at', line):
+            elif re.search('^logs can be found at', line):
                 test_results['logDir'] = line.split()[-1]
                 logging.debug('Saving log folder path - %s', test_results['logDir'])
-            elif re.search('^LIS Version', line):
+            elif re.search('^lis version', line):
                 test_results['lisVersion'] = line.split(':')[1].strip()
                 logging.debug('Saving LIS Version - %s', test_results['lisVersion'])
 

@@ -23,7 +23,7 @@ from lisa_parser import parse_log_file
 import config
 import sql_utils
 import vm_utils
-
+import pprint
 logger = logging.getLogger(__name__)
 
 
@@ -165,6 +165,8 @@ def create_tests_dict(xml_file, log_file, run_vm_commands=True):
     tests_object = xml_parser()
     parse_log_file(log_file, tests_object)
 
+    pprint.pprint(tests_object)
+    sys.exit(0)
     if run_vm_commands:
         # Getting more VM details from KVP exchange
         # TODO : Section should be handled by separate method
