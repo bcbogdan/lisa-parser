@@ -1,2 +1,2 @@
-pyodbc=3.0.10
-envparse=0.2.0
+pyodbc<=3.0.10
+envparse<=0.2.0
