@@ -68,6 +68,9 @@ def validate_input(parsed_arguments):
             not os.path.exists(parsed_arguments['log']):
         return False
 
+    if not os.path.exists(parse_arguments['env']):
+        return False
+
     return True
 
 

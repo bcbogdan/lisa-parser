@@ -50,6 +50,8 @@ def run_cmd(cmd_type, vm_name, hv_server):
 
     if cmd_type == 'start':
         cmd_args[1] = 'start-vm'
+    elif cmd_type == 'get':
+        cmd_args[1] = 'get-vm'
     elif cmd_type == 'stop':
         cmd_args[1] = 'stop-vm'
     elif cmd_type == 'check':
@@ -75,7 +77,7 @@ def run_cmd(cmd_type, vm_name, hv_server):
 
     try:
         return execute_command(cmd_args)
-    except RuntimeError, e:
+    except RuntimeError:
         logger.error('Error on running command', exc_info=True)
         logger.info('Terminating execution')
         sys.exit(0)

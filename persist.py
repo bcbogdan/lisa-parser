@@ -171,6 +171,11 @@ def create_tests_dict(xml_file, log_file, run_vm_commands=True):
         logger.info('Getting VM details using PS Script')
         wait_to_boot = {}
         for vm_name, vm_details in tests_object['vms'].iteritems():
+            logging.debug('Checking if % exists', vm_name)
+            if not vm_utils.run_cmd('get', vm_name, vm_details['hvserver']):
+                logger.error('The VM named %s was not found. Exiting program', vm_name)
+                return False
+
             logging.debug('Checking %s status', vm_name)
             vm_state = vm_utils.run_cmd('check', vm_name, vm_details['hvServer'])
 
@@ -217,6 +222,9 @@ def main(args):
         parsed_arguments['log'],
         parsed_arguments['vmInfo']
     )
+
+    if not tests_object:
+        sys.exit(0)
 
     # Parse values to be inserted
     logger.info('Parsing tests dictionary for database insertion')
