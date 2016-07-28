@@ -8,5 +8,5 @@ Password=db_password
 Encrypt=yes|no
 TrustServerCertificate=no|yes
 ConnectionTimeout=
-PSPath=PowerShellPath
+PSPath=C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\powershell.exe
 
