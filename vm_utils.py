@@ -44,7 +44,7 @@ def execute_command(command_arguments):
 
 def run_cmd(cmd_type, vm_name, hv_server):
     cmd_args = [
-        env.str('PSPath'), 'cmd', '-Name', vm_name, '-ComputerName',
+        'powershell', 'cmd', '-Name', vm_name, '-ComputerName',
         hv_server
     ]
 
