@@ -142,7 +142,12 @@ def get_vm_info(vms_dict, wait_to_boot, timeout=180):
             })
 
         vm_details['OSBuildNumber'] = vm_info['OSBuildNumber']
-        vm_details['OSName'] = ' '.join([vm_info['OSName'], vm_info['OSMajorVersion']])
+        try:
+            vm_details['OSName'] = ' '.join([vm_info['OSName'], vm_info['OSMajorVersion']])
+        except KeyError:
+            vm_details['OSName'] = vm_info['OSName']
+            logger.warning('OSMajorVersion was not found')
+
         logger.debug('Saving %s and %s from parsed command',
                      vm_info['OSBuildNumber'], vm_details['OSName'])
 
