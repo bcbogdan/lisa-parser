@@ -13,11 +13,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+import datetime
 import getopt
-import os
 import json
 import logging.config
-import datetime
+import os
 
 
 def parse_arguments(arg_list):
@@ -29,7 +29,10 @@ def parse_arguments(arg_list):
 
     try:
         opts, args = getopt.getopt(arg_list,
-                                   "he:x:l:d:v", ["xmlfile=", "logfile=", "dbg=", "env=", "vminfo="])
+                                   "he:x:l:d:v",
+                                   ["xmlfile=", "logfile=",
+                                    "dbg=", "env=", "vminfo="]
+                                   )
     except getopt.GetoptError:
         print('Invalid command line arguments:')
         print('persist.py -x <XmlFile> -l <LogFile>')
@@ -79,8 +82,8 @@ def setup_logging(
         default_level=logging.INFO,
         env_key='LOG_CFG'
 ):
-    """
-    Setup logging configuration
+    """Setup logging configuration
+
     """
     if default_level == 1:
         level = logging.WARNING
@@ -104,19 +107,21 @@ def setup_logging(
             os.makedirs(log_folder)
 
         info_log_file = \
-            config['handlers']['info_file_handler']['filename'].split('.')
+            config['handlers']['debug_file_handler']['filename'].split('.')
 
         error_log_file = \
             config['handlers']['error_file_handler']['filename'].split('.')
 
-        config['handlers']['info_file_handler']['filename'] = \
+        config['handlers']['debug_file_handler']['filename'] = \
             os.path.join(log_folder, info_log_file[0] + '-' +
-                         datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S") +
+                         datetime.datetime.now()
+                         .strftime("%Y-%m-%d_%H-%M-%S") +
                          info_log_file[1])
 
         config['handlers']['error_file_handler']['filename'] = \
             os.path.join(log_folder, error_log_file[0] + '-' +
-                         datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S") +
+                         datetime.datetime.now()
+                         .strftime("%Y-%m-%d_%H-%M-%S") +
                          error_log_file[1])
 
         config['root']['level'] = level

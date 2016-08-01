@@ -14,201 +14,63 @@ limitations under the License.
 """
 
 from __future__ import print_function
-try:
-    import xml.etree.cElementTree as ElementTree
-except ImportError:
-    import xml.etree.ElementTree as ElementTree
-import re
+from envparse import env
+from TestRun import TestRun
+
+import config
 import logging
+import sql_utils
+import sys
 
 logger = logging.getLogger(__name__)
 
 
-class ParseXML(object):
+def main(args):
+    """The main entry point of the application
+
     """
-    Class used to parse a specific xml test suite file
-    """
-    def __init__(self, file_path):
-        self.tree = ElementTree.ElementTree(file=file_path)
-        self.root = self.tree.getroot()
+    # Parse arguments and check if they exist
+    parsed_arguments = config.parse_arguments(args)
 
-    def get_tests(self):
-        """
-        Iterates through the xml file looking for <test> sections
-         and initializes a dict for every test case returning them in
-         the end
+    if not config.validate_input(parsed_arguments):
+        print('Invalid command line arguments')
+        sys.exit(0)
 
-         Dict structure:
-            { 'testName' : { 'details' : {}, 'results' : {} }
-        """
-        logger.debug('Initializing empty tests dict')
-        tests_dict = dict()
+    config.setup_logging(
+        default_level=int(parsed_arguments['level'])
+    )
 
-        logger.debug('Iterating through suiteTest section')
-        for test in self.root.iter('suiteTest'):
-            tests_dict[test.text.lower()] = {
-                'details': {},
-                'results': {}
-            }
+    logger.debug('Parsing env variables')
+    env.read_envfile(parsed_arguments['env'])
 
-            for test_case in self.root.iter('test'):
-                # Check if testCase was not commented out
-                if test_case.find('testName').text.lower() == test.text.lower():
-                    logger.debug('Getting test details for - %s', test.text)
-                    tests_dict[test.text.lower()]['details'] = \
-                        self.get_test_details(test_case)
+    logger.info('Initializing TestRun object')
+    test_run = TestRun()
 
-        return tests_dict
+    logger.info('Parsing XML file - %s', parsed_arguments['xml'])
+    test_run.update_from_xml(parsed_arguments['xml'])
 
-    @staticmethod
-    def get_test_details(test_root):
-        """
-        Gets and an XML object and iterates through it
-         parsing the test details into a dictionary
+    logger.info('Parsing log file - %s', parsed_arguments['log'])
+    test_run.update_from_ica(parsed_arguments['log'])
 
-         Dict structure:
-            { 'testProperty' : [ value(s) ] }
-        """
+    logger.info('Getting KVP values from VM')
+    test_run.update_from_vm([
+        'OSBuildNumber', 'OSName', 'OSMajorVersion'
+    ])
 
-        test_dict = dict()
-        for test_property in test_root.getchildren():
-            if test_property.tag == 'testName':
-                continue
-            elif not test_property.getchildren():
-                test_dict[test_property.tag.lower()] = \
-                    test_property.text.strip().split()
-            else:
-                test_dict[test_property.tag.lower()] = list()
-                for item in test_property.getchildren():
-                    if test_property.tag.lower() == 'testparams':
-                        parameter = item.text.split('=')
-                        test_dict[test_property.tag.lower()].append(
-                            (parameter[0], parameter[1])
-                        )
-                    else:
-                        test_dict[test_property.tag.lower()].append(item.text)
+    # Parse values to be inserted
+    logger.info('Parsing test run for database insertion')
+    insert_values = test_run.parse_for_db_insertion()
 
-        return test_dict
+    # Connect to db and insert values in the table
+    logger.info('Initializing database connection')
+    db_connection, db_cursor = sql_utils.init_connection()
 
-    def get_vms(self):
-        """
-        Method searches for the 'vm' sections in the XML file
-        saving a dict for each vm found.
-        Dict structure:
-        {
-            vm_name: { vm_details }
-        }
-        """
-        logger.debug('Getting VM details from XML files')
-        vm_dict = dict()
-        for machine in self.root.iter('vm'):
-            vm_dict[machine.find('vmName').text] = {
-                'hvServer': machine.find('hvServer').text,
-                'sshKey': machine.find('sshKey').text,
-                'os': machine.find('os').text
-            }
+    logger.info('Executing insertion commands')
+    for table_line in insert_values:
+        sql_utils.insert_values(db_cursor, table_line)
 
-        return vm_dict
+    logger.info('Committing changes to the database')
+    db_connection.commit()
 
-    def __call__(self):
-        parsed_xml = dict()
-        parsed_xml['testSuite'] = self.root.find('testSuites').getchildren()[0]\
-            .find('suiteName').text
-        parsed_xml['tests'] = self.get_tests()
-        parsed_xml['vms'] = self.get_vms()
-
-        return parsed_xml
-
-    # TODO: Narrow exception field
-    @staticmethod
-    def parse_from_string(xml_string):
-        """
-        Static method that parses xml content from a string
-        The method is used to parse the output of the PS command
-        that is sent to the vm in order to get more details
-
-        It returns a dict with the following structure:
-        {
-            vm_property: value
-        }
-        """
-        try:
-            logger.debug('Converting XML string from PS Command')
-            root = ElementTree.fromstring(xml_string.strip())
-            prop_name = ''
-            prop_value = ''
-            for child in root:
-                if child.attrib['NAME'] == 'Name':
-                    prop_name = child[0].text
-                elif child.attrib['NAME'] == 'Data':
-                    prop_value = child[0].text
-
-            return prop_name, prop_value
-        except Exception, ex:
-            logger.error('Failed to parse XML string,', exc_info=True)
-            return False
-
-
-def parse_log_file(log_file, test_results):
-    """
-    Parses through the final log file, ica.log,
-     looking for the test results and test timestamp
-     and saving the in the previously created object from
-     the xml file
-    """
-    # Go through log file until the final results part
-    logger.debug('Iterating through %s file until the test results part', log_file)
-    with open(log_file, 'r') as log_file:
-        for line in log_file:
-            if line.strip() == 'Test Results Summary':
-                break
-
-        # Get timestamp
-        logging.debug('Saving timestamp of test run')
-        test_results['timestamp'] = re.search(
-            '([0-9/]+) ([0-9:]+)',
-            log_file.next()).group(0)
-        vm_name = ""
-        logging.debug('Timestamp - %s', test_results['timestamp'])
-
-        for line in log_file:
-            line = line.strip().lower()
-            if re.search("^vm:", line) and len(line.split()) == 2:
-                vm_name = line.split()[1]
-                logging.debug('Saving VM name - %s', vm_name)
-                # Check if there are any details about the VM
-                try:
-                    test_results['vms'][vm_name]['TestLocation'] = 'Hyper-V'
-                except KeyError:
-                    test_results['vms'][vm_name] = dict()
-                    test_results['vms'][vm_name]['TestLocation'] = 'Azure'
-
-            elif re.search('^test', line) and \
-                    re.search('(success|failed|aborted)', line):
-                test = line.split()
-                try:
-                    test_results['tests'][test[1].lower()]['results'][vm_name] = \
-                        test[3]
-                    logging.debug('Saving test result for %s - %s',
-                                  test[1].lower(), test[3])
-                except KeyError:
-                    logging.debug('Test %s was not listed in Test Suites section. '
-                                  'It will be ignored from the final results', test)
-            elif re.search('^os', line):
-                test_results['vms'][vm_name]['hostOSVersion'] = \
-                    line.split(':')[1].strip()
-                logging.debug('Saving Host OS Version - %s',
-                              test_results['vms'][vm_name]['hostOSVersion'])
-            elif re.search('^server', line):
-                test_results['vms'][vm_name]['hvServer'] = \
-                    line.split(':')[1].strip()
-                logging.debug('Saving server location - %s',
-                              test_results['vms'][vm_name]['hvServer'])
-            elif re.search('^logs can be found at', line):
-                test_results['logDir'] = line.split()[-1]
-                logging.debug('Saving log folder path - %s', test_results['logDir'])
-            elif re.search('^lis version', line):
-                test_results['lisVersion'] = line.split(':')[1].strip()
-                logging.debug('Saving LIS Version - %s', test_results['lisVersion'])
-
-    return test_results
+if __name__ == '__main__':
+    main(sys.argv[1:])

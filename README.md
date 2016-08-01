@@ -1,13 +1,13 @@
 # LISA Persist
 
-An utility for LIS Automation script that parses the input and output files of a test run and persists the 
+An utility for LIS Automation script that parses the input and output files of a test run and persists the
 results in a SQL Server database
 
 ## Installation
 
 ```bash
 $ git clone git@..
-$ cd lisa-persist
+$ cd lisa-parser
 $ pip install -r requirements.txt
 ```
 
@@ -25,7 +25,7 @@ $ pip install -r requirements.txt
 ### Basic usage
 
 ```bash
-$ python persist.py -x demo_files/test.xml -l demo_files/ica.log
+$ python lisa_parser.py -x demo_files/test.xml -l demo_files/ica.log
 ```
 
 ### Specify env file
@@ -36,10 +36,10 @@ $ python persist.py -x demo_files/test.xml -l demo_files/ica.log -e path_to_env_
 
 ## Documentation
 
-The script is structured in 3 main modules that handle file parsing, interaction with the VM and
-db insertion
+The script is structured in 3 main modules that handle file parsing, interaction with the virtual machine and
+database insertion.
 
-### lisa_parser.py
+### file_parser.py
 #### XML Parser
 The file handles the parsing of the .xml and .log files.
 The xml parser uses the default xml python library - xml.etree.cElementTree
@@ -80,7 +80,7 @@ for machine in self.root.iter('vm'):
 ```
 
 #### Log file parser
-The log file is parsed by a different method that saves the parsed field in the tests_dict created previously 
+The log file is parsed by a different method that saves the parsed field in the tests_dict created previously
 by parsing the initial xml config file
 First the function goes through the log file looking for the final section called 'Test Results Summary'
 Using regex the script looks for specific patterns in each line and saves the values

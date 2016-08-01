@@ -15,11 +15,11 @@
             "stream": "ext://sys.stdout"
         },
 
-        "info_file_handler": {
+        "debug_file_handler": {
             "class": "logging.FileHandler",
-            "level": "INFO",
+            "level": "DEBUG",
             "formatter": "simple",
-            "filename": "info.log",
+            "filename": "test-run.log",
             "encoding": "utf8"
         },
 
@@ -42,6 +42,6 @@
 
     "root": {
         "level": "INFO",
-        "handlers": ["console", "info_file_handler", "error_file_handler"]
+        "handlers": ["console", "debug_file_handler", "error_file_handler"]
     }
 }
