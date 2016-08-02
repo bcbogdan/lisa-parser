@@ -40,6 +40,7 @@ class TestRun(object):
     def update_from_ica(self, log_path):
         parsed_ica = parse_ica_log(log_path)
         logger.debug('Parsed ICA log file')
+        logger.debug('Parsed content %s', parsed_ica)
 
         self.timestamp = parsed_ica['timestamp']
         logger.debug('Saving timestamp - %s', self.timestamp)

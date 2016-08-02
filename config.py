@@ -25,7 +25,7 @@ def parse_arguments(arg_list):
     log_file = ''
     env_file = 'config/.env'
     log_level = 2
-    vm_info = True
+    kvp = True
 
     try:
         opts, args = getopt.getopt(arg_list,
@@ -50,15 +50,15 @@ def parse_arguments(arg_list):
             env_file = arg
         elif opt in ('-d', "--dbg"):
             log_level = arg
-        elif opt in ('-v', "--vminfo"):
-            vm_info = False
+        elif opt in ('-k', "--kvp"):
+            kvp = False
 
     return {
         'xml': xml_file,
         'log': log_file,
         'env': env_file,
         'level': log_level,
-        'vmInfo': vm_info
+        'kvp': kvp
     }
 
 
