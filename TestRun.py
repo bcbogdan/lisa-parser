@@ -70,9 +70,9 @@ class TestRun(object):
                 test_name, parsed_ica['tests'][test_name][1]
             )
 
-    def update_from_vm(self, kvp_fields):
+    def update_from_vm(self, kvp_fields, stop_vm=True):
         for vm_name, vm_object in self.vms.iteritems():
-            vm_object.update_from_kvp(kvp_fields)
+            vm_object.update_from_kvp(kvp_fields, stop_vm)
 
     def parse_for_db_insertion(self):
         insertion_list = list()

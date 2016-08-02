@@ -43,10 +43,10 @@ class VirtualMachine(object):
             'start'
         )
 
-    def update_from_kvp(self, kvp_fields):
+    def update_from_kvp(self, kvp_fields, stop_vm):
         if not self.get_status():
             self.start()
-            logger.info('Starting VM - Waiting for it to boot')
+            logger.info('Starting %s - Waiting for it to boot', self.vm_name)
             if not self.has_booted():
                 logger.error('%s was unable to boot', self.vm_name)
                 logger.info('Terminating execution')
@@ -55,6 +55,15 @@ class VirtualMachine(object):
         logger.info('Running KVP command on %s for the following fields %s',
                     self.vm_name, kvp_fields)
         self.kvp_info = self.get_kvp_dict(kvp_fields)
+
+        if stop_vm:
+            logging.info('Stopping execution for %s', self.vm_name)
+            self.stop()
+
+    def stop(self):
+        self.invoke_ps_command(
+            'stop'
+        )
 
     def get_status(self):
         vm_state = self.invoke_ps_command(

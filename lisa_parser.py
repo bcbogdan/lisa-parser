@@ -52,10 +52,11 @@ def main(args):
     logger.info('Parsing log file - %s', parsed_arguments['log'])
     test_run.update_from_ica(parsed_arguments['log'])
 
-    logger.info('Getting KVP values from VM')
-    test_run.update_from_vm([
-        'OSBuildNumber', 'OSName', 'OSMajorVersion'
-    ])
+    if parsed_arguments['kvp']:
+        logger.info('Getting KVP values from VM')
+        test_run.update_from_vm([
+            'OSBuildNumber', 'OSName', 'OSMajorVersion'
+        ], stop_vm=True)
 
     # Parse values to be inserted
     logger.info('Parsing test run for database insertion')

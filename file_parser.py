@@ -46,7 +46,7 @@ class ParseXML(object):
          the end
 
          Dict structure:
-            { 'testName' : { 'details' : {}, 'results' : {} }
+            { 'testName' : {} }
         """
         tests_dict = dict()
 
@@ -106,7 +106,6 @@ class ParseXML(object):
         for machine in self.root.iter('vm'):
             vm_dict[machine.find('vmName').text] = {
                 'hvServer': machine.find('hvServer').text,
-                'sshKey': machine.find('sshKey').text,
                 'os': machine.find('os').text
             }
 
