@@ -64,12 +64,24 @@ class TestRun(object):
             self.vms[vm_name].hv_server = props['hvServer']
             self.vms[vm_name].location = props['TestLocation']
 
+        to_remove = []
         for test_name, test_props in self.test_cases.iteritems():
-            self.test_cases[test_name].update_results(parsed_ica['tests'][test_name])
-            logger.debug(
-                'Saving test result for %s - %s',
-                test_name, parsed_ica['tests'][test_name][1]
-            )
+            try:
+                self.test_cases[test_name].update_results(parsed_ica['tests'][test_name])
+                logger.debug(
+                    'Saving test result for %s - %s',
+                    test_name, parsed_ica['tests'][test_name][1]
+                )
+            except KeyError:
+                logger.warning('Result for %s was not found in ICA log file', test_name)
+                to_remove.append(test_name)
+
+        if to_remove:
+            self.remove_tests(to_remove)
+
+    def remove_tests(self, test_names_list):
+        for test_case in test_names_list:
+            del self.test_cases[test_case]
 
     def update_from_vm(self, kvp_fields, stop_vm=True):
         for vm_name, vm_object in self.vms.iteritems():
@@ -117,6 +129,7 @@ class TestRun(object):
                         test_dict['GuestOSDistro'] = vm_object.kvp_info['OSName']
                     test_dict['KernelVersion'] = vm_object.kvp_info['OSBuildNumber']
 
+                logger.debug('Parsed line %s for insertion', test_dict)
                 insertion_list.append(test_dict)
 
         return insertion_list
@@ -138,16 +151,19 @@ class TestRun(object):
 class TestCase(object):
     def __init__(self, name, properties):
         self.name = name
-        self.covered_cases = TestCase.get_covered_cases(properties)
+        self.covered_cases = self.get_covered_cases(properties)
         self.results = dict()
 
     def update_results(self, vm_result):
         self.results[vm_result[0]] = vm_result[1]
 
-    @staticmethod
-    def get_covered_cases(properties):
-        for param_name, value in properties['testparams']:
-            if param_name == 'TC_COVERED':
-                return value
+    def get_covered_cases(self, properties):
+        try:
+            for param_name, value in properties['testparams']:
+                if param_name == 'TC_COVERED':
+                    return value
+        except KeyError:
+            logger.warning('No test case ID found for %s', self.name)
+            logger.warning('Saving empty value')
 
-        return None
+        return '-'

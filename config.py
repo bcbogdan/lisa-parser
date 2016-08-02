@@ -29,9 +29,9 @@ def parse_arguments(arg_list):
 
     try:
         opts, args = getopt.getopt(arg_list,
-                                   "he:x:l:d:v",
+                                   "he:x:l:d:k",
                                    ["xmlfile=", "logfile=",
-                                    "dbg=", "env=", "vminfo="]
+                                    "dbg=", "env=", "kvp="]
                                    )
     except getopt.GetoptError:
         print('Invalid command line arguments:')
