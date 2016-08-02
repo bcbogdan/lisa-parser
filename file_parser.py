@@ -104,9 +104,9 @@ class ParseXML(object):
         """
         vm_dict = dict()
         for machine in self.root.iter('vm'):
-            vm_dict[machine.find('vmName').text] = {
-                'hvServer': machine.find('hvServer').text,
-                'os': machine.find('os').text
+            vm_dict[machine.find('vmName').text.lower()] = {
+                'hvServer': machine.find('hvServer').text.lower(),
+                'os': machine.find('os').text.lower()
             }
 
         return vm_dict
