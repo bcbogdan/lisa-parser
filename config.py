@@ -39,7 +39,7 @@ def init_arg_parser():
     )
     arg_parser.add_argument(
         "-k", "--skipkvp",
-        action='store_true',
+        action='store_false',
         help="flag that indicates if commands to the VM are run"
     )
 
