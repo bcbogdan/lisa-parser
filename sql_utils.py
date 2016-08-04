@@ -21,18 +21,15 @@ import sys
 logger = logging.getLogger(__name__)
 
 
-def init_connection(config_file):
-    connection = pyodbc.connect(get_connection_string(
-        config_file
-    ))
+def init_connection():
+    connection = pyodbc.connect(get_connection_string())
     return connection, connection.cursor()
 
 
-def get_connection_string(env_file='config/db.config'):
+def get_connection_string():
     """Constructs the connection string for the DB with values from env file
 
     """
-    env.read_envfile(env_file)
 
     connection_string = Template("Driver={$SQLDriver};"
                                  "Server=$server,$port;"
