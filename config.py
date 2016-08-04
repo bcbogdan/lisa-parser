@@ -14,64 +14,44 @@ limitations under the License.
 """
 
 import datetime
-import getopt
+import argparse
 import json
 import logging.config
 import os
 
 
-def parse_arguments(arg_list):
-    xml_file = ''
-    log_file = ''
-    env_file = 'config/db.config'
-    log_level = 2
-    kvp = True
+def init_arg_parser():
+    arg_parser = argparse.ArgumentParser()
 
-    try:
-        opts, args = getopt.getopt(arg_list,
-                                   "he:x:l:d:k",
-                                   ["xmlfile=", "logfile=",
-                                    "dbg=", "env=", "kvp="]
-                                   )
-    except getopt.GetoptError:
-        print('Invalid command line arguments:')
-        print('persist.py -x <XmlFile> -l <LogFile>')
-        return False
+    arg_parser.add_argument(
+        "xml_file_path", help="path to the xml config file"
+    )
+    arg_parser.add_argument("log_file_path", help="path to the ica log file")
+    arg_parser.add_argument(
+        "-c", "--config",
+        help="path to the config file",
+        default='config/db.config'
+    )
+    arg_parser.add_argument(
+        "-l", "--loglevel",
+        help="logging level",
+        default=2, type=int
+    )
+    arg_parser.add_argument(
+        "-k", "--skipkvp",
+        action='store_true',
+        help="flag that indicates if commands to the VM are run"
+    )
 
-    for opt, arg in opts:
-        if opt == '-h':
-            print('persist.py -x <XmlFile> -l <LogFile>')
-            return False
-        elif opt in ("-x", "--xmlfile"):
-            xml_file = arg
-        elif opt in ("-l", "--logfile"):
-            log_file = arg
-        elif opt in ('-e', "--env"):
-            env_file = arg
-        elif opt in ('-d', "--dbg"):
-            log_level = arg
-        elif opt in ('-k', "--kvp"):
-            kvp = False
-
-    return {
-        'xml': xml_file,
-        'log': log_file,
-        'env': env_file,
-        'level': log_level,
-        'kvp': kvp
-    }
+    return arg_parser
 
 
 def validate_input(parsed_arguments):
-    if not parsed_arguments['xml'] or \
-            not parsed_arguments['log']:
+    if not os.path.exists(parsed_arguments.xml_file_path) or \
+            not os.path.exists(parsed_arguments.log_file_path):
         return False
 
-    if not os.path.exists(parsed_arguments['xml']) or \
-            not os.path.exists(parsed_arguments['log']):
-        return False
-
-    if not os.path.exists(parsed_arguments['env']):
+    if not os.path.exists(parsed_arguments.config):
         return False
 
     return True

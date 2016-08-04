@@ -30,29 +30,31 @@ def main(args):
 
     """
     # Parse arguments and check if they exist
-    parsed_arguments = config.parse_arguments(args)
+    arg_parser = config.init_arg_parser()
+    parsed_arguments = arg_parser.parse_args(args)
 
     if not config.validate_input(parsed_arguments):
         print('Invalid command line arguments')
+        print(arg_parser.parse_args(['-h']))
         sys.exit(0)
 
     config.setup_logging(
-        default_level=int(parsed_arguments['level'])
+        default_level=int(parsed_arguments.loglevel)
     )
 
     logger.debug('Parsing env variables')
-    env.read_envfile(parsed_arguments['env'])
+    env.read_envfile(parsed_arguments.config)
 
     logger.info('Initializing TestRun object')
     test_run = TestRun()
 
-    logger.info('Parsing XML file - %s', parsed_arguments['xml'])
-    test_run.update_from_xml(parsed_arguments['xml'])
+    logger.info('Parsing XML file - %s', parsed_arguments.xml_file_path)
+    test_run.update_from_xml(parsed_arguments.xml_file_path)
 
-    logger.info('Parsing log file - %s', parsed_arguments['log'])
-    test_run.update_from_ica(parsed_arguments['log'])
+    logger.info('Parsing log file - %s', parsed_arguments.log_file_path)
+    test_run.update_from_ica(parsed_arguments.log_file_path)
 
-    if parsed_arguments['kvp']:
+    if parsed_arguments.skipkvp:
         logger.info('Getting KVP values from VM')
         test_run.update_from_vm([
             'OSBuildNumber', 'OSName', 'OSMajorVersion'
@@ -65,7 +67,7 @@ def main(args):
     # Connect to db and insert values in the table
     logger.info('Initializing database connection')
     db_connection, db_cursor = sql_utils.init_connection(
-        parsed_arguments['env']
+        parsed_arguments.config
     )
 
     logger.info('Executing insertion commands')
