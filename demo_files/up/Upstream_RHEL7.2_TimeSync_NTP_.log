@@ -1,4 +1,0 @@
-dos2unix: utils.sh: No such file or directory
-dos2unix: Skipping utils.sh, not a regular file.
-/root/CORE_TimeSync_NTP.sh: line 92: utils.sh: No such file or directory
-Error: unable to source utils.sh!

@@ -1,8 +1,0 @@
-Mon May 09 14:21:06 2016 : Updating test case state to running
-Mon May 09 14:21:06 2016 : Cleaning up previous copies of summary.log
-Mon May 09 14:21:06 2016 : Only CPU core 0 is processing VMBUS interrupts.
-Mon May 09 14:21:06 2016 : Only CPU core 1 is processing VMBUS interrupts.
-Mon May 09 14:21:06 2016 : Only CPU core 2 is processing VMBUS interrupts.
-Mon May 09 14:21:06 2016 : Only CPU core 3 is processing VMBUS interrupts.
-Mon May 09 14:21:06 2016 : Test Passed! All {4} CPU cores are processing interrupts.
-Mon May 09 14:21:06 2016 : Test completed successfully

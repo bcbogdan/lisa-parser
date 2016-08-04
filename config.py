@@ -23,7 +23,7 @@ import os
 def parse_arguments(arg_list):
     xml_file = ''
     log_file = ''
-    env_file = 'config/.env'
+    env_file = 'config/db.config'
     log_level = 2
     kvp = True
 

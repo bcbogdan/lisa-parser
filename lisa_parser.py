@@ -64,7 +64,9 @@ def main(args):
 
     # Connect to db and insert values in the table
     logger.info('Initializing database connection')
-    db_connection, db_cursor = sql_utils.init_connection()
+    db_connection, db_cursor = sql_utils.init_connection(
+        parsed_arguments['env']
+    )
 
     logger.info('Executing insertion commands')
     for table_line in insert_values:

@@ -1,4 +1,0 @@
-Test covers NET-22
-Operstate is down
-The only legacy interface is the loopback interface lo, which was set to be ignored.
-Test successful

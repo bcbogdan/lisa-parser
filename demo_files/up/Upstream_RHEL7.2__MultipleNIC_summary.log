@@ -1,8 +1,0 @@
-Test covers NET-07
-Successfully pinged 8.8.8.8 on synthetic interface eth1
-Failed pinged 192.168.0.1 on synthetic interface eth1 (as expected)
-Failed pinged 192.168.0.254 on synthetic interface eth1 (as expected)
-Successfully pinged 8.8.8.8 on synthetic interface eth2
-Failed pinged 192.168.0.1 on synthetic interface eth2 (as expected)
-Failed pinged 192.168.0.254 on synthetic interface eth2 (as expected)
-Test successful

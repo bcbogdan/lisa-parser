@@ -1,7 +1,0 @@
-This script covers test case: CORE-15
-Found a kernel matching version for hv_vmbus module: 4.6.0-rc7-next-20160509
-Found a kernel matching version for hv_netvsc module: 4.6.0-rc7-next-20160509
-Found a kernel matching version for hid_hyperv module: 4.6.0-rc7-next-20160509
-Found a kernel matching version for hv_utils module: 4.6.0-rc7-next-20160509
-Found a kernel matching version for hv_storvsc module: 4.6.0-rc7-next-20160509
-Error: LIS module hv_balloon is not loaded or present!

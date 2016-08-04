@@ -1,6 +1,0 @@
-Covers : CORE-09,CORE-10
- hv_vmbus : Success
- hv_netvsc : Success
- hid_hyperv : Success
- hv_utils : Success
- hv_storvsc : Success

@@ -1,8 +1,0 @@
-Mon May 09 12:55:55 2016 : Updating test case state to running
-Mon May 09 12:55:55 2016 : Cleaning up previous copies of summary.log
-Mon May 09 12:55:55 2016 : Found a kernel matching version for hv_vmbus module: 4.6.0-rc7-next-20160509
-Mon May 09 12:55:55 2016 : Found a kernel matching version for hv_netvsc module: 4.6.0-rc7-next-20160509
-Mon May 09 12:55:55 2016 : Found a kernel matching version for hid_hyperv module: 4.6.0-rc7-next-20160509
-Mon May 09 12:55:55 2016 : Found a kernel matching version for hv_utils module: 4.6.0-rc7-next-20160509
-Mon May 09 12:55:55 2016 : Found a kernel matching version for hv_storvsc module: 4.6.0-rc7-next-20160509
-Mon May 09 12:55:55 2016 : Error: LIS module hv_balloon is not loaded or present!

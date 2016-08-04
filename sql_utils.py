@@ -17,15 +17,18 @@ import logging
 import pyodbc
 from string import Template
 import sys
+
 logger = logging.getLogger(__name__)
 
 
-def init_connection():
-    connection = pyodbc.connect(get_connection_string())
+def init_connection(config_file):
+    connection = pyodbc.connect(get_connection_string(
+        config_file
+    ))
     return connection, connection.cursor()
 
 
-def get_connection_string(env_file='config/.env'):
+def get_connection_string(env_file='config/db.config'):
     """Constructs the connection string for the DB with values from env file
 
     """

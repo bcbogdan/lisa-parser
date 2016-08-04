@@ -1,5 +1,0 @@
-Test covers NET-09
-Successfully set ip from dhcp on interface eth1
-Trying to ping 8.8.8.8
-Successfully pinged 8.8.8.8 through interface eth1
-Test successful
