@@ -17,6 +17,8 @@ from __future__ import print_function
 import logging
 import re
 import sys
+import csv
+import fileinput
 
 try:
     import xml.etree.cElementTree as ElementTree
@@ -191,3 +193,36 @@ def parse_ica_log(log_path):
                 parsed_ica['lisVersion'] = line.split(':')[1].strip()
 
     return parsed_ica
+
+
+def parse_from_csv(csv_path):
+    """
+    Strip and read csv file into a dict data type.
+    :param csv_path: csv file path
+    :return: <list of dict> e.g. [{'t_col1': 'val1',
+                                   't_col2': 'val2',
+                                   ...
+                                   },
+                                  ...]
+             None - on error
+    """
+    # python [2.7.10, 3.0)  does not support context manager for fileinput
+    # strip csv of empty spaces or tabs
+    f = fileinput.input(csv_path, inplace=True)
+    for line in f:
+        # redirect std to file write
+        print(' '.join(line.split()))
+    f.close()
+
+    list_csv_dict = []
+    with open(csv_path, 'rb') as f:
+        try:
+            csv_dialect = csv.Sniffer().sniff(f.read(), delimiters=";, ")
+        except Exception as e:
+            logger.error('Error reading csv file {}: {}'.format(csv_path, e))
+            return None
+        f.seek(0)
+        reader = csv.DictReader(f, dialect=csv_dialect)
+        for csv_dict in reader:
+            list_csv_dict.append(csv_dict)
+    return list_csv_dict
