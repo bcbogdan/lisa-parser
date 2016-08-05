@@ -8,13 +8,14 @@ logger = logging.getLogger(__name__)
 
 
 class TestRun(object):
-    def __init__(self):
+    def __init__(self, perfpath=None):
         self.suite = ''
         self.timestamp = ''
         self.log_path = ''
         self.vms = dict()
         self.test_cases = dict()
         self.lis_version = ''
+        self.perfpath = perfpath
 
     def update_from_xml(self, xml_path):
         xml_object = ParseXML(xml_path)
@@ -121,10 +122,16 @@ class TestRun(object):
                 else:
                     try:
                         """For some distros OSMajorVersion field is empty"""
-                        test_dict['GuestOSDistro'] = ' '.join([
-                            vm_object.kvp_info['OSName'],
-                            vm_object.kvp_info['OSMajorVersion']
-                        ])
+                        # Apparently in some cases OSMajorVersion is saved as none
+                        # TODO : Refactor this quick fix
+                        if not vm_object.kvp_info['OSMajorVersion']:
+                            test_dict['GuestOSDistro'] = vm_object.kvp_info[
+                                'OSName']
+                        else:
+                            test_dict['GuestOSDistro'] = ' '.join([
+                                vm_object.kvp_info['OSName'],
+                                vm_object.kvp_info['OSMajorVersion']
+                            ])
                     except KeyError:
                         test_dict['GuestOSDistro'] = vm_object.kvp_info['OSName']
                     test_dict['KernelVersion'] = vm_object.kvp_info['OSBuildNumber']
