@@ -39,8 +39,14 @@ def init_arg_parser():
     )
     arg_parser.add_argument(
         "-k", "--skipkvp",
-        action='store_false',
+        default=False,
+        action='store_true',
         help="flag that indicates if commands to the VM are run"
+    )
+    arg_parser.add_argument(
+        "-p", "--perf",
+        default=False,
+        help="flag that indicates if a performance test is being processed"
     )
 
     return arg_parser
@@ -53,6 +59,10 @@ def validate_input(parsed_arguments):
 
     if not os.path.exists(parsed_arguments.config):
         return False
+
+    if parsed_arguments.perf:
+        if not os.path.exists(parsed_arguments.perf):
+            return False
 
     return True
 
