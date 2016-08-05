@@ -195,7 +195,7 @@ def parse_ica_log(log_path):
     return parsed_ica
 
 
-def update_from_csv(csv_path):
+def parse_from_csv(csv_path):
     """
     Strip and read csv file into a dict data type.
     :param csv_path: csv file path
