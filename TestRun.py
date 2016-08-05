@@ -3,6 +3,8 @@ from file_parser import ParseXML
 from file_parser import parse_ica_log
 from VirtualMachine import VirtualMachine
 import logging
+import csv
+import fileinput
 
 logger = logging.getLogger(__name__)
 
@@ -36,6 +38,25 @@ class TestRun(object):
                 hv_server=vm_details['hvServer'],
                 os=vm_details['os']
                 )
+
+    def update_from_csv(self, csv_path):
+        """
+        Update object with csv data
+        :param csv_path: csv file path
+        :return:
+        """
+        # python > 2.7.10, < 3  does not support context manager for fileinput
+        f = fileinput.input(csv_path, inplace=True)
+        for line in f:
+            ' '.join(line.split())
+        f.close()
+        with open(csv_path, 'rb') as f:
+            reader = csv.DictReader(f, delimiter=' ')
+            for csv_dict in reader:
+                for key in csv_dict:
+                    logger.debug('using key {} and values {}'.format(
+                        key, csv_dict[key]))
+                    # populate test case data for db insert
 
     def update_from_ica(self, log_path):
         parsed_ica = parse_ica_log(log_path)
