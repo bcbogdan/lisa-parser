@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 
 class VirtualMachine(object):
-    def __init__(self, vm_name, hv_server, os=None, host_os=None):
+    def __init__(self, vm_name, hv_server, os=None, host_os=None, check=True):
         self.vm_name = vm_name
         self.hv_server = hv_server
         self.os = os
@@ -31,7 +31,8 @@ class VirtualMachine(object):
         self.kvp_info = dict()
         self.location = ''
         """Check if VM exists"""
-        self.check_if_exists()
+        if check:
+            self.check_if_exists()
 
     def check_if_exists(self):
         self.invoke_ps_command(
@@ -56,9 +57,9 @@ class VirtualMachine(object):
                     self.vm_name, kvp_fields)
         self.kvp_info = self.get_kvp_dict(kvp_fields)
 
-        if stop_vm:
-            logging.info('Stopping execution for %s', self.vm_name)
-            self.stop()
+        # if stop_vm:
+        #     logging.info('Stopping execution for %s', self.vm_name)
+        #     self.stop()
 
     def stop(self):
         self.invoke_ps_command(
@@ -182,3 +183,9 @@ class VirtualMachine(object):
             )
         else:
             return stdout_data
+
+if __name__ == '__main__':
+    vm = VirtualMachine('centos7', 'localhost', check=False)
+    vm.update_from_kvp(None, stop_vm=False)
+
+    print(vm.kvp_info)

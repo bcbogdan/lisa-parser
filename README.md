@@ -26,6 +26,7 @@ $ python lisa_parser.py -demo_files/test.xml  demo_files/ica.log
 -l | --loglevel Logging level for the script - 2 default 
                 Levels: 1 - Warning, 2 - Info, 3 - Debug
 -k | --skipkvp  Flag that indicates if the script searches for DistroVersion and KernelVersion from the VM - default True
+-p | --perf     Attribute that indicates if a performance test is being run and the path to the test report log
 ```
 
 ### Specify env file

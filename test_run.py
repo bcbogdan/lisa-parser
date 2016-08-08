@@ -1,21 +1,25 @@
 from __future__ import print_function
 from file_parser import ParseXML
 from file_parser import parse_ica_log
-from VirtualMachine import VirtualMachine
+from file_parser import parse_from_csv
+from virtual_machine import VirtualMachine
+from copy import deepcopy
 import logging
+import os
 
 logger = logging.getLogger(__name__)
 
 
 class TestRun(object):
-    def __init__(self, perfpath=None):
+    def __init__(self, skip_vm_check=False):
         self.suite = ''
         self.timestamp = ''
         self.log_path = ''
         self.vms = dict()
+        self.validate_vm = not skip_vm_check
         self.test_cases = dict()
         self.lis_version = ''
-        self.perfpath = perfpath
+        self.server_name = os.environ['COMPUTERNAME']
 
     def update_from_xml(self, xml_path):
         xml_object = ParseXML(xml_path)
@@ -35,7 +39,8 @@ class TestRun(object):
             self.vms[vm_name] = VirtualMachine(
                 vm_name=vm_name,
                 hv_server=vm_details['hvServer'],
-                os=vm_details['os']
+                os=vm_details['os'],
+                check=self.validate_vm
                 )
 
     def update_from_ica(self, log_path):
@@ -85,6 +90,9 @@ class TestRun(object):
             del self.test_cases[test_case]
 
     def update_from_vm(self, kvp_fields, stop_vm=True):
+        if not self.validate_vm:
+            stop_vm = False
+
         for vm_name, vm_object in self.vms.iteritems():
             vm_object.update_from_kvp(kvp_fields, stop_vm)
 
@@ -155,11 +163,80 @@ class TestRun(object):
         )
 
 
+class PerfTestRun(TestRun):
+    def __init__(self, perf_path, skip_vm_check=True):
+        super(PerfTestRun, self).__init__(skip_vm_check)
+        self.perf_path = perf_path
+
+    def update_from_ica(self, log_path):
+        super(PerfTestRun, self).update_from_ica(log_path)
+        parsed_perf_log = parse_from_csv(self.perf_path)
+
+        tests_cases = dict()
+        test_index = 0
+        for perf_test in parsed_perf_log:
+            test_case = deepcopy(self.test_cases)
+            test_case.values()[0].perf_dict = perf_test
+            test_index += 1
+            tests_cases.update({
+                test_case.keys()[0] + str(test_index): test_case.values()[0]
+            })
+
+        self.test_cases = tests_cases
+
+    def parse_for_db_insertion(self):
+        insertion_list = super(PerfTestRun, self).parse_for_db_insertion()
+
+        for table_dict in insertion_list:
+            del table_dict['TestID']
+            del table_dict['TestResult']
+            del table_dict['LISVersion']
+            del table_dict['TestArea']
+            del table_dict['HostName']
+            del table_dict['LogPath']
+
+            table_dict['GuestDistro'] = table_dict.pop('GuestOSDistro')
+            table_dict['HostBy'] = os.environ['COMPUTERNAME']
+            table_dict['HostOS'] = table_dict.pop('HostVersion')
+            table_dict['HostType'] = table_dict.pop('TestLocation')
+
+            # TODO - Find fix for hardcoded values
+            table_dict['GuestSize'] = '8VP8G40G'
+            table_dict['BlockSize'] = '8k'
+
+            test_case_obj = self.test_cases[table_dict['TestCaseName']]
+            if self.suite.lower() == 'fio':
+                self.prep_for_fio(table_dict, test_case_obj)
+            elif self.suite.lower() == 'ntttcp':
+                pass
+
+            table_dict['TestCaseName'] = table_dict['TestCaseName'][:-1]
+
+        return insertion_list
+
+    @staticmethod
+    def prep_for_fio(table_dict, test_case_obj):
+        table_dict['RandRead'] = float(test_case_obj.perf_dict['rand-read:'])
+        table_dict['Latency_RandRead'] = float(test_case_obj.perf_dict[
+            'rand-read: latency'])
+        table_dict['RandWrite'] = float(test_case_obj.perf_dict['rand-write:'])
+        table_dict['Latency_RandWrite'] = float(test_case_obj.perf_dict[
+            'rand-write: latency'])
+        table_dict['SeqRead'] = float(test_case_obj.perf_dict['seq-read:'])
+        table_dict['SeqWrite'] = float(test_case_obj.perf_dict['seq-write:'])
+        table_dict['Latency_SeqWrite'] = float(test_case_obj.perf_dict[
+            'seq-write: latency'])
+        table_dict['Latency_SeqRead'] = float(test_case_obj.perf_dict[
+            'seq-read: latency'])
+        table_dict['Iodepth'] = float(test_case_obj.perf_dict['BlockSize'][1:])
+
+
 class TestCase(object):
     def __init__(self, name, properties):
         self.name = name
         self.covered_cases = self.get_covered_cases(properties)
         self.results = dict()
+        self.perf_dict = dict()
 
     def update_results(self, vm_result):
         self.results[vm_result[0]] = vm_result[1]

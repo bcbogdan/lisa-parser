@@ -19,7 +19,6 @@ import json
 import logging.config
 import os
 
-
 def init_arg_parser():
     arg_parser = argparse.ArgumentParser()
 
@@ -46,13 +45,15 @@ def init_arg_parser():
     arg_parser.add_argument(
         "-p", "--perf",
         default=False,
-        help="flag that indicates if a performance test is being processed"
+        help="flag that indicates if a performance test is being processed and the"
+             "path to the report file"
     )
 
     return arg_parser
 
 
 def validate_input(parsed_arguments):
+    # TODO - Add help messages for each case
     if not os.path.exists(parsed_arguments.xml_file_path) or \
             not os.path.exists(parsed_arguments.log_file_path):
         return False

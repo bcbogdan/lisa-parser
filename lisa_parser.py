@@ -15,8 +15,9 @@ limitations under the License.
 
 from __future__ import print_function
 from envparse import env
-from TestRun import TestRun
-
+from test_run import TestRun
+from test_run import PerfTestRun
+import pprint
 import config
 import logging
 import sql_utils
@@ -46,7 +47,11 @@ def main(args):
     env.read_envfile(parsed_arguments.config)
 
     logger.info('Initializing TestRun object')
-    test_run = TestRun()
+    if parsed_arguments.perf:
+        test_run = PerfTestRun(parsed_arguments.perf,
+                               parsed_arguments.skipkvp)
+    else:
+        test_run = TestRun(skip_vm_check=parsed_arguments.skipkvp)
 
     logger.info('Parsing XML file - %s', parsed_arguments.xml_file_path)
     test_run.update_from_xml(parsed_arguments.xml_file_path)
@@ -54,7 +59,7 @@ def main(args):
     logger.info('Parsing log file - %s', parsed_arguments.log_file_path)
     test_run.update_from_ica(parsed_arguments.log_file_path)
 
-    if parsed_arguments.skipkvp:
+    if not parsed_arguments.skipkvp:
         logger.info('Getting KVP values from VM')
         test_run.update_from_vm([
             'OSBuildNumber', 'OSName', 'OSMajorVersion'
@@ -63,7 +68,6 @@ def main(args):
     # Parse values to be inserted
     logger.info('Parsing test run for database insertion')
     insert_values = test_run.parse_for_db_insertion()
-
     # Connect to db and insert values in the table
     logger.info('Initializing database connection')
     db_connection, db_cursor = sql_utils.init_connection()

@@ -89,12 +89,19 @@ def insert_values(cursor, values_dict):
     """
     insert_command = Template('insert into $tableName($columns)'
                               ' values($values)')
-
+    logger.debug('Line to be inserted %s', values_dict)
+    values = ''
+    for item in values_dict.values():
+        if type(item) == str:
+            values = ', '.join([values, "'" + item + "'"])
+        else:
+            values = ', '.join([values, str(item)])
+    print(values)
     try:
         cursor.execute(insert_command.substitute(
             tableName=env.str('TableName'),
             columns=', '.join(values_dict.keys()),
-            values=', '.join("'" + item + "'" for item in values_dict.values())
+            values=values[1:]
         ))
     except pyodbc.DataError as data_error:
         print(dir(data_error))
