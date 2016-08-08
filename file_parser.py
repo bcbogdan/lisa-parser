@@ -145,6 +145,15 @@ class ParseXML(object):
 
 
 def parse_ica_log(log_path):
+    """ Parser for the generated log file after a lisa run - ica.log
+
+    The method iterates until the start of the test outcome section. After that
+     it searches, using regex, for predefined fields and saves them in a
+     dict structure.
+
+    :param log_path:
+    :return:
+    """
     logger.debug(
         'Iterating through %s file until the test results part', log_path
     )
@@ -175,7 +184,6 @@ def parse_ica_log(log_path):
 
             elif re.search('^test', line) and \
                     re.search('(success$|failed$|aborted$)', line):
-                print(line)
                 test = line.split()
                 try:
                     parsed_ica['tests'][test[1].lower()] = (vm_name, test[3])

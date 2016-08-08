@@ -11,6 +11,11 @@ logger = logging.getLogger(__name__)
 
 
 class TestRun(object):
+    """Main class that encapsulates the information necessary for the parsing process
+
+    TestRun class is being used to store test run specific data and launch
+    different parsing methods in order to process the output of a test run.
+    """
     def __init__(self, skip_vm_check=False):
         self.suite = ''
         self.timestamp = ''

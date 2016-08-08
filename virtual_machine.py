@@ -23,6 +23,12 @@ logger = logging.getLogger(__name__)
 
 
 class VirtualMachine(object):
+    """ Holds specific logic for interacting with a virtual machine
+
+    The class is used to save details regarding a vm on which a test has been
+    ran and also executes methods that interact and get data from that specific
+    vm.
+    """
     def __init__(self, vm_name, hv_server, os=None, host_os=None, check=True):
         self.vm_name = vm_name
         self.hv_server = hv_server
@@ -57,9 +63,9 @@ class VirtualMachine(object):
                     self.vm_name, kvp_fields)
         self.kvp_info = self.get_kvp_dict(kvp_fields)
 
-        # if stop_vm:
-        #     logging.info('Stopping execution for %s', self.vm_name)
-        #     self.stop()
+        if stop_vm:
+            logging.info('Stopping execution for %s', self.vm_name)
+            self.stop()
 
     def stop(self):
         self.invoke_ps_command(
@@ -183,9 +189,3 @@ class VirtualMachine(object):
             )
         else:
             return stdout_data
-
-if __name__ == '__main__':
-    vm = VirtualMachine('centos7', 'localhost', check=False)
-    vm.update_from_kvp(None, stop_vm=False)
-
-    print(vm.kvp_info)

@@ -17,7 +17,6 @@ from __future__ import print_function
 from envparse import env
 from test_run import TestRun
 from test_run import PerfTestRun
-import pprint
 import config
 import logging
 import sql_utils
@@ -29,6 +28,14 @@ logger = logging.getLogger(__name__)
 def main(args):
     """The main entry point of the application
 
+    The script follows a simple workflow in order to parse and persist
+    the test run information to a database. It runs the main logic under a
+    TestRun/PerfTestRun object designed to encapsulate information for a
+    specific test run.
+
+    The parser expects at least two arguments, an xml and a log file, in order
+    to parse minimum information regarding the tests that have been run and
+    the test environment.
     """
     # Parse arguments and check if they exist
     arg_parser = config.init_arg_parser()
