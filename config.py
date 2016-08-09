@@ -25,6 +25,7 @@ import json
 import logging.config
 import os
 
+
 def init_arg_parser():
     arg_parser = argparse.ArgumentParser()
 
