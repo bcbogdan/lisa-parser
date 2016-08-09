@@ -6,8 +6,8 @@ results in an SQL Server database
 ## Installation
 
 ```bash
-$ git clone git@..
-$ cd lisa-parser
+$ git clone git@github.com:LIS/lis-test.git
+$ cd WS2012R2/lisa/Infrastructure/lisa-parser
 $ pip install -r requirements.txt
 ```
 
